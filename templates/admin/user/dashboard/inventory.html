@@ -1,0 +1,397 @@
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 glass-nav border-b border-outline-variant flex justify-between items-center px-container-padding-desktop z-40">
+    <div class="relative w-1/3 group">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">search</span>
+        <input class="w-full h-10 pl-10 pr-4 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary/20 font-label-md placeholder:text-on-surface-variant/60"
+               placeholder="Global Search" type="text"/>
+    </div>
+    <div class="flex items-center gap-6">
+        <button class="relative text-on-surface-variant hover:text-primary transition-all">
+            <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            <span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
+        </button>
+        <button class="text-on-surface-variant hover:text-primary transition-all">
+            <span class="material-symbols-outlined" data-icon="mail">mail</span>
+        </button>
+        <div class="flex items-center gap-3 pl-6 border-l border-outline-variant">
+            <div class="text-right">
+                <p class="font-label-md text-label-md font-semibold text-on-surface">Sarah Mitchell</p>
+                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Floor Supervisor</p>
+            </div>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+                <img class="w-full h-full object-cover"
+                     data-alt="A professional studio headshot of a smiling woman with clear, radiant skin and neatly tied hair, wearing a white aesthetic uniform. The background is a soft, blurred skincare boutique setting with luxury purple and gold accents, consistent with a high-end clinical beauty brand."
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAputE00owbUbDq0ompQYiDMOE6Qop60pHKz4g2JmAyr3eLiXo8dJTrpJUzT2p63L0obY42kyDdU8Xi0P-ij61_GQXWFiCtbrVVnKIlCet5tX-c2tIQ9exDvN8T-sCoN9H_WywvI1aEjOOcILUaR4yIxn9Rs5YneL2IXd1VFp6fPHsC0D3sZCm0Xk9Iumx6SkOujaOtZ0VhN6ZABeNC6TKuhhwhHPhQemymwgij98Iotfr_1kmAuN8c8A"/>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen flex flex-col relative">
+    <!-- Top Bar Shell -->
+    <div class=" pt-24 px-container-padding-desktop pb-stack-lg">
+        <!-- Header Section -->
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface">Inventory Overview</h2>
+                <p class="font-body-md text-on-surface-variant mt-2">Real-time stock monitoring and warehouse logistics
+                    for Aura Beauty global stores.</p>
+            </div>
+            <div class="flex gap-3">
+                <button class="h-12 px-6 flex items-center gap-2 border border-outline-variant text-on-surface font-label-md rounded-xl hover:bg-surface-container-low transition-all">
+                    <span class="material-symbols-outlined" data-icon="download">download</span>
+                    Export Report
+                </button>
+                <button class="h-12 px-6 flex items-center gap-2 bg-primary text-on-primary font-label-md rounded-xl luminous-shadow hover:opacity-90 active:scale-95 transition-all">
+                    <span class="material-symbols-outlined" data-icon="add">add</span>
+                    New Shipment
+                </button>
+            </div>
+        </div>
+        <!-- KPI Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-section-gap">
+            <div class="bg-surface-container-lowest p-6 rounded-[20px] border border-outline-variant luminous-shadow hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-primary/10 rounded-xl text-primary">
+                        <span class="material-symbols-outlined" data-icon="inventory">inventory</span>
+                    </div>
+                    <span class="font-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-1 rounded-full">+2.4%</span>
+                </div>
+                <p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Current Stock</p>
+                <p class="font-display text-4xl font-bold mt-1">12,842</p>
+                <p class="font-label-sm text-on-surface-variant mt-2">Units across all warehouses</p>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-[20px] border border-outline-variant luminous-shadow hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-yellow-100 rounded-xl text-yellow-600">
+                        <span class="material-symbols-outlined" data-icon="warning">warning</span>
+                    </div>
+                    <span class="font-label-sm text-yellow-700 bg-yellow-50 px-2 py-1 rounded-full">Reorder soon</span>
+                </div>
+                <p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Low Stock</p>
+                <p class="font-display text-4xl font-bold mt-1 text-yellow-600">48</p>
+                <p class="font-label-sm text-on-surface-variant mt-2">SKUs below safety threshold</p>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-[20px] border border-outline-variant luminous-shadow hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-error-container rounded-xl text-error">
+                        <span class="material-symbols-outlined" data-icon="block">block</span>
+                    </div>
+                    <span class="font-label-sm text-error bg-error-container px-2 py-1 rounded-full">Critical</span>
+                </div>
+                <p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Out of Stock</p>
+                <p class="font-display text-4xl font-bold mt-1 text-error">12</p>
+                <p class="font-label-sm text-on-surface-variant mt-2">Immediate attention required</p>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-[20px] border border-outline-variant luminous-shadow hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-green-100 rounded-xl text-green-600">
+                        <span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+                    </div>
+                    <span class="font-label-sm text-green-700 bg-green-50 px-2 py-1 rounded-full">3 Orders</span>
+                </div>
+                <p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Incoming Stock</p>
+                <p class="font-display text-4xl font-bold mt-1 text-green-600">2,400</p>
+                <p class="font-label-sm text-on-surface-variant mt-2">Arriving by next Friday</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+            <!-- Warehouse Statistics Section -->
+            <section
+                    class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-[20px] border border-outline-variant luminous-shadow">
+                <div class="flex justify-between items-center mb-10">
+                    <div>
+                        <h3 class="font-headline-md text-headline-md font-semibold">Warehouse Statistics</h3>
+                        <p class="font-body-md text-on-surface-variant">Stock levels distributed per product
+                            category</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-primary rounded-full"></span>
+                            <span class="font-label-sm">In Stock</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-surface-container-highest rounded-full"></span>
+                            <span class="font-label-sm">Capacity</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bar Chart Implementation -->
+                <div class="flex items-end justify-between h-[300px] w-full gap-4 pt-4">
+                    <!-- Skincare -->
+                    <div class="flex-1 flex flex-col items-center gap-3 group h-full justify-end">
+                        <div class="w-full relative h-full flex flex-col justify-end">
+                            <div class="absolute inset-x-0 bottom-0 w-full bg-surface-container-highest rounded-t-lg h-full opacity-30"></div>
+                            <div class="relative w-full bg-primary rounded-t-lg chart-bar group-hover:bg-primary-container"
+                                 style="height: 85%;">
+                                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    85%
+                                </div>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-on-surface-variant">Skincare</span>
+                    </div>
+                    <!-- Cleansers -->
+                    <div class="flex-1 flex flex-col items-center gap-3 group h-full justify-end">
+                        <div class="w-full relative h-full flex flex-col justify-end">
+                            <div class="absolute inset-x-0 bottom-0 w-full bg-surface-container-highest rounded-t-lg h-full opacity-30"></div>
+                            <div class="relative w-full bg-primary rounded-t-lg chart-bar group-hover:bg-primary-container"
+                                 style="height: 60%;">
+                                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    60%
+                                </div>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-on-surface-variant">Cleansers</span>
+                    </div>
+                    <!-- Serums -->
+                    <div class="flex-1 flex flex-col items-center gap-3 group h-full justify-end">
+                        <div class="w-full relative h-full flex flex-col justify-end">
+                            <div class="absolute inset-x-0 bottom-0 w-full bg-surface-container-highest rounded-t-lg h-full opacity-30"></div>
+                            <div class="relative w-full bg-primary rounded-t-lg chart-bar group-hover:bg-primary-container"
+                                 style="height: 92%;">
+                                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    92%
+                                </div>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-on-surface-variant">Serums</span>
+                    </div>
+                    <!-- Moisturizers -->
+                    <div class="flex-1 flex flex-col items-center gap-3 group h-full justify-end">
+                        <div class="w-full relative h-full flex flex-col justify-end">
+                            <div class="absolute inset-x-0 bottom-0 w-full bg-surface-container-highest rounded-t-lg h-full opacity-30"></div>
+                            <div class="relative w-full bg-primary rounded-t-lg chart-bar group-hover:bg-primary-container"
+                                 style="height: 45%;">
+                                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    45%
+                                </div>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-on-surface-variant">Face Oils</span>
+                    </div>
+                    <!-- Masks -->
+                    <div class="flex-1 flex flex-col items-center gap-3 group h-full justify-end">
+                        <div class="w-full relative h-full flex flex-col justify-end">
+                            <div class="absolute inset-x-0 bottom-0 w-full bg-surface-container-highest rounded-t-lg h-full opacity-30"></div>
+                            <div class="relative w-full bg-primary rounded-t-lg chart-bar group-hover:bg-primary-container"
+                                 style="height: 70%;">
+                                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    70%
+                                </div>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-on-surface-variant">Masks</span>
+                    </div>
+                    <!-- Sunscreen -->
+                    <div class="flex-1 flex flex-col items-center gap-3 group h-full justify-end">
+                        <div class="w-full relative h-full flex flex-col justify-end">
+                            <div class="absolute inset-x-0 bottom-0 w-full bg-surface-container-highest rounded-t-lg h-full opacity-30"></div>
+                            <div class="relative w-full bg-primary rounded-t-lg chart-bar group-hover:bg-primary-container"
+                                 style="height: 30%;">
+                                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    30%
+                                </div>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-on-surface-variant">SPF</span>
+                    </div>
+                </div>
+            </section>
+            <!-- Activity/Alerts Sidebar -->
+            <section
+                    class="bg-surface-container-lowest p-8 rounded-[20px] border border-outline-variant luminous-shadow">
+                <h3 class="font-headline-md text-headline-md font-semibold mb-6">Inventory Health</h3>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-1.5 h-12 bg-error rounded-full"></div>
+                        <div>
+                            <p class="font-label-md font-bold text-on-surface">Critical Reorder</p>
+                            <p class="font-body-md text-on-surface-variant text-sm">Glow Serum Mini (15ml) is out of
+                                stock in London WH.</p>
+                            <p class="font-label-sm text-error mt-1">2 mins ago</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-1.5 h-12 bg-primary rounded-full"></div>
+                        <div>
+                            <p class="font-label-md font-bold text-on-surface">Shipment Manifest</p>
+                            <p class="font-body-md text-on-surface-variant text-sm">Bulk arrival of Lavender Cleansers
+                                (500 units).</p>
+                            <p class="font-label-sm text-on-surface-variant mt-1">45 mins ago</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-1.5 h-12 bg-yellow-500 rounded-full"></div>
+                        <div>
+                            <p class="font-label-md font-bold text-on-surface">Threshold Warning</p>
+                            <p class="font-body-md text-on-surface-variant text-sm">Rosehip Oil reaching safety levels
+                                (12 units left).</p>
+                            <p class="font-label-sm text-on-surface-variant mt-1">2 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 p-6 bg-surface-container rounded-2xl border border-dashed border-outline-variant">
+                    <p class="font-label-md text-center text-on-surface-variant mb-4">Storage Usage</p>
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div><span
+                                    class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-primary bg-primary-fixed">Primary WH</span>
+                            </div>
+                            <div class="text-right"><span
+                                    class="text-xs font-semibold inline-block text-primary">74%</span></div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-white">
+                            <div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"
+                                 style="width:74%"></div>
+                        </div>
+                    </div>
+                    <button class="w-full py-2 text-primary font-label-md hover:underline decoration-primary">Expand
+                        Storage Details
+                    </button>
+                </div>
+            </section>
+        </div>
+        <!-- Incoming Stock Table Section -->
+        <section
+                class="  mt-section-gap bg-surface-container-lowest rounded-[20px] border border-outline-variant luminous-shadow overflow-hidden">
+            <div class="p-8 border-b border-outline-variant flex justify-between items-center">
+                <div>
+                    <h3 class="font-headline-md text-headline-md font-semibold">Incoming Stock Tracking</h3>
+                    <p class="font-body-md text-on-surface-variant">Scheduled shipments and transit progress for next 14
+                        days.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-low"><span
+                            class="material-symbols-outlined" data-icon="filter_list">filter_list</span></button>
+                    <button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-low"><span
+                            class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-surface-container-low">
+                    <tr>
+                        <th class="px-8 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider">Shipment
+                            ID
+                        </th>
+                        <th class="px-8 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider">Product
+                            Category
+                        </th>
+                        <th class="px-8 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider">Quantity
+                        </th>
+                        <th class="px-8 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider">Estimated
+                            Arrival
+                        </th>
+                        <th class="px-8 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider">Origin</th>
+                        <th class="px-8 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+                        <th class="px-8 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider">Actions
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant">
+                    <tr class="hover:bg-surface-container-low/50 transition-colors">
+                        <td class="px-8 py-5 font-label-md text-on-surface font-semibold">#SHP-82910</td>
+                        <td class="px-8 py-5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary"><span
+                                        class="material-symbols-outlined" data-icon="spa">spa</span></span>
+                                <span class="font-body-md">Botanical Serums</span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 font-body-md">1,200 Units</td>
+                        <td class="px-8 py-5 font-body-md">Oct 24, 2023</td>
+                        <td class="px-8 py-5 font-body-md">Grasse, FR</td>
+                        <td class="px-8 py-5">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full font-label-sm">In Transit</span>
+                        </td>
+                        <td class="px-8 py-5 text-on-surface-variant">
+                            <button class="hover:text-primary transition-colors"><span class="material-symbols-outlined"
+                                                                                       data-icon="visibility">visibility</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-surface-container-low/50 transition-colors">
+                        <td class="px-8 py-5 font-label-md text-on-surface font-semibold">#SHP-82915</td>
+                        <td class="px-8 py-5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary"><span
+                                        class="material-symbols-outlined"
+                                        data-icon="water_drop">water_drop</span></span>
+                                <span class="font-body-md">Hydrating Cleansers</span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 font-body-md">800 Units</td>
+                        <td class="px-8 py-5 font-body-md">Oct 27, 2023</td>
+                        <td class="px-8 py-5 font-body-md">Seoul, KR</td>
+                        <td class="px-8 py-5">
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full font-label-sm">Processing</span>
+                        </td>
+                        <td class="px-8 py-5 text-on-surface-variant">
+                            <button class="hover:text-primary transition-colors"><span class="material-symbols-outlined"
+                                                                                       data-icon="visibility">visibility</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-surface-container-low/50 transition-colors">
+                        <td class="px-8 py-5 font-label-md text-on-surface font-semibold">#SHP-82922</td>
+                        <td class="px-8 py-5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary"><span
+                                        class="material-symbols-outlined" data-icon="face">face</span></span>
+                                <span class="font-body-md">Retinol Complexes</span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 font-body-md">400 Units</td>
+                        <td class="px-8 py-5 font-body-md">Nov 02, 2023</td>
+                        <td class="px-8 py-5 font-body-md">New York, US</td>
+                        <td class="px-8 py-5">
+                            <span class="px-3 py-1 bg-on-secondary-container/10 text-on-secondary-container rounded-full font-label-sm">Scheduled</span>
+                        </td>
+                        <td class="px-8 py-5 text-on-surface-variant">
+                            <button class="hover:text-primary transition-colors"><span class="material-symbols-outlined"
+                                                                                       data-icon="visibility">visibility</span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-6 bg-surface-container-low flex items-center justify-between">
+                <p class="font-label-sm text-on-surface-variant">Showing 3 of 12 active shipments</p>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 bg-white border border-outline-variant rounded-lg font-label-sm hover:bg-surface-container-lowest disabled:opacity-50"
+                            disabled="">Previous
+                    </button>
+                    <button class="px-4 py-2 bg-white border border-outline-variant rounded-lg font-label-sm hover:bg-surface-container-lowest">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    {% include "admin/share/footer.html" %}
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Animate bar chart on load
+        const bars = document.querySelectorAll('.chart-bar');
+        bars.forEach(bar => {
+            const height = bar.style.height;
+            bar.style.height = '0%';
+            setTimeout(() => {
+                bar.style.height = height;
+            }, 300);
+        });
+
+        // Smooth search focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    });
+</script>

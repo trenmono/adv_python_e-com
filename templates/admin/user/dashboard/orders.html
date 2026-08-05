@@ -1,0 +1,413 @@
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 glass-nav border-b border-outline-variant flex justify-between items-center px-container-padding-desktop z-40">
+    <div class="relative w-1/3 group">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">search</span>
+        <input class="w-full h-10 pl-10 pr-4 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary/20 font-label-md placeholder:text-on-surface-variant/60"
+               placeholder="Global Search" type="text"/>
+    </div>
+    <div class="flex items-center gap-6">
+        <button class="relative text-on-surface-variant hover:text-primary transition-all">
+            <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            <span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
+        </button>
+        <button class="text-on-surface-variant hover:text-primary transition-all">
+            <span class="material-symbols-outlined" data-icon="mail">mail</span>
+        </button>
+        <div class="flex items-center gap-3 pl-6 border-l border-outline-variant">
+            <div class="text-right">
+                <p class="font-label-md text-label-md font-semibold text-on-surface">Sarah Mitchell</p>
+                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Floor Supervisor</p>
+            </div>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+                <img class="w-full h-full object-cover"
+                     data-alt="A professional studio headshot of a smiling woman with clear, radiant skin and neatly tied hair, wearing a white aesthetic uniform. The background is a soft, blurred skincare boutique setting with luxury purple and gold accents, consistent with a high-end clinical beauty brand."
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAputE00owbUbDq0ompQYiDMOE6Qop60pHKz4g2JmAyr3eLiXo8dJTrpJUzT2p63L0obY42kyDdU8Xi0P-ij61_GQXWFiCtbrVVnKIlCet5tX-c2tIQ9exDvN8T-sCoN9H_WywvI1aEjOOcILUaR4yIxn9Rs5YneL2IXd1VFp6fPHsC0D3sZCm0Xk9Iumx6SkOujaOtZ0VhN6ZABeNC6TKuhhwhHPhQemymwgij98Iotfr_1kmAuN8c8A"/>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 min-h-screen relative">
+<!-- Page Content -->
+    <section class="pt-24 px-container-padding-desktop pb-stack-lg">
+        <!-- Header Actions -->
+        <div class="flex justify-between items-end mb-stack-lg">
+            <div>
+                <nav class="flex items-center gap-2 text-label-sm text-on-surface-variant mb-2">
+                    <span>Portal</span>
+                    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                    <span class="text-primary font-bold">Orders</span>
+                </nav>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface">Order Management</h2>
+            </div>
+            <div class="flex gap-3">
+                <button class="flex items-center gap-2 px-6 py-3 border border-outline-variant rounded-xl text-primary font-label-md hover:bg-surface-container-low transition-all">
+                    <span class="material-symbols-outlined">download</span>
+                    <span>Export CSV</span>
+                </button>
+                <button class="flex items-center gap-2 px-6 py-3 bg-primary-container text-on-primary rounded-xl font-label-md shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                    <span class="material-symbols-outlined">add</span>
+                    <span>Create Manual Order</span>
+                </button>
+            </div>
+        </div>
+        <!-- Filters & Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-stack-lg">
+            <!-- Stat Card -->
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-[20px] p-6 luminous-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined">payments</span>
+                    </div>
+                    <span class="text-green-600 font-label-sm flex items-center gap-1">+12.5% <span
+                            class="material-symbols-outlined text-[14px]">trending_up</span></span>
+                </div>
+                <p class="text-on-surface-variant font-label-md">Total Revenue</p>
+                <h3 class="text-headline-md font-bold mt-1">$42,908.00</h3>
+            </div>
+            <!-- Stat Card -->
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-[20px] p-6 luminous-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined">shopping_bag</span>
+                    </div>
+                    <span class="text-green-600 font-label-sm flex items-center gap-1">+8.2% <span
+                            class="material-symbols-outlined text-[14px]">trending_up</span></span>
+                </div>
+                <p class="text-on-surface-variant font-label-md">Active Orders</p>
+                <h3 class="text-headline-md font-bold mt-1">1,284</h3>
+            </div>
+            <!-- Stat Card -->
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-[20px] p-6 luminous-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined">local_shipping</span>
+                    </div>
+                    <span class="text-primary font-label-sm">42 Pending</span>
+                </div>
+                <p class="text-on-surface-variant font-label-md">Avg. Fulfillment</p>
+                <h3 class="text-headline-md font-bold mt-1">1.2 Days</h3>
+            </div>
+            <!-- Stat Card -->
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-[20px] p-6 luminous-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined">assignment_return</span>
+                    </div>
+                    <span class="text-red-600 font-label-sm flex items-center gap-1">-2% <span
+                            class="material-symbols-outlined text-[14px]">trending_down</span></span>
+                </div>
+                <p class="text-on-surface-variant font-label-md">Return Rate</p>
+                <h3 class="text-headline-md font-bold mt-1">0.8%</h3>
+            </div>
+        </div>
+        <!-- Orders Table Card -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-[20px] luminous-shadow overflow-hidden">
+            <!-- Table Toolbar -->
+            <div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+                <div class="flex gap-4 items-center">
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-lg text-primary font-label-md cursor-pointer hover:brightness-95 transition-all">
+                        <span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        <span>Filter By</span>
+                    </div>
+                    <div class="h-6 w-[1px] bg-outline-variant"></div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary text-label-sm font-semibold border border-primary/20">All Orders</span>
+                        <span class="px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm font-semibold border border-outline-variant hover:bg-surface-container-high cursor-pointer transition-colors">Subscription</span>
+                        <span class="px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm font-semibold border border-outline-variant hover:bg-surface-container-high cursor-pointer transition-colors">Guest</span>
+                    </div>
+                </div>
+                <p class="text-on-surface-variant font-label-sm">Showing 1-10 of 1,284 orders</p>
+            </div>
+            <!-- Modern Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse text-left">
+                    <thead>
+                    <tr class="bg-surface-container-low/50">
+                        <th class="px-6 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Order ID
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Customer
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Date
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Payment
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Shipping
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Total
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Status
+                        </th>
+                        <th class="px-6 py-4 border-b border-outline-variant"></th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant">
+                    <!-- Order Row: Delivered -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4 font-label-md text-primary font-bold">#ORD-9021</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <img class="w-10 h-10 rounded-full object-cover"
+                                     data-alt="Portrait of a young woman with glowing skin, clean aesthetic, minimalist background, high-end skincare branding style, soft natural lighting."
+                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE72PRsSA_U_SoTEUVDUie-TizgFEWoNzVhANpOBVCdTRKEMphNhmNRbnuJU-nChGTYXb-a6IdJbckqStI-yxETDfA-GxSmb_NRuIj-M8ULV7v7zvrFnetd9sLtRxfsi7b5D8R9DZCvFwe7oNkfQ5_D2YRAa43ZhXNdAfhOfvq3O5rVGIzeSvnCRnnrXWRXWBs93-0PvwnTsPx2ljBZzxKesiRbyT9EJxgJ38fvkWk7h_giE1eZPNzaA"/>
+                                <div>
+                                    <p class="font-label-md text-on-surface font-semibold">Sophia Chen</p>
+                                    <p class="text-[11px] text-on-surface-variant">sophia.c@example.com</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Oct 24, 2023</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">credit_card</span>
+                                <span class="font-label-md">Visa •• 4242</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Express</td>
+                        <td class="px-6 py-4 font-label-md font-bold text-on-surface">$248.50</td>
+                        <td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-[11px] font-bold uppercase tracking-wider border border-purple-200">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                                            Delivered
+                                        </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="p-2 opacity-0 group-hover:opacity-100 hover:bg-surface-container-high rounded-full transition-all">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Order Row: Shipping -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4 font-label-md text-primary font-bold">#ORD-9022</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <img class="w-10 h-10 rounded-full object-cover"
+                                     data-alt="Close up portrait of a man with clear skin, professional corporate style, neutral gray background, clean and modern skincare editorial look."
+                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Ci-zx0MqcAJmVBuZdqq3ehJ-xK-gD0eN5qMlxIjHjsJaPTG1YK1Lmh1cu17guTuoOzy9tTbouiCJ8qF0g8Ez28AKe4euol0QkGDb0b2Qwkg-N0Tw9FcT6Di0XXbdSRUJJWGoVRO9OikPsIP7yhsJa7gQ6q0l72AiHE5x_GiFpbHGUWHF0OIQ1Ek_qsE1N_uVXQvHh59n7YKfa_9EdfDrdI3UkR9XizGmHSEey0c4aaAb9qWHZmERiQ"/>
+                                <div>
+                                    <p class="font-label-md text-on-surface font-semibold">Marcus Rivera</p>
+                                    <p class="text-[11px] text-on-surface-variant">m.rivera@test.com</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Oct 24, 2023</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">payments</span>
+                                <span class="font-label-md">Apple Pay</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Standard</td>
+                        <td class="px-6 py-4 font-label-md font-bold text-on-surface">$112.00</td>
+                        <td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[11px] font-bold uppercase tracking-wider border border-indigo-200">
+<span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                                            Shipping
+                                        </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="p-2 opacity-0 group-hover:opacity-100 hover:bg-surface-container-high rounded-full transition-all">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Order Row: Paid (Processing) -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4 font-label-md text-primary font-bold">#ORD-9023</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <img class="w-10 h-10 rounded-full object-cover"
+                                     data-alt="High-end studio photography of a middle-aged woman with elegant features, radiating confidence and healthy skin, minimal white lighting, luxury brand aesthetic."
+                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDftaD35pb9ywBotgQqVP6Pgl1kIH7whtnyyxlmGpd6iJPqkWW69be2pDJHyojIUTOsQ7y4w-E_A62oYs9G3E9a8OjtxvZOHmlrgnlzLOf6Ht2uKe_CVzjp8aMzo_sxKq_clBNDq026_HJtcUs7gjGxK0POm-K_ww6-MpesxEplaUsTLHFhPDF7i2yQEWyZ-QrFq0qFaJitXQ3VR5x8VdVHVTGQYyrS6Uz0Y3AjSKyegBGXUhjU5TRRzw"/>
+                                <div>
+                                    <p class="font-label-md text-on-surface font-semibold">Elena Gilbert</p>
+                                    <p class="text-[11px] text-on-surface-variant">elena.g@web.com</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Oct 23, 2023</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">credit_card</span>
+                                <span class="font-label-md">Mastercard •• 8812</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Standard</td>
+                        <td class="px-6 py-4 font-label-md font-bold text-on-surface">$395.20</td>
+                        <td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[11px] font-bold uppercase tracking-wider border border-blue-200">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                            Processing
+                                        </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="p-2 opacity-0 group-hover:opacity-100 hover:bg-surface-container-high rounded-full transition-all">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Order Row: Pending -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4 font-label-md text-primary font-bold">#ORD-9024</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <img class="w-10 h-10 rounded-full object-cover"
+                                     data-alt="Clean portrait of a young person with vibrant skin, diverse background, bright high-key lighting, modern and energetic skincare imagery."
+                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCdAnRWqoZr7K0M60vumoq0yQyTCM5xCY_roKbE5nAaAjAp_WU9KgJ-UIGRQ6__svGApHLZLF00SxggcAtinsV6G38cIc0gL6Q6IaZwoJ-MLPwPvWMn1pbpBSMHoB6JQJ4iU8u1Bdyt8XIXPSguQunf4AtTqd_EE69AVS_MkA65v-1qjwf57kzxf7bn4MdbwC9wEmcL3RSJLceoKRjZWBDEW3b20cyQldkKbw_NbkrZRK_693lGHK9FQ"/>
+                                <div>
+                                    <p class="font-label-md text-on-surface font-semibold">Jordan Smith</p>
+                                    <p class="text-[11px] text-on-surface-variant">jsmith@gmail.com</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Oct 23, 2023</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">account_balance_wallet</span>
+                                <span class="font-label-md">PayPal</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Express</td>
+                        <td class="px-6 py-4 font-label-md font-bold text-on-surface">$89.00</td>
+                        <td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[11px] font-bold uppercase tracking-wider border border-amber-200">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                            Pending
+                                        </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="p-2 opacity-0 group-hover:opacity-100 hover:bg-surface-container-high rounded-full transition-all">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Order Row: Cancelled -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4 font-label-md text-primary font-bold">#ORD-9025</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <img class="w-10 h-10 rounded-full object-cover"
+                                     data-alt="Portrait of a mature man with distinguished features, clean skincare aesthetic, professional lighting, neutral tones, editorial fashion feel."
+                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcESU2B4x5b22g2X__3-_aUqd4G6h39svysfEOhs87wDjoShZibK5HWGVFCCki9ToMVYl7aXSSAzzoJoByMza_Tc_KHhwGuLdjmd02G1pe4HKlqYa2At07V_dtvqWEN-p7L4uvVaTu1YkG66BOFtpJVvUnzxuRjEQIt3WdE8RWeFsNNniNtxdaL8y_nM3x28ltvl18Mv8OOmCQ04vu8g6HYfg8vhq40ZO34xw8u1QCjxOq-yTZhFFyzA"/>
+                                <div>
+                                    <p class="font-label-md text-on-surface font-semibold">Robert Vance</p>
+                                    <p class="text-[11px] text-on-surface-variant">r.vance@outlook.com</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Oct 22, 2023</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">credit_card</span>
+                                <span class="font-label-md">Visa •• 1004</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Standard</td>
+                        <td class="px-6 py-4 font-label-md font-bold text-on-surface-variant line-through opacity-50">
+                            $52.00
+                        </td>
+                        <td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-700 text-[11px] font-bold uppercase tracking-wider border border-red-200">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                                            Cancelled
+                                        </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="p-2 opacity-0 group-hover:opacity-100 hover:bg-surface-container-high rounded-full transition-all">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Order Row: Paid -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group border-b-0">
+                        <td class="px-6 py-4 font-label-md text-primary font-bold">#ORD-9026</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <img class="w-10 h-10 rounded-full object-cover"
+                                     data-alt="Editorial close up of a model with perfect skin, minimal makeup, soft focus background, cool daylight, high-end skincare promotional style."
+                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn72m98QfHh4Y_MLMRgeErBkTpbO3kMszgk_STgqRfQWOaLSl0vwd0aq6pQEtz7haWEfTJAIOPZVEl3AgaUGZCOd5PvSkEfJOuAqh_zwgk-wxS7I6SDhpbcxDBLd-c3VALOjjSvsL2ny1Ha-HAN5EK0vnkDpWAtTFWKrt_uZ58BUVFlqrHvPcI1gbcLgMkabZICzM-k7kkOezCpLh-OhT4EtO8UHgCpP5kmRAVwK-KihMB4VHqHZ6Y8Q"/>
+                                <div>
+                                    <p class="font-label-md text-on-surface font-semibold">Liam O'Connor</p>
+                                    <p class="text-[11px] text-on-surface-variant">liam.oc@example.com</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Oct 22, 2023</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">payments</span>
+                                <span class="font-label-md">Google Pay</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-on-surface">Standard</td>
+                        <td class="px-6 py-4 font-label-md font-bold text-on-surface">$175.00</td>
+                        <td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 text-green-700 text-[11px] font-bold uppercase tracking-wider border border-green-200">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                            Paid
+                                        </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="p-2 opacity-0 group-hover:opacity-100 hover:bg-surface-container-high rounded-full transition-all">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div class="px-6 py-4 bg-surface border-t border-outline-variant flex justify-between items-center">
+                <button class="px-4 py-2 border border-outline-variant rounded-lg font-label-md text-on-surface-variant hover:bg-surface-container-low transition-all disabled:opacity-50"
+                        disabled="">
+                    Previous
+                </button>
+                <div class="flex gap-2">
+                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded-lg font-label-md cursor-pointer">1</span>
+                    <span class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-lg font-label-md cursor-pointer">2</span>
+                    <span class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-lg font-label-md cursor-pointer">3</span>
+                    <span class="w-8 h-8 flex items-center justify-center text-on-surface-variant">...</span>
+                    <span class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-lg font-label-md cursor-pointer">12</span>
+                </div>
+                <button class="px-4 py-2 border border-outline-variant rounded-lg font-label-md text-primary hover:bg-surface-container-low transition-all">
+                    Next
+                </button>
+            </div>
+        </div>
+    </section>
+    {% include "admin/user/share/footer.html" %}
+</main>
+
+<script>
+    // Simple row selection toggle
+    document.querySelectorAll('tbody tr').forEach(row => {
+        row.addEventListener('click', () => {
+            // Highlight row or navigate to details
+            console.log('Order row clicked: ' + row.querySelector('.text-primary.font-bold').textContent);
+        });
+    });
+
+    // Hover effect for stat cards
+    document.querySelectorAll('.luminous-shadow').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.classList.remove('luminous-shadow');
+            card.style.boxShadow = "0 20px 40px -10px rgba(124, 58, 237, 0.12)";
+            card.style.transform = "translateY(-4px)";
+            card.style.transition = "all 0.3s ease-out";
+        });
+        card.addEventListener('mouseleave', () => {
+            card.classList.add('luminous-shadow');
+            card.style.boxShadow = "";
+            card.style.transform = "translateY(0)";
+        });
+    });
+</script>

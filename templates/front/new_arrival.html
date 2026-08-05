@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>New Arrivals - LUXE LIQUID</title>
+    {% include "front/share/navbar.html" %}
+    {% include "front/share/script.html" %}
+</head>
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+<div class="floating-blob bg-primary top-[-100px] left-[-100px]"></div>
+<div class="floating-blob bg-secondary bottom-[-100px] right-[-100px]"></div>
+
+{% include "front/share/Header.html" %}
+
+<main class="pt-32 pb-section-gap px-container-desktop max-w-[1440px] mx-auto min-h-screen">
+    <header class="mb-12">
+        <div class="flex items-center gap-3 mb-3">
+            <span class="material-symbols-outlined text-primary text-[32px]"
+                  style="font-variation-settings:'FILL' 1;">new_releases</span>
+            <h1 class="font-headline-lg text-headline-lg text-on-surface">New Arrivals</h1>
+        </div>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">The latest additions to our luxury collection.</p>
+    </header>
+
+    {% if products|length > 0 %}
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+
+            {% for product in products %}
+                <div class="glass-panel rounded-2xl overflow-hidden group flex flex-col">
+
+                    <div class="aspect-square overflow-hidden relative">
+                        <img src="{{ url_for('static', filename=product.image) }}"
+                             alt="{{ product.title }}"
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+
+                        <span class="absolute top-3 left-3 bg-primary text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                ✨ New Arrival
+            </span>
+                    </div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+
+            <span class="text-xs text-primary uppercase tracking-widest font-bold mb-1">
+                {{ product.category }}
+            </span>
+
+                        <h3 class="font-headline-md text-on-surface text-[18px] mb-2">
+                            {{ product.title }}
+                        </h3>
+
+                        <p class="font-body-md text-on-surface-variant text-sm mb-4 flex-grow">
+                            {{ product.description }}
+                        </p>
+
+                        <div class="flex items-center justify-between mb-4">
+                <span class="font-headline-md text-primary text-[20px]">
+                    ${{ product.price }}
+                </span>
+
+                            <span class="text-xs text-on-surface-variant">
+                    Stock: {{ product.qty }}
+                </span>
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+
+                            <a href="{{ url_for('product_detail', product_id=product.id) }}"
+                               class="block text-center px-4 py-3 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition">
+                                View Details
+                            </a>
+
+                            <form action="{{ url_for('cart_add') }}" method="POST">
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                                <button type="submit"
+                                        class="block w-full text-center px-4 py-3 rounded-lg bg-primary text-white hover:opacity-90 transition">
+                                    Add to Cart
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="text-center py-24">
+    <span class="material-symbols-outlined text-[64px] text-on-surface-variant">
+        inventory_2
+    </span>
+
+            <p class="font-headline-md text-on-surface mt-4">
+                No new arrivals yet
+            </p>
+
+            <a href="{{ url_for('product') }}"
+               class="inline-block mt-6 px-8 py-3 rounded-full bg-primary text-white font-label-md tracking-widest uppercase">
+                Browse All Products
+            </a>
+        </div>
+
+    {% endif %}
+</main>
+
+{% include "front/share/Footer.html" %}
+
+
+</body>
+</html>

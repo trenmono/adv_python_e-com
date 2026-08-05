@@ -1,0 +1,47 @@
+<style>
+    body {
+        background-color: #faf8ff;
+        color: #131b2e;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .luminous-card, .luminous-shadow {
+        background: #ffffff;
+        border: 1px solid #E2E8F0;
+        box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.05);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .luminous-card:hover, .luminous-shadow:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -10px rgba(124, 58, 237, 0.15), 0 0 20px -5px rgba(124, 58, 237, 0.05);
+        border-color: rgba(124, 58, 237, 0.25);
+    }
+
+    .glass-nav {
+        backdrop-filter: blur(20px);
+        background: rgba(250, 248, 255, 0.8);
+    }
+
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .chip-purple {
+        background-color: #F5F3FF;
+        color: #7C3AED;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #eaddff;
+        border-radius: 10px;
+    }
+</style>

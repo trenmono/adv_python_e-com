@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Your Bag - LUXE LIQUID</title>
+
+
+    {% include "front/share/navbar.html" %}
+
+    {% include "front/share/script.html" %}
+</head>
+<body class="text-on-surface selection:bg-primary-container selection:text-white">
+<!-- TopNavBar Navigation Shell -->
+{% include "front/share/Header.html" %}
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-section-gap px-container-desktop max-w-[1440px] mx-auto">
+    <header class="mb-12">
+        <h1 class="font-headline-lg text-headline-lg text-on-surface">Your Bag</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Curated luxury pieces ready for delivery.</p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+        <!-- Items List -->
+        <div class="lg:col-span-8 space-y-6">
+            {% if cart %}
+                {% for item in cart %}
+                    <div class="glass-panel rounded-xl p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden flex-shrink-0">
+                            <img src="{{ url_for('static', filename=item.image) }}"
+                                 alt="{{ item.title }}"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h3 class="font-headline-md text-[24px] text-on-surface">{{ item.title }}</h3>
+                            <p class="font-body-md text-on-surface-variant mb-4">{{ item.category }}</p>
+                            <!-- Update Qty -->
+                            <form action="{{ url_for('cart_update') }}" method="POST" class="flex items-center gap-4">
+                                <input type="hidden" name="product_id" value="{{ item.id }}">
+                                <span class="font-label-md text-on-surface-variant">Quantity</span>
+                                <div class="flex items-center bg-surface-container-high rounded-full border border-white/5">
+                                    <button type="submit" name="qty" value="{{ item.qty - 1 }}"
+                                            class="p-2 hover:text-primary transition material-symbols-outlined">remove
+                                    </button>
+                                    <span class="px-4 font-body-md">{{ item.qty }}</span>
+                                    <button type="submit" name="qty" value="{{ item.qty + 1 }}"
+                                            class="p-2 hover:text-primary transition material-symbols-outlined">add
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="flex flex-col items-center md:items-end justify-between h-full min-w-[120px]">
+                <span class="font-headline-md text-[22px] text-primary">
+                    ${{ "%.2f"|format(item.price) }}
+                </span>
+                            <form action="{{ url_for('cart_remove') }}" method="POST">
+                                <input type="hidden" name="product_id" value="{{ item.id }}">
+                                <button type="submit"
+                                        class="mt-4 text-on-surface-variant hover:text-error transition flex items-center gap-2 font-label-md">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="glass-panel rounded-xl p-12 text-center">
+                    <span class="material-symbols-outlined text-[64px] text-on-surface-variant">shopping_bag</span>
+                    <p class="font-headline-md text-on-surface mt-4">Your bag is empty</p>
+                    <a href="{{ url_for('product') }}"
+                       class="inline-block mt-6 px-8 py-3 rounded-full bg-primary text-white font-label-md tracking-widest uppercase">
+                        Shop Now
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Summary Panel -->
+        <div class="lg:col-span-4 sticky top-32">
+            <div class="glass-panel rounded-xl p-8">
+                <h2 class="font-headline-md text-[24px] text-on-surface mb-8">Summary</h2>
+                <div class="space-y-4 mb-8">
+                    <div class="flex justify-between font-body-md text-on-surface-variant">
+                        <span>Subtotal</span>
+                        <span class="text-on-surface">${{ "%.2f"|format(subtotal) }}</span>
+                    </div>
+                    <div class="flex justify-between font-body-md text-on-surface-variant">
+                        <span>Shipping</span>
+                        <span class="text-secondary">Free</span>
+                    </div>
+                    <div class="flex justify-between font-body-md text-on-surface-variant">
+                        <span>Estimated Tax</span>
+                        <span class="text-on-surface">${{ "%.2f"|format(tax) }}</span>
+                    </div>
+                    <div class="h-px bg-white/10 my-6"></div>
+                    <div class="flex justify-between font-headline-md text-[24px] text-on-surface">
+                        <span>Total</span>
+                        <span>${{ "%.2f"|format(total) }}</span>
+                    </div>
+                </div>
+                <a href="{{ url_for('checkout') }}"
+                   class="liquid-gradient w-full py-5 rounded-full text-white font-label-md text-[16px] tracking-widest uppercase block text-center">
+                    Checkout
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+{% include "front/share/Footer.html" %}
+<script>
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (nav) nav.classList.toggle('bg-surface/20', window.scrollY > 20);
+    });
+
+</script>
+</body>
+</html>

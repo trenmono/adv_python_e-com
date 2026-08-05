@@ -1,0 +1,76 @@
+<style>
+    .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #a855f7, #ec4899);
+        transition: width 0.3s ease;
+        border-radius: 999px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: #c084fc !important;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    .nav-link:hover {
+        transform: translateY(-2px);
+    }
+</style>
+
+<nav class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 shadow-lg">
+    <div class="max-w-[1440px] mx-auto h-20 px-6 md:px-12 flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="{{ url_for('home') }}"
+           class="text-2xl font-bold tracking-[0.3em] text-white hover:text-primary transition-colors">
+            Aura Beauty
+        </a>
+
+        <!-- Links -->
+        <div class="flex items-center gap-8">
+
+            <a href="{{ url_for('product') }}"
+               class="nav-link text-base font-medium transition-colors duration-200 {% if request.endpoint == 'product' %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
+                Product
+            </a>
+
+            <a href="{{ url_for('new_arrival') }}"
+               class="nav-link text-base font-medium transition-colors duration-200 {% if request.endpoint == 'new_arrival' %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
+                New Arrival
+            </a>
+
+            <a href="{{ url_for('best_seller') }}"
+               class="nav-link text-base font-medium transition-colors duration-200 {% if request.endpoint == 'best_seller' %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
+                Best Seller
+            </a>
+
+            <a href="{{ url_for('cart') }}"
+               class="nav-link relative flex items-center gap-2 text-base font-medium transition-colors duration-200 {% if request.endpoint == 'cart' %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
+
+                <span>Cart</span>
+
+                <span class="material-symbols-outlined text-[22px] opacity-90">shopping_bag</span>
+
+                {% if cart_count > 0 %}
+                    <span class="absolute -top-1.5 -right-4 bg-primary text-black text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md ring-2 ring-background">
+                        {{ cart_count }}
+                    </span>
+                {% endif %}
+            </a>
+        </div>
+    </div>
+</nav>

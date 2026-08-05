@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>404 | Product Not Found</title>
+    {% include "front/share/navbar.html" %}
+    {% include "front/share/script.html" %}
+</head>
+<body class="bg-background text-on-background selection:bg-primary selection:text-on-primary overflow-x-hidden">
+
+<!-- Ambient Background -->
+<div class="fixed inset-0 liquid-gradient-bg -z-10"></div>
+
+{% include "front/share/Header.html" %}
+
+<main class="relative pt-32 min-h-[90vh] flex items-center justify-center py-12">
+
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[850px] h-[850px] bg-[#E9DDD2]/10 blur-[180px] rounded-full"></div>
+
+    <div class="max-w-[1440px] mx-auto w-full px-6 lg:px-12 relative z-10 flex justify-center">
+        <div class="glass-panel rounded-3xl p-16 md:p-24 border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent max-w-4xl w-full text-center space-y-12 backdrop-blur-xl shadow-[0_32px_64px_rgba(0,0,0,0.5)]">
+            <div class="flex justify-center">
+                <div class="w-28 h-28 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center shadow-inner">
+                    <span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'wght' 300;">
+                        remove_shopping_cart
+                    </span>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <span class="text-xs font-bold text-primary tracking-[0.25em] uppercase font-mono block">
+                    Store Notice // 404 Error
+                </span>
+
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-on-surface leading-none">
+                    Product Not Found
+                </h1>
+
+                <p class="text-lg md:text-xl text-on-surface-variant/90 leading-relaxed font-normal max-w-xl mx-auto">
+                    The collection or specific product you are looking for might be sold out, moved, or currently unavailable in our inventory.
+                </p>
+            </div>
+
+            <div class="pt-6 max-w-sm mx-auto">
+                <a href="/static"
+                   class="liquid-gradient w-full py-6 rounded-2xl font-bold text-sm uppercase tracking-[0.2em] text-on-primary shadow-[0_24px_48px_rgba(112,0,255,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-between px-10 group cursor-pointer">
+                    <span>Continue Shopping</span>
+                    <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:translate-x-1">
+                        local_mall
+                    </span>
+                </a>
+            </div>
+            <div class="text-xs font-mono text-on-surface-variant/30 uppercase tracking-widest pt-8 border-t border-white/5">
+                Secure Checkout // Cart Session Is Active
+            </div>
+        </div>
+    </div>
+</main>
+{% include "front/share/Footer.html" %}
+
+</body>
+<script src="{{ url_for('static', filename='../script.html') }}"></script>
+</html>

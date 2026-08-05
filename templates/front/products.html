@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>LUXE LIQUID | Experience the Fluidity of Form</title>
+    {% include "front/share/navbar.html" %}
+    {% include "front/share/script.html" %}
+</head>
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+<div class="floating-blob bg-primary top-[-100px] left-[-100px]"></div>
+<div class="floating-blob bg-secondary bottom-[-100px] right-[-100px]"></div>
+
+{% include "front/share/Header.html" %}
+
+<main class="pt-32 pb-section-gap px-container-desktop max-w-[1440px] mx-auto min-h-screen">
+    <div>
+        <div class="flex flex-col md:flex-row gap-10">
+            <!-- Sidebar Filters -->
+            <aside class="w-full md:w-64 flex-shrink-0 space-y-10 pt-8">
+                <div class="flex items-center justify-between ">
+                    <h2 class="font-headline-md text-headline-md text-on-surface">Filters</h2>
+                    <a href="{{ url_for('product') }}"
+                       class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors">
+                        Reset
+                    </a>
+                </div>
+                <!-- Category -->
+                <div class="space-y-4">
+                    <h3 class="font-label-md text-label-md text-on-surface border-b border-white/5 pb-2">
+                        Category
+                    </h3>
+                    <form action="{{ url_for('products_by_category') }}" method="GET" class="space-y-3">
+
+                        <label class="flex items-center cursor-pointer group">
+                            <input
+                                    type="radio"
+                                    name="category"
+                                    value="Serums"
+                                    class="mr-3 text-primary focus:ring-primary"
+                            >
+                            <span class="text-on-surface-variant group-hover:text-primary">Serums</span>
+                        </label>
+
+                        <label class="flex items-center cursor-pointer group">
+                            <input
+                                    type="radio"
+                                    name="category"
+                                    value="Cleansers"
+                                    class="mr-3 text-primary focus:ring-primary"
+                            >
+                            <span class="text-on-surface-variant group-hover:text-primary">Cleansers</span>
+                        </label>
+
+                        <label class="flex items-center cursor-pointer group">
+                            <input
+                                    type="radio"
+                                    name="category"
+                                    value="Moisturizers"
+                                    class="mr-3 text-primary focus:ring-primary"
+                            >
+                            <span class="text-on-surface-variant group-hover:text-primary">Moisturizers</span>
+                        </label>
+
+                        <label class="flex items-center cursor-pointer group">
+                            <input
+                                    type="radio"
+                                    name="category"
+                                    value="Toners"
+                                    class="mr-3 text-primary focus:ring-primary"
+                            >
+                            <span class="text-on-surface-variant group-hover:text-primary">Toners</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer group">
+                            <input
+                                    type="radio"
+                                    name="category"
+                                    value="Eye Care"
+                                    class="mr-3 text-primary focus:ring-primary"
+                            >
+                            <span class="text-on-surface-variant group-hover:text-primary">Eye Care</span>
+                        </label>
+
+                        <button
+                                type="submit"
+                                class="w-full mt-4 px-4 py-2 rounded-lg bg-primary text-white hover:opacity-90 transition">
+                            Apply Filter
+                        </button>
+
+                    </form>
+                </div>
+            </aside>
+            <!-- Product Grid -->
+            <div class="flex-1">
+                <div class="flex justify-between items-end mb-8 pt-8">
+                    <div>
+                        <h1 class="font-display-lg text-headline-lg text-on-surface mb-2">
+                            The Collection
+                        </h1>
+
+                        <p class="font-body-lg text-body-lg text-on-surface-variant">
+                            Showing {{ products|length }} products  {{ category }}
+                        </p>
+                    </div>
+                </div>
+                <div id="product-grid"
+                     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                    {% for product in products %}
+                        <div class="glass-panel rounded-2xl overflow-hidden group flex flex-col">
+                            <!-- Image -->
+                            <div class="aspect-square overflow-hidden relative">
+                                <img src="{{ url_for('static', filename=product.image) }}"
+                                     alt="{{ product.title }}"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            </div>
+                            <!-- Info -->
+                            <div class="p-5 flex flex-col flex-grow">
+                                <span class="text-xs text-primary uppercase tracking-widest font-bold mb-1">
+                                    {{ product.category }}
+                                </span>
+                                <h3 class="font-headline-md text-on-surface text-[18px] mb-2">
+                                    {{ product.title }}
+                                </h3>
+                                <p class="font-body-md text-on-surface-variant text-sm mb-4 flex-grow line-clamp-2">
+                                    {{ product.description }}
+                                </p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="font-headline-md text-primary text-[20px]">
+                                        ${{ product.price }}
+                                    </span>
+                                    <span class="text-xs text-on-surface-variant">
+                                        Stock: {{ product.qty }}
+                                    </span>
+                                </div>
+                                <!-- Buttons -->
+                                <div class="flex flex-col gap-3">
+                                    <a href="{{ url_for('product_detail', product_id=product.id) }}"
+                                       class="block text-center px-4 py-3 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition">
+                                        View Details
+                                    </a>
+                                    <form action="{{ url_for('cart_add') }}" method="POST" class="add-cart-form">
+                                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                                        <button type="submit"
+                                                class="block w-full text-center px-4 py-3 rounded-lg bg-primary text-white hover:opacity-90 transition">
+                                            Add to Cart
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Pagination -->
+                <div class="mt-16 flex justify-center gap-4 pb-8">
+                    {% for p in range(1, total_pages + 1) %}
+                        {% if category %}
+                            <a href="{{ url_for('products_by_category', category=category, page=p) }}"
+                        {% else %}
+                            <a href="{{ url_for('product', page=p) }}"
+                        {% endif %}
+                           class="w-12 h-12 rounded-full flex items-center justify-center
+                       {% if p == page %}
+                            bg-primary text-white
+                       {% else %}
+                            border border-white/10 hover:bg-white/5
+                       {% endif %}">
+                            {{ p }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include "front/share/Footer.html" %}
+</body>
+</html>

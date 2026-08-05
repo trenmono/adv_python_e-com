@@ -1,0 +1,72 @@
+<!-- Sidebar Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-stack-lg shadow-sm z-50">
+    <div class="px-6 mb-stack-lg">
+        <h1 class="font-headline-md text-headline-md font-bold text-primary">Aura Beauty</h1>
+        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Staff Portal</p>
+    </div>
+    <nav class="flex-1 px-2 space-y-1">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 {% if tab == 'dashboard' or not tab %}nav-link-active{% else %}nav-link-inactive{% endif %}"
+           href="{{ url_for('stuff.stuff', tab='dashboard') }}">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-body-md">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 {% if tab == 'products' %}nav-link-active{% else %}nav-link-inactive{% endif %}"
+           href="{{ url_for('stuff.stuff', tab='products') }}">
+            <span class="material-symbols-outlined">inventory_2</span>
+            <span class="font-body-md">Products</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 {% if tab == 'orders' %}nav-link-active{% else %}nav-link-inactive{% endif %}"
+           href="{{ url_for('stuff.stuff', tab='orders') }}">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <span class="font-body-md">Orders</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 {% if tab == 'inventory' %}nav-link-active{% else %}nav-link-inactive{% endif %}"
+           href="{{ url_for('stuff.stuff', tab='inventory') }}">
+            <span class="material-symbols-outlined">warehouse</span>
+            <span class="font-body-md">Inventory</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 {% if tab == 'profile' %}nav-link-active{% else %}nav-link-inactive{% endif %}"
+           href="{{ url_for('stuff.stuff', tab='profile') }}">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-body-md">Profile</span>
+        </a>
+    </nav>
+    <div class="mt-auto px-2 space-y-1">
+        <a class="w-full mb-4 py-3 px-4 bg-primary-container text-on-primary rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all"
+           href="{{ url_for('home') }}">
+            <span>View Store</span>
+            <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-lg nav-link-inactive transition-all duration-200"
+           href="#">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="font-body-md">Settings</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-lg nav-link-inactive transition-all duration-200"
+           href="#">
+            <span class="material-symbols-outlined">logout</span>
+            <span class="font-body-md">Sign Out</span>
+        </a>
+    </div>
+</aside>
+
+<style>
+    .nav-link-active {
+        color: #630ed4;
+        font-weight: 700;
+        background-color: #e2e7ff;
+        border-left: 4px solid #630ed4;
+        padding-left: calc(1rem - 4px);
+    }
+
+    .nav-link-inactive {
+        color: #4a4455;
+        border-left: 4px solid transparent;
+        padding-left: calc(1rem - 4px);
+    }
+
+    .nav-link-inactive:hover {
+        color: #630ed4;
+        background-color: #f2f3ff;
+    }
+</style>

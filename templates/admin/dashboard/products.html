@@ -1,0 +1,476 @@
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/80 glass-effect border-b border-outline-variant px-container-padding-desktop flex justify-between items-center z-40">
+    <div class="flex items-center gap-gutter w-full">
+        <div class="relative w-1/3 group">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">search</span>
+            <input class="w-full h-10 pl-10 pr-4 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary/20 font-label-md placeholder:text-on-surface-variant/60"
+                   placeholder="Global Search" type="text"/>
+        </div>
+        <div class="ml-auto flex items-center gap-6">
+            <div class="flex gap-4">
+                <button class="p-2 text-on-surface-variant hover:text-primary transition-all relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:text-primary transition-all">
+                    <span class="material-symbols-outlined">mail</span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:text-primary transition-all">
+                    <span class="material-symbols-outlined">apps</span>
+                </button>
+            </div>
+            <div class="flex items-center gap-3 border-l border-outline-variant pl-6">
+                <div class="text-right">
+                    <p class="font-label-md text-on-surface font-semibold">Admin Panel</p>
+                    <p class="text-[10px] text-on-surface-variant opacity-70">Super Admin</p>
+                </div>
+                <img class="w-10 h-10 rounded-full border-2 border-primary/20 object-cover"
+                     data-alt="Close up professional portrait of a woman in a minimalist clinic environment, soft editorial lighting, lavender tones, clean clinical aesthetic for a high-end beauty management portal profile picture."
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSDuR8D97idtkMu06XYN-zvaRJ1MvjCQ4GQ1tbk6JoY80t_4LRB0Payl0foCKpi8Waw-2R3_JVlQjkRgA4dxmfs2QPgeYnVt6eEjrr8j5lKg9o6aQJgsNWHuHa5NkJuIMaPSdMF-zHroH_pcnZogSzxEeU1QlHg-CdWc3xAvryZ2CzTsdqz26fzPGxApWewxJy8SolOHNHFHrEOgB098Q8WtlEY9gIOF5kAvN_Db_LRn5_NrO3AYJOA"/>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Canvas -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen">
+    <div class="mt-16 p-container-padding-desktop space-y-stack-lg">
+        <!-- Header Actions -->
+        <section class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-stack-lg">
+            <div>
+                <h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Product Management</h3>
+                <p class="text-on-surface-variant font-body-md text-body-md">Manage your beauty product inventory,
+                    pricing,
+                    and stock levels.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="h-12 px-6 flex items-center gap-2 border border-outline-variant text-on-surface-variant font-label-md text-label-md rounded-xl hover:bg-surface-container-low transition-all">
+                    <span class="material-symbols-outlined">cloud_download</span>
+                    Export
+                </button>
+                <button class="h-12 px-6 flex items-center gap-2 bg-primary-container text-white font-label-md text-label-md rounded-xl hover:opacity-90 shadow-sm active:scale-95 transition-all">
+                    <span class="material-symbols-outlined">add</span>
+                    Add Product
+                </button>
+            </div>
+        </section>
+        <!-- Stats Overview -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-12">
+            <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-[20px] luminous-shadow flex flex-col gap-2">
+                <span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Total Products</span>
+                <span class="font-headline-lg text-headline-lg">1,284</span>
+                <div class="flex items-center gap-1 text-primary text-sm font-medium">
+                    <span class="material-symbols-outlined text-sm">trending_up</span>
+                    +12% this month
+                </div>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-[20px] luminous-shadow flex flex-col gap-2">
+                <span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Out of Stock</span>
+                <span class="font-headline-lg text-headline-lg text-error">12</span>
+                <div class="flex items-center gap-1 text-on-surface-variant text-sm">
+                    <span class="material-symbols-outlined text-sm">warning</span>
+                    Needs attention
+                </div>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-[20px] luminous-shadow flex flex-col gap-2">
+                <span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Low Stock</span>
+                <span class="font-headline-lg text-headline-lg">48</span>
+                <div class="flex items-center gap-1 text-on-tertiary-fixed-variant text-sm">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    Restock soon
+                </div>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-[20px] luminous-shadow flex flex-col gap-2">
+                <span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Total Value</span>
+                <span class="font-headline-lg text-headline-lg">$425.8k</span>
+                <div class="flex items-center gap-1 text-primary text-sm font-medium">
+                    <span class="material-symbols-outlined text-sm">payments</span>
+                    Retail valuation
+                </div>
+            </div>
+        </section>
+        <!-- Product Table Card -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-[20px] luminous-shadow overflow-hidden">
+            <!-- Table Controls -->
+            <div class="p-6 border-b border-outline-variant flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="relative">
+                        <select class="appearance-none bg-surface-container-low border-none rounded-xl pl-4 pr-10 py-2.5 font-label-md text-label-md text-on-surface-variant focus:ring-1 focus:ring-primary/20 min-w-[140px]">
+                            <option>All Categories</option>
+                            <option>Skincare</option>
+                            <option>Serum</option>
+                            <option>Moisturizers</option>
+                            <option>Cleansers</option>
+                        </select>
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant pointer-events-none">expand_more</span>
+                    </div>
+                    <div class="relative">
+                        <select class="appearance-none bg-surface-container-low border-none rounded-xl pl-4 pr-10 py-2.5 font-label-md text-label-md text-on-surface-variant focus:ring-1 focus:ring-primary/20 min-w-[140px]">
+                            <option>Status: All</option>
+                            <option>Active</option>
+                            <option>Draft</option>
+                            <option>Archived</option>
+                        </select>
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant pointer-events-none">expand_more</span>
+                    </div>
+                    <button class="h-10 px-4 flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all">
+                        <span class="material-symbols-outlined">filter_list</span>
+                        More Filters
+                    </button>
+                </div>
+                <div class="text-on-surface-variant font-label-md text-label-md">
+                    Showing <span class="font-bold text-on-surface">1-10</span> of 1,284 products
+                </div>
+            </div>
+            <!-- Main Table -->
+            <div class="overflow-x-auto custom-scrollbar">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                    <tr class="bg-surface-container-low/50">
+                        <th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            <div class="flex items-center gap-2">
+                                Product
+                                <span class="material-symbols-outlined text-[16px] cursor-pointer hover:text-primary">unfold_more</span>
+                            </div>
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            SKU
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Category
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            <div class="flex items-center gap-2">
+                                Price
+                                <span class="material-symbols-outlined text-[16px] cursor-pointer hover:text-primary">unfold_more</span>
+                            </div>
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Stock
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+                            Status
+                        </th>
+                        <th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider border-b border-outline-variant text-right">
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/50">
+                    <!-- Product Row 1 -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant overflow-hidden flex-shrink-0">
+                                    <img class="w-full h-full object-cover"
+                                         data-alt="Luxury skincare product photography of a premium glass serum bottle with a minimalist label. The background is a soft, lavender-tinted marble surface. Clinical yet artistic lighting emphasizes the bottle's elegant form and high-end texture. Professional editorial style for a beauty management interface."
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBcMARcIce05dXWkghLz0qWzhDTVbG3GvQpi2v1yJf87tccuWuJzR29Us-pWHt3d1aWGTxI5hvEV1UYy5um769l1uTfQRRDg5bT8AE-ZllhHhNagfpKk9h15xdhSe0W8eWEOSruMHgILSxUhsZWYdDhgm09CxkwkdYibI8T9nV15TAn89K94ac02ELNFIEyD0qh816T9ZZcBi9qOpA67QMNYrpvB2K8JAZlGaPB1yrk5xGjFSwzb9d-g"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Lumina Silk Serum</span>
+                                    <span class="text-on-surface-variant text-xs">Deep Hydration Formula</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-on-surface-variant font-label-md text-label-md">LS-1024-V2</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full bg-[#F5F3FF] text-primary font-label-sm text-label-sm">Skincare</span>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-label-md text-on-surface">$89.00</td>
+                        <td class="px-6 py-4">
+                            <div class="flex flex-col gap-1.5">
+                                <span class="font-label-md text-label-md text-on-surface">242 units</span>
+                                <div class="w-24 h-1 bg-surface-container rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[75%]"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-1.5 text-[#10B981] font-label-sm text-label-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                                Active
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex items-center justify-end gap-2">
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all"
+                                        title="View Details">
+                                    <span class="material-symbols-outlined text-[20px]">visibility</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all"
+                                        title="Edit">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container rounded-lg transition-all"
+                                        title="Delete">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Product Row 2 -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant overflow-hidden flex-shrink-0">
+                                    <img class="w-full h-full object-cover"
+                                         data-alt="Modern apothecary-style facial cleanser pump bottle. Minimalist aesthetic with crisp white labeling on a clear bottle. The product is set against a clean, architectural white background with soft purple shadows. Focus on purity and scientific precision. Professional beauty product catalog style."
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPXOvINXkFhVlamtWqanvqJzY5dYYnjBQxVpaJ0R_Lmn0Vv9yrs7QJFdA6tMRZ8eL7rGYNceZdlShR9skLnsqnq1TVNG_iqz_tZS4dVRohVVhrz1yZMtxkbN5zOroob-ta9gqQ8iI5P3yNAIuAcDYQ-vcbTq8QsYn8rZlTpz9BG3JxXWu92ndkRmzB4PmJLULcKoDbwo8X2TPmXBPwx-7D6efEwwz3_NVc7bhBjuiyEVzSNTBGTIgprw"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Pure Balance Cleanser</span>
+                                    <span class="text-on-surface-variant text-xs">Ph-Neutral Facial Gel</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-on-surface-variant font-label-md text-label-md">PB-0552</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full bg-[#F5F3FF] text-primary font-label-sm text-label-sm">Cleansers</span>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-label-md text-on-surface">$42.00</td>
+                        <td class="px-6 py-4">
+                            <div class="flex flex-col gap-1.5">
+                                <span class="font-label-md text-label-md text-error">8 units</span>
+                                <div class="w-24 h-1 bg-surface-container rounded-full overflow-hidden">
+                                    <div class="h-full bg-error w-[8%]"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-1.5 text-error font-label-sm text-label-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                Low Stock
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex items-center justify-end gap-2">
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">visibility</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Product Row 3 -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant overflow-hidden flex-shrink-0">
+                                    <img class="w-full h-full object-cover"
+                                         data-alt="Frosted glass jar containing a thick, luxurious white night cream. The jar has a brushed gold lid and sits on a reflective surface. Atmospheric lighting creates a sense of midnight luxury and effective restoration. High-contrast, premium beauty editorial aesthetic."
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5O4EHnlAFke9ROafF9PXTFbEMehkJFTzIFWOva7j-npMqmTickvki0OMJ6zu472qovKJ_QQM7-wWGwu83jXX4Yd8uNsQRRdp8Fb2mEQgdw6c6UKniMHRHOw0-nzo11VkJsx1GVs3i0WPIqTVstiog6Cukn35yvmRmY_Kd6UpOr58bQ30LwXneddDJj_ULm5EoVbqL0I5kxf1399N61LRqzfplLj1Uq7taIyP7kOANfrmkCVpC5eH3cg"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Midnight Repair Cream</span>
+                                    <span class="text-on-surface-variant text-xs">Nightly Regenerative Mask</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-on-surface-variant font-label-md text-label-md">MR-9901</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full bg-[#F5F3FF] text-primary font-label-sm text-label-sm">Moisturizers</span>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-label-md text-on-surface">$124.00</td>
+                        <td class="px-6 py-4">
+                            <div class="flex flex-col gap-1.5">
+                                <span class="font-label-md text-label-md text-on-surface">512 units</span>
+                                <div class="w-24 h-1 bg-surface-container rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[90%]"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-1.5 text-[#10B981] font-label-sm text-label-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                                Active
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex items-center justify-end gap-2">
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">visibility</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Product Row 4 -->
+                    <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant overflow-hidden flex-shrink-0">
+                                    <img class="w-full h-full object-cover"
+                                         data-alt="A collection of minimalist beauty vials with droppers, organized in a geometric pattern. The style is highly clinical, with cool blue and sterile white tones. The composition feels like a modern science lab for premium cosmetics. Sharp focus, clean lines, and architectural depth."
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDmiplrerstGiBkW5-V-vhX8JDnSdUDEEyl4XiCSzVCoOwpZGH5O_tyxgSCzhp5x4WAUaUyAHVYwRXytyg-MqsfzjZnWsuwZc2i0XbVzzCRtmXL3UdbC83-4OkEF7yAZv8TFu17GGmd93iK9LHqfbfu8Uw0MjGaz1ghtqPMuxmUHOEM5kuv0NzZf69J_6pq1D1k1tRxJDxR0GiJn3YylXKxvsfLgFsGDpaov_Y5kvF77sgnAvX2KAkQw"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Vitamin C Booster</span>
+                                    <span class="text-on-surface-variant text-xs">Concentrated Antioxidant</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-on-surface-variant font-label-md text-label-md">VC-2248</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full bg-[#F5F3FF] text-primary font-label-sm text-label-sm">Serums</span>
+                        </td>
+                        <td class="px-6 py-4 font-label-md text-label-md text-on-surface">$75.00</td>
+                        <td class="px-6 py-4">
+                            <div class="flex flex-col gap-1.5">
+                                <span class="font-label-md text-label-md text-on-surface">18 units</span>
+                                <div class="w-24 h-1 bg-surface-container rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[15%]"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-1.5 text-[#F59E0B] font-label-sm text-label-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></span>
+                                Draft
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex items-center justify-end gap-2">
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">visibility</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container rounded-lg transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div class="p-6 border-t border-outline-variant flex flex-col md:flex-row items-center justify-between gap-4">
+                <button class="h-10 px-4 flex items-center gap-2 border border-outline-variant text-on-surface-variant hover:text-primary font-label-md text-label-md rounded-xl transition-all">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                    Previous
+                </button>
+                <div class="flex items-center gap-2">
+                    <button class="w-10 h-10 rounded-xl bg-primary-container text-white font-bold text-sm flex items-center justify-center">
+                        1
+                    </button>
+                    <button class="w-10 h-10 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-medium text-sm flex items-center justify-center transition-all">
+                        2
+                    </button>
+                    <button class="w-10 h-10 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-medium text-sm flex items-center justify-center transition-all">
+                        3
+                    </button>
+                    <span class="text-on-surface-variant px-1">...</span>
+                    <button class="w-10 h-10 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-medium text-sm flex items-center justify-center transition-all">
+                        128
+                    </button>
+                </div>
+                <button class="h-10 px-4 flex items-center gap-2 border border-outline-variant text-on-surface-variant hover:text-primary font-label-md text-label-md rounded-xl transition-all">
+                    Next
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+        </div>
+        <!-- Secondary Content: Inventory Health (Bento Grid Style) -->
+        <section class="mt-section-gap mb-section-gap">
+            <h4 class="font-headline-md text-headline-md text-on-surface mb-stack-lg">Inventory Health Insights</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Category Performance -->
+                <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-[20px] luminous-shadow md:col-span-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="font-label-md text-label-md font-semibold">Category Sales &amp; Inventory Ratio</span>
+                        <span class="material-symbols-outlined text-on-surface-variant">info</span>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Skincare</span>
+                                <span class="font-label-sm text-label-sm font-bold">84% Optimal</span>
+                            </div>
+                            <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-[84%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Serums</span>
+                                <span class="font-label-sm text-label-sm font-bold">62% Optimal</span>
+                            </div>
+                            <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-[62%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Moisturizers</span>
+                                <span class="font-label-sm text-label-sm font-bold">91% Optimal</span>
+                            </div>
+                            <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-[91%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fast Movers -->
+                <div class="bg-primary-container text-white p-6 rounded-[20px] luminous-shadow overflow-hidden relative group">
+                    <div class="relative z-10 flex flex-col h-full">
+                        <span class="font-label-sm text-label-sm uppercase tracking-widest opacity-80 mb-2">Fastest Mover</span>
+                        <h5 class="font-headline-md text-headline-md font-bold mb-4">Lumina Silk Serum</h5>
+                        <p class="text-sm opacity-90 mb-auto">Sold 1,204 units this week. Stock replenishing scheduled
+                            for
+                            Tuesday.</p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="font-display text-display text-white/20">#01</span>
+                            <button class="bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-sm transition-all group-hover:scale-110">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Subtle pattern -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-2xl translate-y-1/4 -translate-x-1/4"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {% include "admin/share/footer.html" %}
+</main>
+
+<script>
+    // Micro-interactions and focus states
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('focus', () => {
+            el.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        el.addEventListener('blur', () => {
+            el.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    });
+
+    // Simple mock search filtering feedback
+    const searchInput = document.querySelector('input[type="text"]');
+    searchInput.addEventListener('keyup', (e) => {
+        const rows = document.querySelectorAll('tbody tr');
+        const term = e.target.value.toLowerCase();
+
+        rows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            if (text.includes(term)) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

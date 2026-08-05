@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    {% include "front/share/navbar.html" %}
+
+    {% include "front/share/script.html" %}
+</head>
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+<!-- Atmospheric Background Blobs -->
+<div class="floating-blob bg-primary top-[-100px] left-[-100px]"></div>
+<div class="floating-blob bg-secondary bottom-[-100px] right-[-100px]"></div>
+<!-- TopNavBar -->
+{% include "front/share/Header.html" %}
+<!-- Main Content Content Canvas -->
+<main class="pt-32 pb-section-gap px-container-desktop max-w-[1440px] mx-auto min-h-screen">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+        <!-- Left: Compact Editorial Display  -->
+        <div class="lg:col-span-6 sticky top-32 flex justify-center items-start pr-0 lg:pr-6">
+            <div class="w-full max-w-[504px] relative">
+                <!-- Asymmetric Vertical Typographic Accent Stack -->
+                <div class="absolute -left-12 top-0 hidden xl:flex flex-col items-center gap-12 pointer-events-none select-none mix-blend-difference opacity-40">
+            <span class="text-[10px] font-bold tracking-[0.5em] uppercase text-white rotate-90 origin-left whitespace-nowrap">
+                AURA BEAUTY // PREMIUM
+            </span>
+                    <div class="w-px h-24 bg-white/20"></div>
+                </div>
+
+                <!-- Image Container with Premium Micro-Borders -->
+                <div class="glass-panel p-3 rounded-[32px] border border-white/10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] backdrop-blur-3xl overflow-hidden group cursor-zoom-in">
+                    <div class="rounded-[24px] overflow-hidden aspect-[4/5] relative">
+                        <img alt="{{ product.title }}"
+                             class="w-full h-full object-cover transition-transform duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105 filter saturate-[1.05]"
+                             src="{{ url_for('static', filename=product.image) }}">
+
+                        <!-- Floating Category Badge -->
+                        <div class="absolute bottom-6 left-6 pointer-events-none">
+                    <span class="text-[10px] font-semibold text-white/40 tracking-[0.3em] uppercase bg-black/30 backdrop-blur-md px-3 py-1 rounded-md border border-white/5">
+                        {{ product.category }}
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Upgraded Product Information Panel-->
+        <div class="lg:col-span-6 flex flex-col justify-center pl-0 lg:pl-6">
+            <div class="space-y-8">
+
+                <!-- Brand & Title Header -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs font-bold text-primary tracking-[0.2em] uppercase">{{ product.category }}</span>
+                        <span class="text-white/20 text-xs font-mono">//</span>
+                        <span class="text-xs text-on-surface-variant/80 tracking-widest uppercase font-medium">{{ product.brand }}</span>
+                    </div>
+
+                    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-on-surface leading-tight">
+                        {{ product.title }}
+                    </h1>
+
+                    <!-- Price & Stock Grid Line -->
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-3xl font-extrabold text-secondary font-mono tracking-tighter">${{ "%.2f"|format(product.price) }}</span>
+                        <div class="flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
+                            In Stock
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Pure Description -->
+                <div class="space-y-2">
+                    <p class="text-base text-on-surface-variant/90 leading-relaxed font-normal tracking-wide">
+                        {{ product.description }}
+                    </p>
+                </div>
+
+                <!-- CTA Action Section -->
+                <div class="space-y-6 pt-2">
+                    <form action="{{ url_for('cart_add') }}" method="POST">
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                        <button type="submit"
+                                class="liquid-gradient w-full py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] text-on-primary shadow-[0_24px_48px_rgba(112,0,255,0.3)] hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-between px-8 group">
+                            <span>Add to Cart</span>
+                            <span class="material-symbols-outlined text-base transition-transform duration-300 group-hover:translate-x-1.5">
+                        arrow_forward
+                    </span>
+                        </button>
+                    </form>
+                    <!-- Authenticity Badges -->
+                    <div class="grid grid-cols-3 gap-2 p-4 rounded-2xl bg-white/[0.01] border border-white/5 text-center">
+                        <div class="flex flex-col items-center space-y-2 py-2">
+                    <span class="material-symbols-outlined text-secondary text-xl"
+                          style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="text-[11px] font-medium text-on-surface-variant tracking-wide uppercase">Authentic</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2 py-2 border-x border-white/5">
+                    <span class="material-symbols-outlined text-secondary text-xl"
+                          style="font-variation-settings: 'FILL' 1;">eco</span>
+                            <span class="text-[11px] font-medium text-on-surface-variant tracking-wide uppercase">Vegan</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2 py-2">
+                    <span class="material-symbols-outlined text-secondary text-xl"
+                          style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+                            <span class="text-[11px] font-medium text-on-surface-variant tracking-wide uppercase">Express</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 pt-4 border-t border-white/5">
+
+                        <!-- How to Use Tab -->
+                        <details class="group py-5 border-b border-white/5 cursor-pointer">
+                            <summary
+                                    class="flex items-center justify-between list-none text-sm font-bold text-on-surface uppercase tracking-wider select-none">
+                                <span><b>How To Use</b></span>
+                                <span class="material-symbols-outlined text-base transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                            </summary>
+
+                            <p class="text-base text-on-surface leading-relaxed font-normal pt-4 pl-1">
+                                {{ product.how_to_use }}
+                            </p>
+                        </details>
+
+                        <!-- Ingredients Tab -->
+                        <details class="group py-5 border-b border-white/5 cursor-pointer">
+
+                            <summary
+                                    class="flex items-center justify-between list-none text-sm font-bold text-on-surface uppercase tracking-wider select-none">
+                                <span><b>Ingredients</b></span>
+                                <span class="material-symbols-outlined text-base transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                            </summary>
+
+                            <p class="text-base text-on-surface/90 leading-relaxed font-normal pt-4 pl-1">
+                                {{ product.ingredients }}
+                            </p>
+                        </details>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ➡️ NEW SECTION: SIMILAR PRODUCTS GRID ⬅️ -->
+    <div class="mt-24 pt-12 border-t border-white/5">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <span class="font-label-md text-label-sm text-primary tracking-[0.2em] uppercase">Suggestions</span>
+                <h2 class="font-headline-md text-2xl text-on-surface mt-1">You May Also Like</h2>
+            </div>
+            <!-- 'More products' text link pointing to products catalog -->
+            <a href="{{ url_for('product') }}"
+               class="group flex items-center gap-1 font-label-md text-sm text-primary tracking-wider uppercase hover:text-white transition-colors duration-200">
+                More Products
+                <span class="material-symbols-outlined text-sm transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- 4-Product Responsive Grid Layout -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {% set count = namespace(value=0) %}
+            {% for item in products %}
+                <!-- Filters out the current main product and stops once 4 are shown -->
+                {% if item.category == product.category and item.id != product.id and count.value < 4 %}
+                    {% set count.value = count.value + 1 %}
+                    <div class="glass-panel rounded-2xl overflow-hidden group flex flex-col">
+                        <!-- Image -->
+                        <div class="aspect-square overflow-hidden relative">
+                            <img src="{{ url_for('static', filename=item.image) }}"
+                                 alt="{{ item.title }}"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <!-- Info -->
+                        <div class="p-5 flex flex-col flex-grow">
+                            <span class="text-xs text-primary uppercase tracking-widest font-bold mb-1">
+                                {{ item.category }}
+                            </span>
+                            <h3 class="font-headline-md text-on-surface text-[18px] mb-2">
+                                {{ item.title }}
+                            </h3>
+                            <p class="font-body-md text-on-surface-variant text-sm mb-4 flex-grow line-clamp-2">
+                                {{ item.description }}
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="font-headline-md text-primary text-[20px]">
+                                    ${{ item.price }}
+                                </span>
+                                <span class="text-xs text-on-surface-variant">
+                                    Stock: {{ item.qty }}
+                                </span>
+                            </div>
+                            <!-- Buttons -->
+                            <div class="flex flex-col gap-3">
+                                <a href="{{ url_for('product_detail', product_id=item.id) }}"
+                                   class="block text-center px-4 py-3 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition">
+                                    View Details
+                                </a>
+                                <form class="add-cart-form">
+                                    <input type="hidden" name="product_id" value="{{ item.id }}">
+                                    <button type="submit"
+                                            class="block w-full text-center px-4 py-3 rounded-lg bg-primary text-white hover:opacity-90 transition">
+                                        Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+{% include "front/share/Footer.html" %}
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt | LUXE LIQUID</title>
+
+    {% include "front/share/navbar.html" %}
+    {% include "front/share/script.html" %}
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // This instantly forces the 'cart' cookie to expire system-wide
+            document.cookie = "cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "shipping=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+            // Optional: update navbar cart counter visually to 0 right away
+            const cartBadge = document.querySelector('.cart-count-badge');
+            if(cartBadge) cartBadge.innerText = '0';
+        });
+    </script>
+</head>
+
+<body class="bg-background">
+
+{% include "front/share/Header.html" %}
+
+<main class="pt-32 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop flex flex-col items-center">
+
+    <div class="flex flex-col items-center mb-12 text-center">
+        <div class="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-5xl text-primary">check</span>
+        </div>
+
+        <h1 class="font-headline-lg text-on-surface mb-2">Thank You</h1>
+        <p class="text-on-surface-variant">Your order has been received.</p>
+    </div>
+
+    <div class="w-full max-w-[640px] glass-panel p-8 md:p-12 rounded-3xl">
+
+        <div class="border-b border-white/10 pb-8 mb-8">
+            <p class="text-on-surface-variant text-sm uppercase">Order Summary</p>
+        </div>
+
+        <div class="space-y-6">
+
+            {% for item in cart %}
+            <div class="flex items-center gap-4">
+
+                <div class="w-16 h-16 rounded-lg overflow-hidden">
+                    <img src="{{ url_for('static', filename=item.image) }}"
+                         class="w-full h-full object-cover">
+                </div>
+
+                <div class="flex-1">
+                    <p class="text-on-surface font-medium">{{ item.title }}</p>
+                    <p class="text-on-surface-variant text-sm">Qty: {{ item.qty }}</p>
+                </div>
+
+                <div class="text-on-surface font-semibold">
+                    ${{ "%.2f"|format(item.price * item.qty) }}
+                </div>
+
+            </div>
+            {% else %}
+            <p class="text-center text-on-surface-variant py-4">No recent order data found.</p>
+            {% endfor %}
+
+        </div>
+
+        <div class="border-t border-white/10 mt-8 pt-6 space-y-3">
+
+            <div class="flex justify-between text-on-surface-variant">
+                <span>Subtotal</span>
+                <span>${{ "%.2f"|format(subtotal) }}</span>
+            </div>
+
+            <div class="flex justify-between text-on-surface-variant">
+                <span>Tax</span>
+                <span>${{ "%.2f"|format(tax) }}</span>
+            </div>
+
+            <div class="flex justify-between text-lg font-bold text-primary pt-4 border-t border-white/10">
+                <span>Total</span>
+                <span>${{ "%.2f"|format(total) }}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mt-10 flex gap-4 w-full max-w-[640px]">
+        <a href="{{ url_for('product') }}"
+           class="flex-1 h-14 rounded-full bg-primary text-white flex items-center justify-center">
+            Back to Shop
+        </a>
+    </div>
+
+</main>
+
+{% include "front/share/Footer.html" %}
+
+</body>
+</html>

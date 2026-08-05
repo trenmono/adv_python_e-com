@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+{% include "admin/user/share/header.html" %}
+<body class="min-h-screen bg-surface">
+{% include "admin/user/share/sideNavBar_stuff.html" %}
+{% block content %}
+    {% if tab == 'dashboard' %}
+        {% include "admin/user/dashboard/dashboard.html" %}
+    {% elif tab == 'orders' %}
+        {% include "admin/user/dashboard/orders.html" %}
+    {% elif tab == 'products' %}
+        {% include "admin/user/dashboard/products.html" %}
+    {% elif tab == 'inventory' %}
+        {% include "admin/user/dashboard/inventory.html" %}
+    {% elif tab == 'profile' %}
+        {% include "admin/user/dashboard/profile.html" %}
+    {% else %}
+        {% include "admin/user/dashboard/dashboard.html" %}
+    {% endif %}
+{% endblock %}
+</body>
+</html>
