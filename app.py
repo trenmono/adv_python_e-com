@@ -50,23 +50,27 @@ def stuff(tab='dashboard'):
     return render_template("admin/user/master_stuff.html", tab=tab)
 
 
+# ======================================
+# FRONT-END ROUTES
+# ======================================
+
+# 1. HOME
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template("front/home.html", products=data_store.PRODUCTS_DB)
 
 
+# 2. ERROR HANDLER (404)
 @app.errorhandler(404)
 def page_not_found(e):
-
     return render_template('front/page404.html'), 404
 
-# PRODUCTS (PAGINATION)
 
+# 3. PRODUCTS CATALOG (PAGINATION)
 @app.route('/products')
 def product():
     page = request.args.get('page', 1, type=int)
-
     per_page = 9
 
     total_products = len(data_store.PRODUCTS_DB)
@@ -86,9 +90,7 @@ def product():
     )
 
 
-# ======================================
-# PRODUCT DETAIL
-# ======================================
+# 4. PRODUCT DETAIL
 @app.route('/product-detail')
 @app.route('/product-detail/<int:product_id>')
 def product_detail(product_id=None):
@@ -121,22 +123,34 @@ def product_detail(product_id=None):
     return response
 
 
-# ======================================
-# CART PAGE
-# ======================================
-@app.route('/cart')
-def cart():
-    cart_items = json.loads(
-        request.cookies.get('cart', '[]')
-    )
+# 5. CART HELPERS & CART PAGE
+def get_cart_from_cookie():
+    cart_cookie = request.cookies.get('cart')
+    if not cart_cookie:
+        return []
+    try:
+        return json.loads(cart_cookie)
+    except Exception:
+        return []
 
-    subtotal = sum(
-        item['price'] * item['qty']
-        for item in cart_items
-    )
 
+def calculate_cart(cart):
+    subtotal = sum(item.get('price', 0) * item.get('qty', 1) for item in cart)
     tax = subtotal * 0.1
     total = subtotal + tax
+    return subtotal, tax, total
+
+
+@app.context_processor
+def cart_count():
+    cart = get_cart_from_cookie()
+    return dict(cart_count=len(cart))
+
+
+@app.route('/cart')
+def cart():
+    cart_items = get_cart_from_cookie()
+    subtotal, tax, total = calculate_cart(cart_items)
 
     return render_template(
         'front/cart.html',
@@ -146,28 +160,8 @@ def cart():
         total=total
     )
 
-def get_cart_from_cookie():
-    cart_cookie = request.cookies.get('cart')
 
-    if not cart_cookie:
-        return []
-
-    try:
-        return json.loads(cart_cookie)
-    except:
-        return []
-
-
-def calculate_cart(cart):
-    subtotal = sum(item['price'] * item['qty'] for item in cart)
-    tax = subtotal * 0.1
-    total = subtotal + tax
-    return subtotal, tax, total
-
-
-# ======================================
-# CHECKOUT
-# ======================================
+# 6. CHECKOUT
 @app.route('/checkout')
 def checkout():
     cart = get_cart_from_cookie()
@@ -181,31 +175,21 @@ def checkout():
         total=total
     )
 
+
 @app.route('/checkout/complete')
 def checkout_complete():
-
     response = make_response(
         render_template("front/receipt.html")
     )
-
-    response.set_cookie(
-        'cart',
-        '',
-        expires=0
-    )
-
+    response.set_cookie('cart', '', expires=0, path='/')
     return response
 
-# ======================================
-# RECEIPT
-# ======================================
+
+# 7. RECEIPT
 @app.route('/receipt')
 def receipt():
     cart = get_cart_from_cookie()
-
-    subtotal = sum(item['price'] * item['qty'] for item in cart)
-    tax = subtotal * 0.1
-    total = subtotal + tax
+    subtotal, tax, total = calculate_cart(cart)
 
     return render_template(
         "front/receipt.html",
@@ -215,26 +199,27 @@ def receipt():
         total=total
     )
 
-# ======================================
-# PAYMENT
-# ======================================
+
+# 8. PAYMENT & PROCESS PAYMENT
 @app.route('/payment', methods=['GET', 'POST'])
 def payment():
     cart = get_cart_from_cookie()
     subtotal, tax, total = calculate_cart(cart)
 
-    # ⚠️ shipping MUST come from form OR session
-    shipping = {
-        "first_name": request.form.get("first_name", ""),
-        "last_name": request.form.get("last_name", ""),
-        "phone": request.form.get("phone", ""),
-        "address": request.form.get("address", ""),
-        "email": request.form.get("email", ""),
-
-    }
-
-    session['shipping'] = shipping
-    session['cart'] = cart
+    if request.method == 'POST':
+        shipping = {
+            "first_name": request.form.get("first_name", ""),
+            "last_name": request.form.get("last_name", ""),
+            "phone": request.form.get("phone", ""),
+            "address": request.form.get("address", ""),
+            "email": request.form.get("email", ""),
+        }
+        session['shipping'] = shipping
+        session['cart'] = cart
+    else:
+        shipping = session.get('shipping', {
+            "first_name": "", "last_name": "", "phone": "", "address": "", "email": ""
+        })
 
     return render_template(
         "front/payment.html",
@@ -245,44 +230,22 @@ def payment():
         total=total
     )
 
-@app.context_processor
-def cart_count():
-    cart = json.loads(request.cookies.get('cart', '[]'))
-
-    count = len(cart)
-
-    return dict(cart_count=count)
 
 @app.route('/process-payment', methods=['POST'])
 def process_payment():
     response = make_response(
         render_template('front/receipt.html')
     )
-
-    response.delete_cookie('cart')
-    response.delete_cookie('shipping')
-
+    response.delete_cookie('cart', path='/')
+    response.delete_cookie('shipping', path='/')
     return response
+
 
 @app.route('/cart/payment-success', methods=['POST'])
 def payment_success():
-    # 1. READ CART FIRST (before clearing)
-    cart_cookie = request.cookies.get('cart')
+    cart = get_cart_from_cookie()
+    subtotal, tax, total = calculate_cart(cart)
 
-    if cart_cookie:
-        try:
-            cart = json.loads(cart_cookie)
-        except:
-            cart = []
-    else:
-        cart = []
-
-    # 2. CALCULATE TOTAL
-    subtotal = sum(item['price'] * item['qty'] for item in cart)
-    tax = subtotal * 0.1
-    total = subtotal + tax
-
-    # 3. CLEAR COOKIE AFTER READ
     resp = make_response(render_template(
         "front/receipt.html",
         cart=cart,
@@ -290,42 +253,31 @@ def payment_success():
         tax=tax,
         total=total
     ))
-
     resp.set_cookie('cart', '', max_age=0, path='/')
-
     return resp
+
 
 @app.route('/clear-cart-and-go-home')
 def clear_cart_and_home():
-    # Force delete the cart cookie, routing back to the store front
     response = make_response(redirect(url_for('product')))
     response.delete_cookie('cart', path='/')
     response.delete_cookie('shipping', path='/')
     return response
 
-# ======================================
-# CONFIRM-PAYMENT
-# ======================================
+
 @app.route('/cart/confirm-payment', methods=['POST'])
 def confirm_payment():
-
     shipping = session.get('shipping', {})
     cart = session.get('cart', [])
 
     if not cart:
         cart = get_cart_from_cookie()
 
-
     if not cart:
         return redirect(url_for('product'))
 
-    # 1. Calculate the financial breakdown first to keep the message template clean
-    subtotal = sum(item['price'] * item['qty'] for item in cart)
-    tax_rate = 0.1
-    tax_amount = subtotal * tax_rate
-    final_total = subtotal + tax_amount
+    subtotal, tax_amount, final_total = calculate_cart(cart)
 
-    # 2. Build the Telegram order message
     order_message = "🛍 <b>NEW ORDER RECEIVED</b>\n"
     order_message += "───────────────────\n\n"
 
@@ -333,21 +285,20 @@ def confirm_payment():
     order_message += f"• <b>Name:</b> {shipping.get('first_name', '')} {shipping.get('last_name', '')}\n"
     order_message += f"• <b>Phone:</b> <code>{shipping.get('phone', '')}</code>\n"
     order_message += f"• <b>Address:</b> <code>{shipping.get('address', '')}</code>\n"
-    order_message+=f"• <b>Email:</b> <code>{shipping.get('email', '')}</code>\n\n"
+    order_message += f"• <b>Email:</b> <code>{shipping.get('email', '')}</code>\n\n"
 
     order_message += "📦 <b>Order Items:</b>\n"
     for item in cart:
-        item_total = item['price'] * item['qty']
-        order_message += f"▪️ {item['title']} <b>x{item['qty']}</b> - ${item_total:.2f}\n"
+        item_total = item.get('price', 0) * item.get('qty', 1)
+        order_message += f"▪️ {item.get('title', 'Product')} <b>x{item.get('qty', 1)}</b> - ${item_total:.2f}\n"
 
-    # 3. Add the clear tax breakdown at the bottom
     order_message += "\n───────────────────\n"
     order_message += f"<b>Subtotal:</b> ${subtotal:.2f}\n"
     order_message += f"<b>Tax (10%):</b> ${tax_amount:.2f}\n"
     order_message += f"💰 <b>Total Due:</b> <code>${final_total:.2f}</code>"
 
     import requests
-    token_bot ="8953023563:AAEr-4cP-FVghqawrKQuFzcfNc6y8rzsyaE"
+    token_bot = "8953023563:AAEr-4cP-FVghqawrKQuFzcfNc6y8rzsyaE"
     url = f"https://api.telegram.org/bot{token_bot}/sendMessage"
 
     payload = {
@@ -364,51 +315,42 @@ def confirm_payment():
         "content-type": "application/json"
     }
 
-    response = requests.post(url, json=payload, headers=headers)
-
-    print(response.text)
-    # Save order to database here
+    try:
+        requests.post(url, json=payload, headers=headers, timeout=5)
+    except Exception as e:
+        print(f"Telegram notification error: {e}")
 
     session.pop('cart', None)
-
     return redirect(url_for('receipt'))
 
 
-# ======================================
-# NEW ARRIVALS
-# ======================================
+# 9. NEW ARRIVALS
 @app.route('/new-arrival')
 def new_arrival():
     products = [
         p for p in data_store.PRODUCTS_DB
         if p.get("is_new_arrival")
     ]
-
     return render_template(
         "front/new_arrival.html",
         products=products
     )
 
 
-# ======================================
-# BEST SELLERS
-# ======================================
+# 10. BEST SELLERS
 @app.route('/best-seller')
 def best_seller():
     products = [
         p for p in data_store.PRODUCTS_DB
         if p.get("is_best_seller")
     ]
-
     return render_template(
         "front/best_seller.html",
         products=products
     )
 
 
-# ======================================
-# CATEGORY FILTER + PAGINATION
-# ======================================
+# 11. CATEGORY FILTER + PAGINATION
 @app.route('/category')
 def products_by_category():
     category = request.args.get('category')
@@ -419,11 +361,11 @@ def products_by_category():
 
     filtered = [
         p for p in data_store.PRODUCTS_DB
-        if p["category"] == category
+        if p.get("category", "").lower() == category.lower()
     ]
 
     per_page = 9
-    total_pages = math.ceil(len(filtered) / per_page)
+    total_pages = math.ceil(len(filtered) / per_page) if filtered else 1
 
     start = (page - 1) * per_page
     end = start + per_page
@@ -439,12 +381,12 @@ def products_by_category():
     )
 
 
-# ======================================
-# CART ADD
-# ======================================
+# 12. CART ACTIONS (ADD, REMOVE, UPDATE)
 @app.route('/cart/add', methods=['POST'])
 def cart_add():
-    product_id = int(request.form.get('product_id'))
+    product_id = request.form.get('product_id', type=int)
+    if not product_id:
+        return redirect(url_for('product'))
 
     product = next(
         (p for p in data_store.PRODUCTS_DB if p['id'] == product_id),
@@ -452,12 +394,9 @@ def cart_add():
     )
 
     if not product:
-        return jsonify({
-            'success': False,
-            'message': 'Product not found'
-        }), 404
+        return redirect(url_for('product'))
 
-    cart = json.loads(request.cookies.get('cart', '[]'))
+    cart = get_cart_from_cookie()
 
     existing = next(
         (item for item in cart if item['id'] == product_id),
@@ -472,79 +411,51 @@ def cart_add():
             'title': product['title'],
             'price': product['price'],
             'image': product['image'],
+            'category': product['category'],
             'qty': 1
         })
 
-    total_qty = len(cart)
-
-    response = make_response(jsonify({
-        'success': True,
-        'cart_count': total_qty
-    }))
     response = make_response(
         redirect(request.referrer or url_for('home'))
     )
     response.set_cookie(
         'cart',
         json.dumps(cart),
-        max_age=60 * 60 * 24 * 7
+        max_age=60 * 60 * 24 * 7,
+        path='/'
     )
-
     return response
 
-# ======================================
-# CART REMOVE
-# ======================================
+
 @app.route('/cart/remove', methods=['POST'])
 def cart_remove():
-    product_id = int(request.form.get('product_id'))
+    product_id = request.form.get('product_id', type=int)
+    cart = get_cart_from_cookie()
 
-    cart = json.loads(request.cookies.get('cart', '[]'))
+    if product_id is not None:
+        cart = [item for item in cart if item.get('id') != product_id]
 
-    cart = [
-        item for item in cart
-        if item['id'] != product_id
-    ]
-
-    response = make_response(
-        redirect(url_for('cart'))
-    )
-
-    response.set_cookie(
-        'cart',
-        json.dumps(cart),
-        max_age=60 * 60 * 24 * 7
-    )
-
+    response = make_response(redirect(url_for('cart')))
+    response.set_cookie('cart', json.dumps(cart), max_age=60 * 60 * 24 * 7, path='/')
     return response
 
 
-# ======================================
-# CART UPDATE
-# ======================================
 @app.route('/cart/update', methods=['POST'])
 def cart_update():
-    product_id = int(request.form.get('product_id'))
-    qty = int(request.form.get('qty'))
+    product_id = request.form.get('product_id', type=int)
+    qty = request.form.get('qty', type=int)
+    cart = get_cart_from_cookie()
 
-    cart = json.loads(
-        request.cookies.get('cart', '[]')
-    )
+    if product_id is not None and qty is not None:
+        if qty <= 0:
+            cart = [item for item in cart if item.get('id') != product_id]
+        else:
+            for item in cart:
+                if item.get('id') == product_id:
+                    item['qty'] = qty
 
-    for item in cart:
-        if item['id'] == product_id:
-            item['qty'] = max(1, qty)
-
-    response = make_response(
-        redirect(url_for('cart'))
-    )
-
-    response.set_cookie(
-        'cart',
-        json.dumps(cart),
-        max_age=60 * 60 * 24 * 7
-    )
-
+    response = make_response(redirect(url_for('cart')))
+    response.set_cookie('cart', json.dumps(cart), max_age=60 * 60 * 24 * 7, path='/')
     return response
 
 
