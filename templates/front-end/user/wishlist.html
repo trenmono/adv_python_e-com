@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Wishlist | Aura Beauty</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <!-- Tailwind Config from Style Guidance -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#e3e1ea",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#d0bcff",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-primary-fixed": "#23005c",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "primary": "#6b38d4",
+                        "on-primary-container": "#fffbff",
+                        "surface-tint": "#6d3bd7",
+                        "secondary-fixed": "#e3e1ea",
+                        "surface-dim": "#d0dbed",
+                        "on-tertiary-fixed": "#1c192b",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#cbc3d7",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "inverse-surface": "#27313f",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "secondary": "#5e5e65",
+                        "outline": "#7b7486",
+                        "tertiary-container": "#767288",
+                        "surface-container-high": "#dee9fc",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary": "#5d596f",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#494454",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#8455ef",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1a1b21",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#d9e3f6",
+                        "on-background": "#121c2a",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#e9ddff",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e6eeff",
+                        "tertiary-fixed": "#e6dff9",
+                        "on-secondary-container": "#64646b",
+                        "surface-container-highest": "#d9e3f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .ambient-shadow {
+            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.08);
+        }
+
+        .card-hover:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/20">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm h-20">
+    <div class="flex justify-between items-center px-margin-desktop h-full max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md font-bold tracking-tight text-primary">Aura Beauty</div>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('home') }}">Home</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('products') }}">Products</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('best_seller') }}">Best Seller</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('new_arrival') }}">New Arrival</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('contact') }}">Contact</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="relative hidden sm:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+                <input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-label-sm focus:ring-2 focus:ring-primary/20 w-48 transition-all focus:w-64"
+                       placeholder="Search..." type="text"/>
+            </div>
+            <button class="text-on-surface-variant hover:text-primary transition-all active:scale-95">
+                <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+            </button>
+            <button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 transition-all active:scale-95 shadow-sm">
+                Sign In
+            </button>
+        </div>
+    </div>
+</nav>
+<main class="pt-32 pb-section-gap">
+    <div class="max-w-container-max mx-auto px-margin-desktop">
+        <!-- Header Section -->
+        <header class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="space-y-2">
+                <div class="flex items-center gap-2 text-primary font-label-sm text-label-sm">
+                    <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                    SAVED ITEMS
+                </div>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Your Ritual Wishlist</h1>
+                <p class="text-on-surface-variant max-w-xl font-body-lg text-body-lg">A curated selection of your future
+                    glow. Review your favorites and complete your self-care ritual when you're ready.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-on-surface-variant font-label-sm text-label-sm">6 ITEMS SAVED</span>
+                <button class="flex items-center gap-2 border border-outline-variant text-on-surface-variant px-5 py-2 rounded-full font-label-sm text-label-sm hover:bg-surface-container-high transition-all">
+                    <span class="material-symbols-outlined text-[18px]">sort</span>
+                    Sort By
+                </button>
+            </div>
+        </header>
+        <!-- Wishlist Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+            <!-- Product Card 1 -->
+            <div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow card-hover transition-all duration-500">
+                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-md text-primary transition-all hover:bg-white hover:scale-110">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </button>
+                <div class="aspect-[4/5] overflow-hidden bg-surface-container-low">
+                    <img class="product-image w-full h-full object-cover transition-transform duration-700"
+                         data-alt="A luxurious glass bottle of iridescent facial serum sitting on a reflective surface with soft lavender and white floral petals. The lighting is ethereal and high-key, emphasizing the premium skincare aesthetic. Soft purple gradients in the background create a calm, radiant atmosphere with professional studio photography quality."
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7bC3oNklf0UnvIx7Kx4ky_dDunMmN78c0SBKvEKpHZhFZce5uxC0vDfOBelZIJWamH8puhbEW_rGLC9xUYbcH0wTCPeqhvfLMi3YbWN1XZJaZG-ok-evpl8TgRH68OaCKtw8jc75IvkD6iC_dYdbAgMCree5rCJOXhbrpvg_93avKwKKXjuMTRq_tUVrY8xYlyjasYzCQrinH1S79ix20iL0Famf8J_KUzGnKeS4xaUBANUHNPD2zzQ"/>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="space-y-1">
+                        <span class="text-primary font-label-sm text-label-sm">SERUMS</span>
+                        <h3 class="font-headline-md text-[18px] text-on-surface">Luminescent Pearl Serum</h3>
+                        <p class="text-primary font-bold text-lg">$84.00</p>
+                    </div>
+                    <button class="w-full bg-primary py-3 rounded-full text-on-primary font-label-sm text-label-sm transition-all hover:bg-primary-container active:scale-95 shadow-sm">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            <!-- Product Card 2 -->
+            <div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow card-hover transition-all duration-500">
+                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-md text-primary transition-all hover:bg-white hover:scale-110">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </button>
+                <div class="aspect-[4/5] overflow-hidden bg-surface-container-low">
+                    <img class="product-image w-full h-full object-cover transition-transform duration-700"
+                         data-alt="A minimalist white tub of thick, whipped night cream with a gold rim, placed among soft silk drapes. Subtle lavender lighting creates deep, soft shadows. The overall mood is sophisticated and peaceful, reflecting a high-end beauty ritual. The background is a soft, out-of-focus dreamscape of neutral and purple tones."
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3RHDT2dEtfi3r8O2TEi6GI0kcBifcNWn76UtNjj_yb2SCKoU1t2FYNik2PympobCXFrCGr3yVCiHAJFUOBEbel9LW-MLFjqNfJ37WUfob5xnPestwRBvb-LpTQt9hNnM7U6HsT2Uzctxv6YLISxSOd8Abczm_ArZSyOqTQF2A0Mb3HOGDxrz-ahRHOuypX1JlViJqE9mEIySE8YTS9w5H2duJPWdTF2FhnwgHqTpxNwtvx0VOLt6omw"/>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="space-y-1">
+                        <span class="text-primary font-label-sm text-label-sm">MOISTURIZERS</span>
+                        <h3 class="font-headline-md text-[18px] text-on-surface">Midnight Silk Recovery</h3>
+                        <p class="text-primary font-bold text-lg">$62.00</p>
+                    </div>
+                    <button class="w-full bg-primary py-3 rounded-full text-on-primary font-label-sm text-label-sm transition-all hover:bg-primary-container active:scale-95 shadow-sm">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            <!-- Product Card 3 -->
+            <div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow card-hover transition-all duration-500">
+                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-md text-primary transition-all hover:bg-white hover:scale-110">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </button>
+                <div class="aspect-[4/5] overflow-hidden bg-surface-container-low">
+                    <img class="product-image w-full h-full object-cover transition-transform duration-700"
+                         data-alt="A sleek mist spray bottle made of frosted glass with a fine spray of water droplets around it. The background features light-diffused botanical shapes in pale greens and purples. Bright, airy, and refreshing aesthetic with a focus on scientific purity and organic beauty. High-resolution macro photography style."
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1NJ2W8OA9cp5jawBvQAFD7Et_VN9V7zTGyqtZaBb-l7Lz-1oxzZb3NAckHVjD0SDMfgGw9XU_plXCzCqhYnGDgy0nacQalAb2UlozGga6MugJlhlVJoUMthmCTjz7vTJnH18FMTenUVmM65y0a2zIDdySZqJewMgMKReRIdlRVcZehS4UtKp_DpzDfLoZ5WDvrTcYPpiXWWG2it0kiMcxQpNfX98ZAsZDOfSJyhBc4ZrfgGT32gs4oA"/>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="space-y-1">
+                        <span class="text-primary font-label-sm text-label-sm">TONERS</span>
+                        <h3 class="font-headline-md text-[18px] text-on-surface">Celestial Mist Toner</h3>
+                        <p class="text-primary font-bold text-lg">$38.00</p>
+                    </div>
+                    <button class="w-full bg-primary py-3 rounded-full text-on-primary font-label-sm text-label-sm transition-all hover:bg-primary-container active:scale-95 shadow-sm">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            <!-- Product Card 4 -->
+            <div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow card-hover transition-all duration-500">
+                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-md text-primary transition-all hover:bg-white hover:scale-110">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </button>
+                <div class="aspect-[4/5] overflow-hidden bg-surface-container-low">
+                    <img class="product-image w-full h-full object-cover transition-transform duration-700"
+                         data-alt="An elegant dropper bottle containing a golden-hued oil, surrounded by smooth white river stones and a single drop of water. The scene is illuminated by soft morning sunlight filtering through a window, creating organic shadows. Minimalist, zen-like composition that emphasizes natural ingredients and luxury self-care."
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD67yoHKZoofff9c4p2EeKNvk3bph4SAWWZxlRifg3-u7qgiH9OynjopY2RAeOhBzvLP2Kwjp6ZXkmDmvIWdzhJXFQdXPZFN2iAIbmKhHkdxxB_I5REp0bGBNQb4JyfESsCXYzGNoW1SSE4sYbrTH9kjCqB4PqYvj4jsFNPQCXf_944SEMwybCsPFaYauPgaoA1yRe7pSA5PA3SSntuVqU1j-n_AKe8Ss7RL9NNUqAsZq-UmXD6CsDqQ"/>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="space-y-1">
+                        <span class="text-primary font-label-sm text-label-sm">OILS</span>
+                        <h3 class="font-headline-md text-[18px] text-on-surface">Golden Aura Elixir</h3>
+                        <p class="text-primary font-bold text-lg">$110.00</p>
+                    </div>
+                    <button class="w-full bg-primary py-3 rounded-full text-on-primary font-label-sm text-label-sm transition-all hover:bg-primary-container active:scale-95 shadow-sm">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Empty State Illustration (Hidden by default, shown if wishlist is empty) -->
+        <div class="hidden flex-col items-center justify-center py-20 text-center space-y-6" id="empty-wishlist">
+            <div class="w-24 h-24 rounded-full bg-surface-container-low flex items-center justify-center text-primary/40">
+                <span class="material-symbols-outlined text-[48px]">favorite_border</span>
+            </div>
+            <div class="space-y-2">
+                <h2 class="font-headline-md text-headline-md text-on-surface">Your wishlist is empty</h2>
+                <p class="text-on-surface-variant max-w-sm mx-auto">Discover our latest arrivals and start building your
+                    radiant skincare routine today.</p>
+            </div>
+            <button class="bg-primary px-8 py-3 rounded-full text-on-primary font-label-sm text-label-sm hover:bg-primary-container transition-all shadow-md">
+                Explore All Products
+            </button>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface w-full py-section-gap mt-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="col-span-1 md:col-span-1">
+            <div class="font-headline-md text-headline-md font-bold text-primary mb-4">Aura Beauty</div>
+            <p class="text-on-surface-variant font-body-md text-body-md mb-6">Radiant self-care rituals for the modern
+                seeker. Scientifically advanced, deeply human.</p>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-4">SHOP</h4>
+            <ul class="space-y-3">
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="{{ url_for('new_arrival') }}">New Arrivals</a></li>
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="{{ url_for('best_seller') }}">Best Sellers</a></li>
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">Skincare Sets</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-4">COMPANY</h4>
+            <ul class="space-y-3">
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">About Us</a></li>
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">Sustainability</a></li>
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-4">CONNECT</h4>
+            <ul class="space-y-3">
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">Instagram</a></li>
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">Pinterest</a></li>
+                <li>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="{{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-desktop mt-16 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-on-surface-variant font-label-sm text-label-sm">© 2024 Aura Beauty. Radiant self-care
+            rituals.</p>
+        <div class="flex gap-6">
+            <span class="material-symbols-outlined text-on-surface-variant text-[20px] hover:text-primary cursor-pointer">payments</span>
+            <span class="material-symbols-outlined text-on-surface-variant text-[20px] hover:text-primary cursor-pointer">delivery_dining</span>
+            <span class="material-symbols-outlined text-on-surface-variant text-[20px] hover:text-primary cursor-pointer">verified</span>
+        </div>
+    </div>
+</footer>
+<script>
+    // Simple micro-interaction for removing items
+    document.querySelectorAll('button .material-symbols-outlined').forEach(btn => {
+        if (btn.innerText === 'favorite') {
+            btn.parentElement.addEventListener('click', function (e) {
+                const card = this.closest('.group');
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    card.remove();
+                    const remaining = document.querySelectorAll('.grid > div');
+                    if (remaining.length === 0) {
+                        document.getElementById('empty-wishlist').classList.remove('hidden');
+                        document.getElementById('empty-wishlist').classList.add('flex');
+                    }
+                }, 500);
+            });
+        }
+    });
+
+    // Background scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 10) {
+            nav.classList.add('shadow-md');
+        } else {
+            nav.classList.remove('shadow-md');
+        }
+    });
+</script>
+</body>
+</html>

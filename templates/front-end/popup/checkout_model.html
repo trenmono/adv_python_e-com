@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Aura Beauty | Checkout</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+          rel="stylesheet"/>
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#8455ef",
+                        "surface-variant": "#d9e3f6",
+                        "secondary-container": "#e3e1ea",
+                        "outline": "#7b7486",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "secondary-fixed": "#e3e1ea",
+                        "primary-fixed-dim": "#d0bcff",
+                        "surface-container-high": "#dee9fc",
+                        "outline-variant": "#cbc3d7",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f8f9ff",
+                        "tertiary-container": "#767288",
+                        "surface-tint": "#6d3bd7",
+                        "tertiary": "#5d596f",
+                        "surface-container-highest": "#d9e3f6",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed": "#1c192b",
+                        "inverse-surface": "#27313f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#121c2a",
+                        "on-surface-variant": "#494454",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "on-primary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e6dff9",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed": "#1a1b21",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#d0bcff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-surface": "#121c2a",
+                        "surface-container": "#e6eeff",
+                        "primary": "#6b38d4",
+                        "on-primary-fixed": "#23005c",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#64646b",
+                        "background": "#f8f9ff",
+                        "primary-fixed": "#e9ddff",
+                        "secondary": "#5e5e65",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .premium-shadow {
+            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.08);
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(107, 56, 212, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm">
+    <div class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed-dim">
+            Aura Beauty
+        </div>
+        <div class="hidden md:flex gap-8">
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('home') }}">Home</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('products') }}">Products</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('best_seller') }}">Best Seller</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('new_arrival') }}">New Arrival</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('contact') }}">Contact</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">
+                shopping_cart
+            </button>
+            <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm hover:scale-95 transition-transform duration-200">
+                Sign In
+            </button>
+        </div>
+    </div>
+</nav>
+<!-- Main Content Canvas with Background Effect -->
+<main class="relative pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Subtle Animated Background Element -->
+
+    <!-- Checkout Modal Container (Step 1) -->
+    <div class="relative w-full max-w-5xl glass-overlay rounded-3xl premium-shadow border border-white/50 overflow-hidden flex flex-col md:flex-row animate-in fade-in slide-in-from-bottom-8 duration-700">
+        <!-- Left Side: Form -->
+        <div class="flex-1 p-8 md:p-12 border-b md:border-b-0 md:border-r border-outline-variant/10">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm">
+                    1
+                </div>
+                <h2 class="font-headline-md text-headline-md text-on-surface">Shipping Information</h2>
+            </div>
+            <form class="space-y-6">
+                <!-- Customer Info Section -->
+                <div class="space-y-4">
+                    <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Personal Details</p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="relative">
+                            <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-1">Full
+                                Name</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-body-md focus:bg-white transition-all duration-300"
+                                   placeholder="Evelyn Thorne" type="text"/>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="relative">
+                            <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-1">Email
+                                Address</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-body-md focus:bg-white transition-all duration-300"
+                                   placeholder="evelyn@example.com" type="email"/>
+                        </div>
+                        <div class="relative">
+                            <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-1">Phone
+                                Number</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-body-md focus:bg-white transition-all duration-300"
+                                   placeholder="+1 (555) 000-0000" type="tel"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- Shipping Address Section -->
+                <div class="space-y-4 pt-4">
+                    <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Shipping Address</p>
+                    <div class="relative">
+                        <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-1">Street
+                            Address</label>
+                        <input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-body-md focus:bg-white transition-all duration-300"
+                               placeholder="123 Radiance Blvd" type="text"/>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="relative">
+                            <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-1">Province
+                                / State</label>
+                            <select class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-body-md focus:bg-white transition-all duration-300 appearance-none">
+                                <option>Select Province</option>
+                                <option>California</option>
+                                <option>New York</option>
+                                <option>Ontario</option>
+                                <option>British Columbia</option>
+                            </select>
+                        </div>
+                        <div class="relative">
+                            <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-1">Postal /
+                                Zip Code</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-body-md focus:bg-white transition-all duration-300"
+                                   placeholder="M5V 2L7" type="text"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-8">
+                    <button class="w-full bg-primary text-on-primary py-4 rounded-full font-headline-md text-headline-md shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3"
+                            type="button">
+                        Continue to Payment
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- Right Side: Order Summary -->
+        <div class="w-full md:w-[380px] p-8 md:p-12 bg-surface-container/30 backdrop-blur-sm">
+            <h3 class="font-headline-md text-headline-md text-on-surface mb-8">Order Summary</h3>
+            <div class="space-y-6">
+                <!-- Item 1 -->
+                <div class="flex gap-4">
+                    <div class="w-20 h-20 rounded-2xl overflow-hidden bg-white shrink-0">
+                        <img class="w-full h-full object-cover"
+                             data-alt="A minimalist and premium product shot of a translucent lavender serum bottle with a glass dropper, set against a soft, creamy white background with ethereal lens flares and soft shadows. High-end beauty editorial photography style with a focus on clean lines and radiance."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDl-_E8x5WXdOa0yof6SpZTbsOe19Z2rlSiBBdPa1Vbx1bCSWa4Utdtvng-4A80c9ykUsRnxuPzQbGrRKQVrma2bINcCDnvCbDrYqa6PQzkRFP9ZaL88WdJVT2BxDc2gyBg5jw9Hn8VJ39XDOLvv_PhnaPd2CLQCWFTl8hV9M2c0MZKyBpkIQqGWxf7ejKR07JHXNBQs8lFU3eUnJLMjsPY_l0Al2-cBDNktULzwDTXr0LLt7CbGecCg"/>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h4 class="font-body-md text-body-md font-semibold text-on-surface">Luminous Dew Drops</h4>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+                        <p class="font-body-md text-body-md text-primary font-medium mt-1">$84.00</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="flex gap-4">
+                    <div class="w-20 h-20 rounded-2xl overflow-hidden bg-white shrink-0">
+                        <img class="w-full h-full object-cover"
+                             data-alt="A luxurious aesthetic shot of an opal-colored face cream jar with a brushed gold lid, placed on a marble surface with soft shadows and a sprig of dried lavender. The lighting is warm and golden, evoking a high-end spa atmosphere and premium skincare quality."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVmCMbRhcyEX1dPj4PiPD4LqSsJUuQT7AfO4tiEarz2dYGPHzBa4W_UhIcyjwaukqftDOD-lXHUkBsEhpBzMQNgxt5PRJeRIC5Ty8FmuZy8cCd2EoqSrTdAY2F9IXerS_62IJ-E9ZWsKxg3jMwnKVZ27tQxmQpy9v-Ff59AGWInuyhAlMyKA2zS-fjQDVw2KL5mLvVHsvVeMOa1Q51MdSpNYW-PXUDUhK_XJekP6N3eghjiUL0hcBW9g"/>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h4 class="font-body-md text-body-md font-semibold text-on-surface">Moonlight Velvet Cream</h4>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+                        <p class="font-body-md text-body-md text-primary font-medium mt-1">$120.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 space-y-3 pt-8 border-t border-outline-variant/20">
+                <div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+                    <span>Subtotal</span>
+                    <span>$204.00</span>
+                </div>
+                <div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+                    <span>Shipping</span>
+                    <span class="text-primary font-medium">Free</span>
+                </div>
+                <div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+                    <span>Tax</span>
+                    <span>$16.32</span>
+                </div>
+                <div class="flex justify-between pt-4 font-headline-md text-headline-md text-on-surface">
+                    <span>Total</span>
+                    <span class="text-primary-container">$220.32</span>
+                </div>
+            </div>
+            <div class="mt-8 p-4 rounded-2xl bg-primary-fixed/30 border border-primary-fixed-dim/20">
+                <div class="flex gap-3">
+                    <span class="material-symbols-outlined text-primary" data-weight="fill">verified_user</span>
+                    <p class="font-label-sm text-label-sm text-on-primary-fixed-variant leading-tight">
+                        Secure checkout. Your data is protected by industry-leading encryption protocols.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-low dark:bg-inverse-surface mt-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="col-span-1 md:col-span-1">
+            <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim mb-4">Aura
+                Beauty
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant">© 2024 Aura Beauty. Radiant self-care
+                rituals.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h5 class="font-label-sm text-label-sm text-primary uppercase font-bold">About</h5>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all"
+               href="#">About Us</a>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all"
+               href="#">Sustainability</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h5 class="font-label-sm text-label-sm text-primary uppercase font-bold">Policies</h5>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all"
+               href="{{ url_for('shipping_info') }}">Shipping Policy</a>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all"
+               href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all"
+               href="#">Terms of Service</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h5 class="font-label-sm text-label-sm text-primary uppercase font-bold">Connect</h5>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all"
+               href="#">Instagram</a>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all"
+               href="#">Pinterest</a>
+        </div>
+    </div>
+</footer>
+<script>
+    // Simple micro-interaction for input fields
+    document.querySelectorAll('input, select').forEach(element => {
+        element.addEventListener('focus', () => {
+            element.parentElement.querySelector('label')?.classList.add('text-primary');
+        });
+        element.addEventListener('blur', () => {
+            element.parentElement.querySelector('label')?.classList.remove('text-primary');
+        });
+    });
+</script>
+</body>
+</html>

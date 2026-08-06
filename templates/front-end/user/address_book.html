@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Saved Addresses | Aura Beauty</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .address-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .address-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.08);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#27313f",
+                        "on-primary-fixed-variant": "#5516be",
+                        "inverse-primary": "#d0bcff",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "on-background": "#121c2a",
+                        "on-surface": "#121c2a",
+                        "on-primary-fixed": "#23005c",
+                        "primary-fixed-dim": "#d0bcff",
+                        "error": "#ba1a1a",
+                        "outline": "#7b7486",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "tertiary": "#5d596f",
+                        "primary-container": "#8455ef",
+                        "surface-variant": "#d9e3f6",
+                        "on-secondary-fixed": "#1a1b21",
+                        "on-secondary-container": "#64646b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#494454",
+                        "surface-tint": "#6d3bd7",
+                        "surface-container": "#e6eeff",
+                        "secondary-fixed": "#e3e1ea",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "tertiary-fixed": "#e6dff9",
+                        "on-primary-container": "#fffbff",
+                        "primary": "#6b38d4",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#dee9fc",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#d9e3f6",
+                        "outline-variant": "#cbc3d7",
+                        "secondary": "#5e5e65",
+                        "background": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "surface-dim": "#d0dbed",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed": "#e9ddff",
+                        "secondary-container": "#e3e1ea",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1c192b",
+                        "surface": "#f8f9ff",
+                        "tertiary-container": "#767288"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm">
+    <div class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed-dim">
+            Aura Beauty
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+            <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('home') }}">Home</a>
+            <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('products') }}">Products</a>
+            <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('best_seller') }}">Best Seller</a>
+            <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('new_arrival') }}">New Arrival</a>
+            <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('contact') }}">Contact</a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="relative group hidden sm:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+                <input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-label-sm focus:ring-2 focus:ring-primary/20 w-48 transition-all focus:w-64"
+                       placeholder="Search rituals..." type="text"/>
+            </div>
+            <button class="text-on-surface-variant hover:text-primary transition-colors relative">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                <span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+            </button>
+            <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 active:scale-95 transition-all">
+                Sign In
+            </button>
+        </div>
+    </div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop">
+    <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumbs -->
+        <div class="flex items-center space-x-2 text-on-surface-variant mb-8 font-label-sm text-label-sm">
+            <a class="hover:text-primary transition-colors" href="{{ url_for('account') }}">Account</a>
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+            <span class="text-primary font-semibold">Saved Addresses</span>
+        </div>
+        <!-- Page Header -->
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Saved Addresses</h1>
+                <p class="text-on-surface-variant font-body-md text-body-md max-w-md">
+                    Manage your delivery rituals for a seamless radiance experience.
+                </p>
+            </div>
+            <button class="group flex items-center justify-center space-x-2 bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm text-label-sm shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 active:scale-95 transition-all w-full md:w-auto">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                <span>Add New Address</span>
+            </button>
+        </header>
+        <!-- Address Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <!-- Card 1 (Default) -->
+            <div class="address-card-hover group relative bg-surface-container-lowest border border-outline-variant/30 rounded-[24px] p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">home</span>
+                        </div>
+                        <span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full text-[10px] font-bold tracking-wider uppercase">Default</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Elara Vance</h3>
+                    <p class="text-on-surface-variant font-body-md leading-relaxed mb-4">
+                        742 Serenity Boulevard, Apt 4B<br/>
+                        Radiance District, San Francisco<br/>
+                        CA 94103, United States
+                    </p>
+                    <div class="flex items-center text-on-surface-variant font-label-sm text-label-sm">
+                        <span class="material-symbols-outlined text-[18px] mr-2">call</span>
+                        +1 (555) 824-9102
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 mt-8 pt-6 border-t border-outline-variant/10">
+                    <button class="flex-1 flex items-center justify-center py-2 text-on-surface-variant hover:text-primary hover:bg-primary/5 rounded-xl transition-all font-label-sm text-label-sm">
+                        <span class="material-symbols-outlined text-[18px] mr-2">edit</span>
+                        Edit
+                    </button>
+                    <div class="w-px h-4 bg-outline-variant/30"></div>
+                    <button class="flex-1 flex items-center justify-center py-2 text-on-surface-variant hover:text-error hover:bg-error/5 rounded-xl transition-all font-label-sm text-label-sm">
+                        <span class="material-symbols-outlined text-[18px] mr-2">delete</span>
+                        Remove
+                    </button>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="address-card-hover group bg-surface-container-lowest border border-outline-variant/30 rounded-[24px] p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined">work</span>
+                        </div>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Elara Vance</h3>
+                    <p class="text-on-surface-variant font-body-md leading-relaxed mb-4">
+                        101 Innovation Way, Suite 500<br/>
+                        Silicon Valley, Palo Alto<br/>
+                        CA 94304, United States
+                    </p>
+                    <div class="flex items-center text-on-surface-variant font-label-sm text-label-sm">
+                        <span class="material-symbols-outlined text-[18px] mr-2">call</span>
+                        +1 (555) 902-1134
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 mt-8 pt-6 border-t border-outline-variant/10">
+                    <button class="flex-1 flex items-center justify-center py-2 text-on-surface-variant hover:text-primary hover:bg-primary/5 rounded-xl transition-all font-label-sm text-label-sm">
+                        <span class="material-symbols-outlined text-[18px] mr-2">edit</span>
+                        Edit
+                    </button>
+                    <div class="w-px h-4 bg-outline-variant/30"></div>
+                    <button class="flex-1 flex items-center justify-center py-2 text-on-surface-variant hover:text-error hover:bg-error/5 rounded-xl transition-all font-label-sm text-label-sm">
+                        <span class="material-symbols-outlined text-[18px] mr-2">delete</span>
+                        Remove
+                    </button>
+                </div>
+            </div>
+            <!-- Empty/Add New State Card -->
+            <button class="group bg-surface-container-low/40 border-2 border-dashed border-outline-variant/50 rounded-[24px] p-8 flex flex-col items-center justify-center text-center min-h-[320px] hover:border-primary/50 hover:bg-surface-container transition-all">
+                <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary text-[32px]">add_location_alt</span>
+                </div>
+                <h4 class="font-headline-md text-headline-md text-on-surface-variant mb-1">New Destination</h4>
+                <p class="text-on-surface-variant font-label-sm text-label-sm">Add another ritual sanctuary</p>
+            </button>
+        </div>
+        <!-- Dashboard Navigation Shortcut -->
+        <div class="mt-section-gap grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-surface-container-high/30 p-6 rounded-[20px] flex items-center space-x-4 cursor-pointer hover:bg-white transition-all shadow-sm">
+                <span class="material-symbols-outlined text-primary">person</span>
+                <span class="font-label-sm text-label-sm font-semibold">Profile Settings</span>
+            </div>
+            <div class="bg-surface-container-high/30 p-6 rounded-[20px] flex items-center space-x-4 cursor-pointer hover:bg-white transition-all shadow-sm">
+                <span class="material-symbols-outlined text-primary">local_shipping</span>
+                <span class="font-label-sm text-label-sm font-semibold">Order History</span>
+            </div>
+            <div class="bg-surface-container-high/30 p-6 rounded-[20px] flex items-center space-x-4 cursor-pointer hover:bg-white transition-all shadow-sm">
+                <span class="material-symbols-outlined text-primary">credit_card</span>
+                <span class="font-label-sm text-label-sm font-semibold">Payment Methods</span>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface w-full py-section-gap mt-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="col-span-1 md:col-span-1">
+            <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim mb-4">Aura
+                Beauty
+            </div>
+            <p class="text-on-surface-variant dark:text-secondary-fixed-dim font-body-md text-body-md">
+                © 2024 Aura Beauty. Radiant self-care rituals.
+            </p>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm font-bold text-primary dark:text-primary-fixed-dim mb-6 uppercase tracking-widest">
+                Brand</h4>
+            <ul class="space-y-4">
+                <li>
+                    <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary font-label-sm text-label-sm transition-transform hover:translate-x-1 inline-block"
+                       href="#">About Us</a></li>
+                <li>
+                    <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary font-label-sm text-label-sm transition-transform hover:translate-x-1 inline-block"
+                       href="#">Sustainability</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm font-bold text-primary dark:text-primary-fixed-dim mb-6 uppercase tracking-widest">
+                Support</h4>
+            <ul class="space-y-4">
+                <li>
+                    <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary font-label-sm text-label-sm transition-transform hover:translate-x-1 inline-block"
+                       href="{{ url_for('shipping_info') }}">Shipping Policy</a></li>
+                <li>
+                    <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary font-label-sm text-label-sm transition-transform hover:translate-x-1 inline-block"
+                       href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+                <li>
+                    <a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary font-label-sm text-label-sm transition-transform hover:translate-x-1 inline-block"
+                       href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm font-bold text-primary dark:text-primary-fixed-dim mb-6 uppercase tracking-widest">
+                Connect</h4>
+            <div class="flex space-x-6">
+                <a class="text-on-surface-variant hover:text-primary transition-all" href="#">
+                    <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg>
+                </a>
+                <a class="text-on-surface-variant hover:text-primary transition-all" href="#">
+                    <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                        <path d="M12 0c-6.627 0-12 5.372-12 12s5.373 12 12 12 12-5.372 12-12-5.373-12-12-12zm6.371 18.494c-.681-.41-1.313-1.1-1.313-1.1l-1.353-.591c-.51-.223-.746-.782-.523-1.291.139-.317.438-.535.782-.573l.666-.073c.189-.021.36-.098.487-.218l.84-.79c.27-.253.418-.61.418-.974 0-1.077-.872-1.95-1.95-1.95-.561 0-1.096.241-1.467.662l-1.408 1.609c-.198.226-.492.355-.8.355h-.451c-.328 0-.642-.142-.857-.389l-1.042-1.192c-.22-.251-.318-.584-.27-.912.115-.795.733-1.42 1.523-1.536.42-.062.846.046 1.189.301l.86.638c.196.146.438.224.686.224h.98c.328 0 .643-.142.857-.389l.343-.393c.273-.311.391-.722.327-1.127l-.121-.762c-.058-.363-.255-.688-.549-.908l-1.071-.804c-.312-.234-.7-.361-1.098-.361h-2.14c-.677 0-1.226-.549-1.226-1.226s.549-1.226 1.226-1.226h.88c.328 0 .642.142.857.389l.235.269c.214.246.528.388.857.388h1.226c.677 0 1.226.549 1.226 1.226s-.549 1.226-1.226 1.226h-.414c-.328 0-.642-.142-.857-.389l-.235-.269c-.214-.246-.528-.388-.857-.388h-.88c-.677 0-1.226-.549-1.226-1.226s.549-1.226 1.226-1.226h.414c.328 0 .642-.142.857-.389l.235-.269c.214-.246.528-.388.857-.388h1.226c1.354 0 2.451 1.098 2.451 2.451s-1.098 2.451-2.451 2.451h-.414c-.328 0-.642-.142-.857-.389l-.235-.269c-.214-.246-.528-.388-.857-.388h-.88c-.677 0-1.226-.549-1.226-1.226s.549-1.226 1.226-1.226h.414c.328 0 .642-.142.857-.389l.235-.269c.214-.246.528-.388.857-.388h1.226c2.03 0 3.676 1.646 3.676 3.676 0 .546-.119 1.063-.332 1.528l-1.272 2.766c-.198.431-.594.733-1.062.81l-1.309.218c-.463.077-.923-.105-1.21-.476l-.216-.279c-.19-.245-.484-.389-.796-.389h-1.031c-.328 0-.642.142-.857.389l-.216.279c-.287.371-.747.553-1.21.476l-1.309-.218c-.468-.077-.864-.379-1.062-.81l-1.272-2.766c-.213-.465-.332-.982-.332-1.528 0-2.03 1.646-3.676 3.676-3.676h1.226c.328 0 .642.142.857.389l.216.279c.287.371.747.553 1.21.476l1.309-.218c.468-.077.864-.379 1.062-.81l.301-.655c.423-.92.359-1.986-.174-2.846l-.508-.818c-.3-.483-.827-.779-1.393-.779h-2.143c-.566 0-1.093.296-1.393.779l-.508.818c-.533.86-.597 1.926-.174 2.846l.301.655c.198.431.594.733 1.062.81l1.309.218c.463.077.923-.105 1.21-.476l.216-.279c.19-.245.484-.389.796-.389h1.031c.328 0 .642.142.857.389l.216.279c.287.371.747.553 1.21.476l1.309-.218c.468-.077.864-.379 1.062-.81l1.272-2.766c.213-.465.332-.982.332-1.528 0-2.03-1.646-3.676-3.676-3.676h-1.226c-.328 0-.642-.142-.857-.389l-.216-.279c-.287-.371-.747-.553-1.21-.476l-1.309.218c-.468.077-.864.379-1.062.81l-1.272 2.766c-.213.465-.332.982-.332 1.528 0 2.03 1.646 3.676 3.676 3.676h1.226c.328 0 .642.142.857.389l.216.279c.287.371.747.553 1.21.476l1.309-.218c.468-.077.864-.379 1.062-.81l1.272-2.766c.213-.465.332-.982.332-1.528 0-2.03-1.646-3.676-3.676-3.676h-1.226c-.328 0-.642-.142-.857-.389l-.216-.279c-.287-.371-.747-.553-1.21-.476l-1.309.218c-.468.077-.864.379-1.062.81l-1.272 2.766c-.213.465-.332.982-.332 1.528 0 2.03 1.646 3.676 3.676 3.676h1.226c.328 0 .642.142.857.389l.216.279c.287.371.747.553 1.21.476l1.309-.218c.468-.077.864-.379 1.062-.81l1.272-2.766c.213-.465.332-.982.332-1.528 0-2.03-1.646-3.676-3.676-3.676h-1.226c-.328 0-.642-.142-.857-.389l-.216-.279c-.287-.371-.747-.553-1.21-.476l-1.309.218c-.468.077-.864.379-1.062.81l-1.272 2.766c-.213.465-.332.982-.332 1.528 0 2.03 1.646-3.676 3.676-3.676h1.226c.328 0 .642.142.857.389l.216.279c.287.371.747.553 1.21.476l1.309-.218c.468-.077.864-.379 1.062-.81l1.272-2.766c.213-.465.332-.982.332-1.528 0-2.03-1.646-3.676-3.676-3.676h-1.226c-.328 0-.642-.142-.857-.389l-.216-.279c-.287-.371-.747-.553-1.21-.476l-1.309.218c-.468.077-.864.379-1.062.81l-1.272 2.766z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Interactive Micro-interactions -->
+<script>
+    // Simple hover lift effect for cards handled by CSS
+    // Placeholder for potentially adding search logic or address modal
+    document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('mousedown', () => {
+            btn.style.transform = 'scale(0.95)';
+        });
+        btn.addEventListener('mouseup', () => {
+            btn.style.transform = 'scale(1)';
+        });
+    });
+
+    // Sticky Navbar background opacity on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 20) {
+            nav.classList.add('shadow-md');
+            nav.classList.replace('bg-surface/80', 'bg-surface/95');
+        } else {
+            nav.classList.remove('shadow-md');
+            nav.classList.replace('bg-surface/95', 'bg-surface/80');
+        }
+    });
+</script>
+</body>
+</html>

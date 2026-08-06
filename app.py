@@ -51,20 +51,20 @@ def stuff(tab='dashboard'):
 
 
 # ======================================
-# FRONT-END ROUTES
+# FRONT-END ROUTES (templates/front-end/)
 # ======================================
 
 # 1. HOME
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template("front/home.html", products=data_store.PRODUCTS_DB)
+    return render_template("front-end/guest/home.html", products=data_store.PRODUCTS_DB)
 
 
 # 2. ERROR HANDLER (404)
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('front/page404.html'), 404
+    return render_template('front-end/errors/404.html'), 404
 
 
 # 3. PRODUCTS CATALOG (PAGINATION)
@@ -82,12 +82,17 @@ def product():
     products = data_store.PRODUCTS_DB[start:end]
 
     return render_template(
-        'front/products.html',
+        'front-end/guest/products.html',
         products=products,
         page=page,
         total_pages=total_pages,
         total_products=total_products
     )
+
+
+@app.route('/products-alias', endpoint='products')
+def products_alias():
+    return redirect(url_for('product'))
 
 
 # 4. PRODUCT DETAIL
@@ -103,10 +108,10 @@ def product_detail(product_id=None):
     )
 
     if product is None:
-        return render_template('front/page404.html'), 404
+        return render_template('front-end/errors/404.html'), 404
 
     response = make_response(
-        render_template("front/product-detail.html", product=product, products=data_store.PRODUCTS_DB)
+        render_template("front-end/guest/product_detail.html", product=product, products=data_store.PRODUCTS_DB)
     )
     response.set_cookie(
         'last_viewed_product',
@@ -153,7 +158,7 @@ def cart():
     subtotal, tax, total = calculate_cart(cart_items)
 
     return render_template(
-        'front/cart.html',
+        'front-end/guest/cart.html',
         cart=cart_items,
         subtotal=subtotal,
         tax=tax,
@@ -168,7 +173,7 @@ def checkout():
     subtotal, tax, total = calculate_cart(cart)
 
     return render_template(
-        "front/checkout.html",
+        "front-end/popup/checkout_model.html",
         cart=cart,
         subtotal=subtotal,
         tax=tax,
@@ -179,7 +184,7 @@ def checkout():
 @app.route('/checkout/complete')
 def checkout_complete():
     response = make_response(
-        render_template("front/receipt.html")
+        render_template("front-end/popup/receipt_model.html")
     )
     response.set_cookie('cart', '', expires=0, path='/')
     return response
@@ -192,7 +197,7 @@ def receipt():
     subtotal, tax, total = calculate_cart(cart)
 
     return render_template(
-        "front/receipt.html",
+        "front-end/popup/receipt_model.html",
         cart=cart,
         subtotal=subtotal,
         tax=tax,
@@ -222,7 +227,7 @@ def payment():
         })
 
     return render_template(
-        "front/payment.html",
+        "front-end/popup/payment_model.html",
         shipping=shipping,
         cart=cart,
         subtotal=subtotal,
@@ -234,7 +239,7 @@ def payment():
 @app.route('/process-payment', methods=['POST'])
 def process_payment():
     response = make_response(
-        render_template('front/receipt.html')
+        render_template('front-end/popup/receipt_model.html')
     )
     response.delete_cookie('cart', path='/')
     response.delete_cookie('shipping', path='/')
@@ -247,7 +252,7 @@ def payment_success():
     subtotal, tax, total = calculate_cart(cart)
 
     resp = make_response(render_template(
-        "front/receipt.html",
+        "front-end/popup/receipt_model.html",
         cart=cart,
         subtotal=subtotal,
         tax=tax,
@@ -332,7 +337,7 @@ def new_arrival():
         if p.get("is_new_arrival")
     ]
     return render_template(
-        "front/new_arrival.html",
+        "front-end/guest/new_arrival.html",
         products=products
     )
 
@@ -345,7 +350,7 @@ def best_seller():
         if p.get("is_best_seller")
     ]
     return render_template(
-        "front/best_seller.html",
+        "front-end/guest/best_seller.html",
         products=products
     )
 
@@ -373,7 +378,7 @@ def products_by_category():
     products = filtered[start:end]
 
     return render_template(
-        'front/products.html',
+        'front-end/guest/products.html',
         products=products,
         page=page,
         total_pages=total_pages,
@@ -381,7 +386,77 @@ def products_by_category():
     )
 
 
-# 12. CART ACTIONS (ADD, REMOVE, UPDATE)
+# 12. GUEST PAGES (CONTACT, SHIPPING, PRIVACY, RETURNS)
+@app.route('/contact')
+def contact():
+    return render_template('front-end/guest/contact.html')
+
+
+@app.route('/shipping-info')
+def shipping_info():
+    return render_template('front-end/guest/shipping_info.html')
+
+
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('front-end/guest/privacy_policy.html')
+
+
+@app.route('/returns')
+def returns():
+    return render_template('front-end/guest/shipping_info.html')
+
+
+# 13. AUTH ROUTES
+@app.route('/signin')
+@app.route('/login')
+def signin():
+    return render_template('front-end/auth/signin.html')
+
+
+@app.route('/signup')
+@app.route('/register')
+def signup():
+    return render_template('front-end/auth/signup.html')
+
+
+@app.route('/forgot-password')
+def forgot_password():
+    return render_template('front-end/auth/forgot_password.html')
+
+
+# 14. USER PROFILE ROUTES
+@app.route('/profile')
+def profile():
+    return render_template('front-end/user/profile.html')
+
+
+@app.route('/profile/edit')
+def edit_profile():
+    return render_template('front-end/user/edit_profile.html')
+
+
+@app.route('/profile/orders')
+def order_history():
+    return render_template('front-end/user/order_history.html')
+
+
+@app.route('/wishlist')
+def wishlist():
+    return render_template('front-end/user/wishlist.html')
+
+
+@app.route('/address-book')
+def address_book():
+    return render_template('front-end/user/address_book.html')
+
+
+@app.route('/change-password')
+def change_password():
+    return render_template('front-end/user/change_password.html')
+
+
+# 15. CART ACTIONS (ADD, REMOVE, UPDATE)
 @app.route('/cart/add', methods=['POST'])
 def cart_add():
     product_id = request.form.get('product_id', type=int)

@@ -43,8 +43,13 @@
         <!-- Links -->
         <div class="flex items-center gap-8">
 
+            <a href="{{ url_for('home') }}"
+               class="nav-link text-base font-medium transition-colors duration-200 {% if request.endpoint == 'home' %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
+                Home
+            </a>
+
             <a href="{{ url_for('product') }}"
-               class="nav-link text-base font-medium transition-colors duration-200 {% if request.endpoint == 'product' %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
+               class="nav-link text-base font-medium transition-colors duration-200 {% if request.endpoint in ['product', 'products_by_category', 'product_detail'] %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
                 Product
             </a>
 
@@ -59,7 +64,7 @@
             </a>
 
             <a href="{{ url_for('cart') }}"
-               class="nav-link relative flex items-center gap-2 text-base font-medium transition-colors duration-200 {% if request.endpoint == 'cart' %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
+               class="nav-link relative flex items-center gap-2 text-base font-medium transition-colors duration-200 {% if request.endpoint in ['cart', 'checkout', 'payment', 'receipt'] %}text-primary font-semibold{% else %}text-white/80 hover:text-white{% endif %}">
 
                 <span>Cart</span>
 

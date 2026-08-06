@@ -1,0 +1,36 @@
+<!-- Product Card & Badges (Span 4) -->
+<section class="md:col-span-4 flex flex-col gap-8">
+    <div class="p-8 bg-surface-container-lowest rounded-xl ambient-shadow group overflow-hidden relative">
+        <div class="absolute top-4 left-4 z-10 flex flex-col gap-2">
+            <span class="bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider">Best Seller</span>
+            <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider">Vegan</span>
+        </div>
+        <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-md text-on-surface-variant hover:text-primary transition-colors">
+            <span class="material-symbols-outlined" data-weight="fill">favorite</span>
+        </button>
+        <div class="aspect-square mb-6 overflow-hidden rounded-lg">
+            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                 data-alt="A minimalist, high-end studio product photograph of a sleek purple glass skincare bottle resting on a reflective white surface. Soft, diffused lavender lighting creates an ethereal glow. The composition is centered, airy, and clean, emphasizing a premium and scientific aesthetic suitable for a luxury beauty brand."
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3JDU4Zlk0lpy5SLtZ7ifZyvhyFhGuho9va5yrE_HampSMY4Ll1ayo7_4Ih2n07E85rgMFsfCalK-sSQkjdZxqj028Z0WAi_guFN6TOSscJa7B3sGzzVFSAr6PtiP8crJhju9L54coId85CTvnjeMbxF6UdLXioLOe4YaUVEv8nyJveYYS98XORbRabKRgSBWm9EI7s7V_0jNPyIeUuFPUTJPh5je_nhtRbkVbVGiSOV2Y4CD7ah42rg"/>
+        </div>
+        <div class="space-y-2">
+            <h3 class="font-headline-md text-headline-md text-on-surface">Celestial Serum</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">Advanced Radiance Complex</p>
+            <div class="flex justify-between items-center pt-4">
+                <span class="font-headline-md text-headline-md text-primary">$84.00</span>
+                <button class="p-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="p-8 bg-surface-container rounded-xl">
+        <h4 class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-6">Badges &amp;
+            Tags</h4>
+        <div class="flex flex-wrap gap-3">
+            <span class="bg-primary/10 text-primary px-4 py-2 rounded-full font-label-sm text-label-sm">New Arrival</span>
+            <span class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-label-sm text-label-sm">Limited Edition</span>
+            <span class="bg-error-container text-on-error-container px-4 py-2 rounded-full font-label-sm text-label-sm">Out of Stock</span>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#8455ef",
+                        "surface-variant": "#d9e3f6",
+                        "secondary-container": "#e3e1ea",
+                        "outline": "#7b7486",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "secondary-fixed": "#e3e1ea",
+                        "primary-fixed-dim": "#d0bcff",
+                        "surface-container-high": "#dee9fc",
+                        "outline-variant": "#cbc3d7",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f8f9ff",
+                        "tertiary-container": "#767288",
+                        "surface-tint": "#6d3bd7",
+                        "tertiary": "#5d596f",
+                        "surface-container-highest": "#d9e3f6",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed": "#1c192b",
+                        "inverse-surface": "#27313f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#121c2a",
+                        "on-surface-variant": "#494454",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "on-primary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e6dff9",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed": "#1a1b21",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#d0bcff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-surface": "#121c2a",
+                        "surface-container": "#e6eeff",
+                        "primary": "#6b38d4",
+                        "on-primary-fixed": "#23005c",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#64646b",
+                        "background": "#f8f9ff",
+                        "primary-fixed": "#e9ddff",
+                        "secondary": "#5e5e65",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(203, 195, 215, 0.3);
+        }
+
+        .animate-check {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: dash 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .floating-blur {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative overflow-x-hidden">
+<!-- Decorative Animated Background Elements -->
+<div class="floating-blur bg-primary left-[-10%] top-[10%]"></div>
+<div class="floating-blur bg-surface-container-high right-[-5%] bottom-[5%]"></div>
+<!-- Navigation Header (from JSON context) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm">
+    <div class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md font-bold tracking-tight text-primary">Aura Beauty</div>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+               href="{{ url_for('home') }}">Home</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+               href="{{ url_for('products') }}">Products</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+               href="{{ url_for('best_seller') }}">Best Seller</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+               href="{{ url_for('new_arrival') }}">New Arrival</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button class="p-2 hover:bg-surface-container-high/50 rounded-full transition-all">
+                <span class="material-symbols-outlined text-primary" data-icon="shopping_cart">shopping_cart</span>
+            </button>
+            <button class="px-6 py-2 bg-primary text-on-primary rounded-full font-label-sm text-label-sm active:scale-95 transition-all">
+                Sign In
+            </button>
+        </div>
+    </div>
+</header>
+<!-- Main Content Area / Overlay Simulation -->
+<main class="pt-20 flex items-center justify-center min-h-screen p-4 md:p-margin-desktop">
+    <!-- Receipt Modal Container -->
+    <div class="glass-panel w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 scale-100 flex flex-col md:flex-row">
+        <!-- Left Side: Success Message & Branding -->
+        <div class="bg-primary/5 p-8 md:w-1/3 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-outline-variant/20">
+            <div class="relative w-24 h-24 mb-6">
+                <div class="absolute inset-0 bg-primary/10 rounded-full animate-ping"></div>
+                <div class="relative flex items-center justify-center w-full h-full bg-primary rounded-full shadow-lg">
+                    <svg class="w-12 h-12 text-on-primary" fill="none" stroke="currentColor" stroke-width="3"
+                         viewbox="0 0 24 24">
+                        <path class="animate-check" d="M5 13l4 4L19 7" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="font-headline-md text-headline-md text-primary mb-2">Order Confirmed!</h1>
+            <p class="font-label-sm text-label-sm text-on-surface-variant">Your ritual begins soon. We've received your
+                order and are preparing it with care.</p>
+            <div class="mt-12 hidden md:block">
+                <div class="w-24 h-24 mx-auto bg-cover bg-center rounded-2xl shadow-sm grayscale opacity-30"
+                     data-alt="A minimalist aesthetic still life of an elegant frosted glass perfume bottle on a marble surface with soft, ethereal morning light and purple lavender accents. The scene is clean, premium, and tranquil, reflecting a luxury beauty brand's visual identity."
+                     style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAy3ejkJT3OsQHa2dbqHz3kK0eFpSoaENAzC66owqnHx6tHDC5Iml4WYnKlZIlTtmHLaaFBT0wBqTjHsPiletA7dboQ3e_urKo4r9aWb94NWuxIrFQMsePI2WNFBwPTjpvYMMet7lycx7QKt4ZNZjl4UxfIKC6O45IPGGkVI7_7A_0vG-a-w2gh23NQRvrRg3T0YUuLeUG0nhNVHZ_4I0JqNDZhAQ8RXOSXeHCeuIOHOku8segZw6ceqg')"></div>
+            </div>
+        </div>
+        <!-- Right Side: Order Details -->
+        <div class="p-8 md:w-2/3 flex flex-col">
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-1">Order ID</span>
+                    <span class="font-body-lg text-body-lg font-bold text-on-background">#AB-92485712</span>
+                </div>
+                <div class="text-right">
+                    <span class="font-label-sm text-label-sm text-outline block mb-1">Date</span>
+                    <span class="font-body-md text-body-md text-on-surface-variant">May 24, 2024</span>
+                </div>
+            </div>
+            <!-- Product Summary -->
+            <div class="mb-8">
+                <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-4">Summary of Products</span>
+                <div class="space-y-4">
+                    <!-- Product Item -->
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container flex-shrink-0">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                 data-alt="Close-up of a premium glass serum bottle with a minimalist label titled 'Radiance Serum' on a soft lavender background. Ethereal lighting creates soft reflections on the glass. High-end skincare product photography."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsmWFVcV-RCdQvEGvuX3DE3A4OWHYKh-1WZtamdDOtvs3mvOtVmf2ZXv3cfMaaXwVlvA94ut_XrGY1ZPPOMyVdtgxBRZ4F84WioFGhN9ZALYauk1WdC9rGHT2LFKNqoZzWuf_-H6RUqJ2eqmJIPHvYVU36RuBiqmyqXO3SWqFAsqk6ECCOCGyxDEHwoAARh-b-NQ995ORZT2V4qLCqfM4-pCbafnSRU73f7rBBhawSI_iXayI-aB9mfw"/>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-body-md text-body-md font-semibold text-on-background">Radiance Elixir
+                                Serum</h4>
+                            <p class="font-label-sm text-label-sm text-on-surface-variant">30ml • Qty: 1</p>
+                        </div>
+                        <span class="font-body-md text-body-md font-medium text-primary">$89.00</span>
+                    </div>
+                    <!-- Product Item -->
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container flex-shrink-0">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                 data-alt="A soft-focus image of an artisanal jar of botanical cleansing balm, surrounded by delicate white flower petals. The lighting is warm and natural, creating a sense of organic luxury and peaceful self-care. Professional lifestyle product shot."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjncNhoCZmh_bV-ovdEx3nCY_6QuRPNIadi0_vvkEON88ljRG5Q8K1IRndnzDafqmtxB-QCca9bTb7q6SC0JIVPSVHkQDhj2-LR0Qq3N5DD910-MhRlQUWKHFrjaa80zyDhbr5FAzCGKozcDPkMly0_-EzuN2AyS-M-2Opju8KxGwkOPFyB50MoKCXyc15g_rjgtTNDkPCPCmYRQz73NYEzudMcvy6K39lV6x3f0lsnjSq1aVGdbicOQ"/>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-body-md text-body-md font-semibold text-on-background">Botanical Balm</h4>
+                            <p class="font-label-sm text-label-sm text-on-surface-variant">100g • Qty: 1</p>
+                        </div>
+                        <span class="font-body-md text-body-md font-medium text-primary">$45.00</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Info Grid -->
+            <div class="grid grid-cols-2 gap-8 mb-8 pt-8 border-t border-outline-variant/20">
+                <div>
+                    <span class="font-label-sm text-label-sm text-outline uppercase block mb-2">Customer</span>
+                    <p class="font-body-md text-body-md text-on-surface">Eleanor Vance</p>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">eleanor.v@aura.com</p>
+                </div>
+                <div>
+                    <span class="font-label-sm text-label-sm text-outline uppercase block mb-2">Estimate</span>
+                    <p class="font-body-md text-body-md text-on-surface">May 28 - 30</p>
+                    <p class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]"
+                              data-icon="local_shipping">local_shipping</span>
+                        Premium Courier
+                    </p>
+                </div>
+            </div>
+            <!-- Total Row -->
+            <div class="flex justify-between items-center mb-8 p-4 bg-surface-container/30 rounded-2xl">
+                <span class="font-body-lg text-body-lg font-bold text-on-background">Total Amount</span>
+                <span class="font-headline-md text-headline-md font-bold text-primary">$134.00</span>
+            </div>
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                <button class="flex-1 px-6 py-4 bg-primary text-on-primary rounded-full font-label-sm text-label-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:translate-y-[-2px] active:scale-95 transition-all">
+                    <span class="material-symbols-outlined" data-icon="download">download</span>
+                    Download Receipt
+                </button>
+                <button class="flex-1 px-6 py-4 bg-secondary-container text-primary rounded-full font-label-sm text-label-sm font-bold flex items-center justify-center gap-2 hover:bg-secondary-fixed active:scale-95 transition-all">
+                    <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer (from JSON context) -->
+<footer class="w-full py-section-gap bg-surface-container-low dark:bg-inverse-surface mt-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="col-span-1 md:col-span-1">
+            <div class="font-headline-md text-headline-md font-bold text-primary mb-4">Aura Beauty</div>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Crafting a sanctuary of radiant
+                self-care rituals for the modern spirit.</p>
+        </div>
+        <div>
+            <h5 class="font-label-sm text-label-sm text-primary font-semibold mb-6 uppercase tracking-widest">
+                Explore</h5>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">About Us</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">Sustainability</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5 class="font-label-sm text-label-sm text-primary font-semibold mb-6 uppercase tracking-widest">
+                Support</h5>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="{{ url_for('shipping_info') }}">Shipping Policy</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5 class="font-label-sm text-label-sm text-primary font-semibold mb-6 uppercase tracking-widest">
+                Social</h5>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">Instagram</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block"
+                       href="#">Pinterest</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-outline-variant/10 text-center">
+        <p class="font-label-sm text-label-sm text-outline">© 2024 Aura Beauty. Radiant self-care rituals.</p>
+    </div>
+</footer>
+<script>
+    // Simple entrance animation for the modal
+    window.addEventListener('DOMContentLoaded', () => {
+        const modal = document.querySelector('.glass-panel');
+        modal.style.opacity = '0';
+        modal.style.transform = 'translateY(20px) scale(0.98)';
+
+        setTimeout(() => {
+            modal.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            modal.style.opacity = '1';
+            modal.style.transform = 'translateY(0) scale(1)';
+        }, 100);
+    });
+
+    // Hover tilt effect on modal (Desktop only)
+    if (window.innerWidth > 768) {
+        const modal = document.querySelector('.glass-panel');
+        modal.addEventListener('mousemove', (e) => {
+            const rect = modal.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 50;
+            const rotateY = (centerX - x) / 50;
+
+            modal.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        modal.addEventListener('mouseleave', () => {
+            modal.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        });
+    }
+</script>
+</body>
+</html>

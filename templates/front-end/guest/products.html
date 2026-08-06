@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Aura Beauty | Radiant Collections</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#8455ef",
+                        "surface-variant": "#d9e3f6",
+                        "secondary-container": "#e3e1ea",
+                        "outline": "#7b7486",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "secondary-fixed": "#e3e1ea",
+                        "primary-fixed-dim": "#d0bcff",
+                        "surface-container-high": "#dee9fc",
+                        "outline-variant": "#cbc3d7",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f8f9ff",
+                        "tertiary-container": "#767288",
+                        "surface-tint": "#6d3bd7",
+                        "tertiary": "#5d596f",
+                        "surface-container-highest": "#d9e3f6",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed": "#1c192b",
+                        "inverse-surface": "#27313f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#121c2a",
+                        "on-surface-variant": "#494454",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "on-primary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e6dff9",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed": "#1a1b21",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#d0bcff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-surface": "#121c2a",
+                        "surface-container": "#e6eeff",
+                        "primary": "#6b38d4",
+                        "on-primary-fixed": "#23005c",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#64646b",
+                        "background": "#f8f9ff",
+                        "primary-fixed": "#e9ddff",
+                        "secondary": "#5e5e65",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .ambient-shadow {
+            box-shadow: 0 10px 40px -10px rgba(107, 56, 212, 0.08);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px -12px rgba(107, 56, 212, 0.12);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbc3d7;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary/20 selection:text-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm">
+    <div class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+        <div class="flex items-center gap-12">
+            <a class="font-headline-md text-headline-md font-bold tracking-tight text-primary" href="{{ url_for('home') }}">Aura Beauty</a>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+                   href="{{ url_for('home') }}">Home</a>
+                <a class="font-label-sm text-label-sm text-primary border-b-2 border-primary pb-1" href="{{ url_for('products') }}">Products</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+                   href="{{ url_for('best_seller') }}">Best Seller</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+                   href="{{ url_for('new_arrival') }}">New Arrival</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+                   href="{{ url_for('contact') }}">Contact</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="relative group hidden lg:block">
+                <input class="bg-surface-container-low border-none rounded-full px-6 py-2 w-64 text-body-md focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline"
+                       placeholder="Search rituals..." type="text"/>
+                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            </div>
+            <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container-high/50">
+                shopping_cart
+            </button>
+            <button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-sm text-label-sm hover:scale-95 transition-transform duration-200">
+                Sign In
+            </button>
+        </div>
+    </div>
+</nav>
+<!-- Main Content Layout -->
+<main class="pt-32 pb-section-gap px-margin-desktop max-w-container-max mx-auto min-h-screen">
+    <!-- Header & Breadcrumbs -->
+    <header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+            <div class="flex items-center gap-2 text-outline mb-4">
+                <span class="font-label-sm text-[10px] uppercase tracking-widest">Collections</span>
+                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                <span class="font-label-sm text-[10px] uppercase tracking-widest text-primary">All Products</span>
+            </div>
+            <h1 class="font-headline-lg text-headline-lg text-on-background">Curated Radiance</h1>
+            <p class="text-on-surface-variant max-w-lg mt-2 font-body-md">Scientific innovation meets sensorial delight.
+                Explore our complete range of high-performance skincare.</p>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-label-sm font-label-sm text-outline">Sort by:</span>
+            <div class="relative">
+                <select class="appearance-none bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-2 pr-10 text-body-md focus:ring-2 focus:ring-primary/20 cursor-pointer outline-none transition-all">
+                    <option>Recommended</option>
+                    <option>Newest First</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+            </div>
+        </div>
+    </header>
+    <div class="flex flex-col lg:flex-row gap-gutter">
+        <!-- Sidebar Filter -->
+        <aside class="w-full lg:w-64 flex-shrink-0 space-y-10">
+            <!-- Categories -->
+            <section>
+                <h3 class="font-label-sm text-label-sm text-on-background uppercase tracking-widest mb-4">Category</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input checked=""
+                               class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Cleansers (12)</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Serums (24)</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Moisturizers (18)</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Sun Care (8)</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Treatments (15)</span>
+                    </label>
+                </div>
+            </section>
+            <!-- Brand -->
+            <section>
+                <h3 class="font-label-sm text-label-sm text-on-background uppercase tracking-widest mb-4">Brand</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Aura Essence</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Bio-Lumina</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                               type="checkbox"/>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Hydro-Quench</span>
+                    </label>
+                </div>
+            </section>
+            <!-- Price Range -->
+            <section>
+                <h3 class="font-label-sm text-label-sm text-on-background uppercase tracking-widest mb-4">Price
+                    Range</h3>
+                <input class="w-full h-1.5 bg-secondary-container rounded-lg appearance-none cursor-pointer accent-primary mb-2"
+                       type="range"/>
+                <div class="flex justify-between text-label-sm text-outline font-label-sm">
+                    <span>$20</span>
+                    <span>$500+</span>
+                </div>
+            </section>
+            <!-- Rating -->
+            <section>
+                <h3 class="font-label-sm text-label-sm text-on-background uppercase tracking-widest mb-4">Rating</h3>
+                <div class="space-y-3">
+                    <button class="flex items-center gap-2 group w-full text-left">
+                        <div class="flex text-primary">
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <span class="text-body-md text-on-surface-variant group-hover:text-primary">&amp; Up</span>
+                    </button>
+                </div>
+            </section>
+            <!-- Clear Filters -->
+            <button class="text-primary font-label-sm text-label-sm hover:underline underline-offset-4">Reset all
+                filters
+            </button>
+        </aside>
+        <!-- Product Grid -->
+        <div class="flex-grow">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+                <!-- Product Card 1 -->
+                <article
+                        class="group bg-surface-container-lowest rounded-xl p-4 transition-all duration-500 ambient-shadow card-hover relative">
+                    <div class="aspect-[4/5] rounded-lg overflow-hidden bg-surface-container-low mb-6 relative">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             data-alt="A minimalist, high-end skincare product shot featuring a sleek glass dropper bottle containing a pearlescent serum. The product is placed on a smooth, white marble surface with soft, diffused ethereal lighting creating subtle lavender-tinted shadows. The background is a clean, bright white, evoking a sense of purity and premium quality."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11Yvp_M0kxH0OnSUD5KWk4HuqEgkhNZuS56f58Wdw2rJYeZV4MNEOlhSAdGbKJI3baRFPgPjRhMSMUqAHfHm_tRnkMg-YbDRkMUFLqRmrJTxP71dtqppYX5WDHjmFRPYrjzx_YnBcc_Gf6R8_h-ojn0ll5CuhldEE_7pDqoha9sxHL91jv0-HQDFkdT_FpFjfGzUjdYBtfoGGxrxLNOnOj6jpTY82HrTMzIAZieSEvOigklrV3YcVPA"/>
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-on-primary font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-tighter">Bestseller</span>
+                        </div>
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-error transition-colors shadow-sm">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </button>
+                    </div>
+                    <div class="px-2">
+                        <p class="font-label-sm text-[11px] text-outline uppercase tracking-widest mb-1">Aura
+                            Essence</p>
+                        <h3 class="font-headline-md text-body-lg font-semibold text-on-background group-hover:text-primary transition-colors cursor-pointer">
+                            Luminous Dew Serum</h3>
+                        <div class="flex items-center gap-2 mt-1 mb-3">
+                            <div class="flex text-primary/60 scale-75 -ml-3">
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined">star_half</span>
+                            </div>
+                            <span class="text-label-sm text-outline">(124 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-headline-md text-headline-md text-primary">$85.00</span>
+                            <button class="bg-surface-container-high text-primary p-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 2 -->
+                <article
+                        class="group bg-surface-container-lowest rounded-xl p-4 transition-all duration-500 ambient-shadow card-hover relative">
+                    <div class="aspect-[4/5] rounded-lg overflow-hidden bg-surface-container-low mb-6 relative">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             data-alt="An elegant close-up of a premium moisturizing cream in a frosted translucent jar. The texture of the white cream is smooth and rich, visible through the jar's opening. The setting is minimalist with a soft focus on organic elements like a sprig of lavender nearby. The lighting is soft and airy, consistent with a high-end beauty brand identity."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAtSuo4XkAtx1e6CAArB_N4WrDGRCNk3kybtSPpCXN3zbTGUaK3F0LgCygrUWZaOqM8Zz3XjGfhQnlqj1eLE0v79g7FL69wDAvfJQ6aHmhl4CHvWlWaYIm35aRUGpduSWQeKdXg25efwouiq-oSHqq9W5nYorKZjlq2B3EB_BcR6ttpQKfOCz2P2yXNsYj6E8y80OAm-P6Ilp4XTR6MwpYeIPfrwiAf6tohPwEoHKJGrp-tA-X7l2MBA"/>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-secondary-container text-on-secondary-container font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-tighter">Vegan</span>
+                        </div>
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-error transition-colors shadow-sm">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </button>
+                    </div>
+                    <div class="px-2">
+                        <p class="font-label-sm text-[11px] text-outline uppercase tracking-widest mb-1">Bio-Lumina</p>
+                        <h3 class="font-headline-md text-body-lg font-semibold text-on-background group-hover:text-primary transition-colors cursor-pointer">
+                            Ceramide Cloud Cream</h3>
+                        <div class="flex items-center gap-2 mt-1 mb-3">
+                            <div class="flex text-primary/60 scale-75 -ml-3">
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                            </div>
+                            <span class="text-label-sm text-outline">(86 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-headline-md text-headline-md text-primary">$62.00</span>
+                            <button class="bg-surface-container-high text-primary p-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 3 -->
+                <article
+                        class="group bg-surface-container-lowest rounded-xl p-4 transition-all duration-500 ambient-shadow card-hover relative">
+                    <div class="aspect-[4/5] rounded-lg overflow-hidden bg-surface-container-low mb-6 relative">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             data-alt="A luxurious aesthetic shot of an eye-treatment product in a small, sleek metallic tube with a cooling ceramic applicator tip. The tube is resting on a glass surface with a gentle ripple of water in the background, symbolizing hydration. The lighting is clean, bright, and professional, using a cool blue and purple color palette."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWCQZzvFsKGk11edT76oXiitvENiwsIrU34sBG2JhnxLZS6Oo0KoK88xnPggbOqWO_W10-f6taIGWUirwPmj7x2U0pmL0MW5zT8MO7sSePNpMPKB6mj-dbHykvhIDKcKm_4ZPyY96fY-UutFfqcmC8H83J7Au2ATe5wCwBM45BFqt4V-Hlt9X_6Op1qFaasujzuYyMioNIaWQwlZk6-H7j619fV9dbgXOyPVf3EIptsfpgdJ-NA5L0vQ"/>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-primary-fixed-dim text-on-primary-fixed-variant font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-tighter">New</span>
+                        </div>
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-error transition-colors shadow-sm">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </button>
+                    </div>
+                    <div class="px-2">
+                        <p class="font-label-sm text-[11px] text-outline uppercase tracking-widest mb-1">
+                            Hydro-Quench</p>
+                        <h3 class="font-headline-md text-body-lg font-semibold text-on-background group-hover:text-primary transition-colors cursor-pointer">
+                            Midnight Eye Elixir</h3>
+                        <div class="flex items-center gap-2 mt-1 mb-3">
+                            <div class="flex text-primary/60 scale-75 -ml-3">
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                            </div>
+                            <span class="text-label-sm text-outline">(42 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-headline-md text-headline-md text-primary">$110.00</span>
+                            <button class="bg-surface-container-high text-primary p-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 4 -->
+                <article
+                        class="group bg-surface-container-lowest rounded-xl p-4 transition-all duration-500 ambient-shadow card-hover relative">
+                    <div class="aspect-[4/5] rounded-lg overflow-hidden bg-surface-container-low mb-6 relative">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             data-alt="A professional studio photo of a foaming cleanser being pumped into a hand. The foam is light, airy, and textured. The background is a soft-focus clean bathroom setting with high-end fixtures. The lighting is bright and natural, highlighting the freshness of the product and the brand's ethereal aesthetic."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8LomPWp_VbEHN2LdqTQK1kV_MimfI9dbtU-_OlTAayyLXdNPgY8RFMRS7Gubquh2zFD2E_wtTkC6z-a7bQVFK3EYqIeWeSVqHJ9AMS5MhIFIrkB33KNhYw3OSj7yRemQBrrw6DIYPyWsQM3gQDUzw3LKYXG3tZf-E9ZrWDSVmigExiQ8FTjdMqAA8zd9BPg6vngdjGH-Oc0ZANSoPF95-MwY_OijDnFKhzvxm8dKR5pVV3X1Jyv2d6g"/>
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-error transition-colors shadow-sm">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </button>
+                    </div>
+                    <div class="px-2">
+                        <p class="font-label-sm text-[11px] text-outline uppercase tracking-widest mb-1">Aura
+                            Essence</p>
+                        <h3 class="font-headline-md text-body-lg font-semibold text-on-background group-hover:text-primary transition-colors cursor-pointer">
+                            Glacier Foam Cleanser</h3>
+                        <div class="flex items-center gap-2 mt-1 mb-3">
+                            <div class="flex text-primary/60 scale-75 -ml-3">
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined">star_half</span>
+                            </div>
+                            <span class="text-label-sm text-outline">(210 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-headline-md text-headline-md text-primary">$45.00</span>
+                            <button class="bg-surface-container-high text-primary p-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 5 -->
+                <article
+                        class="group bg-surface-container-lowest rounded-xl p-4 transition-all duration-500 ambient-shadow card-hover relative">
+                    <div class="aspect-[4/5] rounded-lg overflow-hidden bg-surface-container-low mb-6 relative">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             data-alt="A premium sunscreen product featured in an outdoor, sunny setting with natural palm leaf shadows. The product is a sleek, peach-tinted tube. The lighting is warm and golden, emphasizing protection and radiance. The image composition is artistic and minimalist, fitting the brand's sophisticated visual identity."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh-0ouf9BvQlFsdFUAZGXP0EdJlrmjH6bQbTR5PGe_PeamQlqim0w_LNlB3IMEKd8HtdtRkg0O58hfAda1_TfBVnJ2j79HRzkFQnJbHS7hKP6DXXK0c6StDDvAZwAE3jIr54ivYQaYX5dmoPPecNb0Io837eE04vp6gSuuDCuJa6GslrFg6bb2dhDyX91TRu-FiqGDaIi-_xnLoWBbkHcaxBZ9hpTggmKDu-7d4qHBoGT9poX6I0fxOw"/>
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-error transition-colors shadow-sm">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </button>
+                    </div>
+                    <div class="px-2">
+                        <p class="font-label-sm text-[11px] text-outline uppercase tracking-widest mb-1">Solar
+                            Shield</p>
+                        <h3 class="font-headline-md text-body-lg font-semibold text-on-background group-hover:text-primary transition-colors cursor-pointer">
+                            Velvet SPF 50+</h3>
+                        <div class="flex items-center gap-2 mt-1 mb-3">
+                            <div class="flex text-primary/60 scale-75 -ml-3">
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                            </div>
+                            <span class="text-label-sm text-outline">(342 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-headline-md text-headline-md text-primary">$38.00</span>
+                            <button class="bg-surface-container-high text-primary p-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 6 -->
+                <article
+                        class="group bg-surface-container-lowest rounded-xl p-4 transition-all duration-500 ambient-shadow card-hover relative">
+                    <div class="aspect-[4/5] rounded-lg overflow-hidden bg-surface-container-low mb-6 relative">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             data-alt="A high-end skincare facial oil in a deep violet-colored glass bottle with a gold-accented dropper. The bottle sits on a reflective black surface with ethereal purple light flares. The overall mood is mysterious, luxurious, and highly advanced, showcasing the scientific nature of the ritual."
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNdqiwiYwWBmA4LezsdHu_fonhygGPIbvcNuBwacPBHTJxykt1n9vtgEerGe1_QKqDqF941yL8ldHHCMrMfDd0Qdb6Q0-pKvnAIXn1DZ6lAQz0oPmnOIhBrsBjcjmcwYyVh9f2YimvcJCVnExOKzquEbMTutXJD3yMRZcGCxKgOP-d5RB7S4QJcNGoHdcMkgmgBXOhwOGyiXGUYFryPBJxJe-Xp3hU9aJMW1y63UXs-5-ddsq_bIHHfg"/>
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-error transition-colors shadow-sm">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </button>
+                    </div>
+                    <div class="px-2">
+                        <p class="font-label-sm text-[11px] text-outline uppercase tracking-widest mb-1">Aura
+                            Essence</p>
+                        <h3 class="font-headline-md text-body-lg font-semibold text-on-background group-hover:text-primary transition-colors cursor-pointer">
+                            Nebula Night Oil</h3>
+                        <div class="flex items-center gap-2 mt-1 mb-3">
+                            <div class="flex text-primary/60 scale-75 -ml-3">
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                            </div>
+                            <span class="text-label-sm text-outline">(59 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-headline-md text-headline-md text-primary">$95.00</span>
+                            <button class="bg-surface-container-high text-primary p-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <!-- Pagination -->
+            <div class="mt-section-gap flex flex-col items-center gap-8">
+                <p class="text-label-sm text-outline font-label-sm">Showing 6 of 84 products</p>
+                <div class="flex items-center gap-2">
+                    <button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-primary hover:text-primary transition-all">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">
+                        1
+                    </button>
+                    <button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-all font-label-sm text-label-sm">
+                        2
+                    </button>
+                    <button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-all font-label-sm text-label-sm">
+                        3
+                    </button>
+                    <span class="text-outline px-2">...</span>
+                    <button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-all font-label-sm text-label-sm">
+                        14
+                    </button>
+                    <button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-primary hover:text-primary transition-all">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface mt-section-gap w-full py-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="col-span-1 md:col-span-1">
+            <h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim mb-4">Aura
+                Beauty</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim max-w-xs mb-6">
+                © 2024 Aura Beauty. Radiant self-care rituals.
+            </p>
+            <div class="flex gap-4">
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span
+                        class="material-symbols-outlined">public</span></a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span
+                        class="material-symbols-outlined">camera</span></a>
+            </div>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm font-semibold text-primary mb-6 uppercase tracking-widest">Shop</h4>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block"
+                       href="{{ url_for('new_arrival') }}">New Arrival</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block"
+                       href="{{ url_for('best_seller') }}">Best Seller</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block"
+                       href="{{ url_for('products') }}">Skin Rituals</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block"
+                       href="{{ url_for('products') }}">Gift Sets</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm font-semibold text-primary mb-6 uppercase tracking-widest">About</h4>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block"
+                       href="#">Our Story</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block"
+                       href="#">Sustainability</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block"
+                       href="#">Philosophy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm font-semibold text-primary mb-6 uppercase tracking-widest">
+                Newsletter</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-4">Join our inner circle for exclusive
+                rituals and product launches.</p>
+            <div class="flex gap-2">
+                <input class="bg-surface border-none rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-primary/20"
+                       placeholder="Your email" type="email"/>
+                <button class="bg-primary text-on-primary px-4 py-2 rounded-lg material-symbols-outlined">
+                    arrow_forward
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    // Micro-interaction for Add to Cart buttons
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('mousedown', function () {
+            this.classList.add('scale-95');
+        });
+        button.addEventListener('mouseup', function () {
+            this.classList.remove('scale-95');
+        });
+        button.addEventListener('mouseleave', function () {
+            this.classList.remove('scale-95');
+        });
+    });
+
+    // Hover effect for product cards
+    const cards = document.querySelectorAll('.card-hover');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            // Potential for dynamic JS effects
+        });
+    });
+
+    // Smooth scroll implementation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Checkout | Aura Beauty</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .method-card:hover {
+            box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.15);
+        }
+
+        .method-radio:checked + .method-card {
+            border-color: #6b38d4;
+            background-color: #f8f9ff;
+        }
+
+        .method-radio:checked + .method-card .check-icon {
+            opacity: 1;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#8455ef",
+                        "surface-variant": "#d9e3f6",
+                        "secondary-container": "#e3e1ea",
+                        "outline": "#7b7486",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "secondary-fixed": "#e3e1ea",
+                        "primary-fixed-dim": "#d0bcff",
+                        "surface-container-high": "#dee9fc",
+                        "outline-variant": "#cbc3d7",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f8f9ff",
+                        "tertiary-container": "#767288",
+                        "surface-tint": "#6d3bd7",
+                        "tertiary": "#5d596f",
+                        "surface-container-highest": "#d9e3f6",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed": "#1c192b",
+                        "inverse-surface": "#27313f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#121c2a",
+                        "on-surface-variant": "#494454",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "on-primary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e6dff9",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed": "#1a1b21",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#d0bcff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-surface": "#121c2a",
+                        "surface-container": "#e6eeff",
+                        "primary": "#6b38d4",
+                        "on-primary-fixed": "#23005c",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#64646b",
+                        "background": "#f8f9ff",
+                        "primary-fixed": "#e9ddff",
+                        "secondary": "#5e5e65",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen">
+<!-- Top Navigation Bar (Shared Component Reference) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm h-20">
+    <div class="flex justify-between items-center px-margin-desktop h-full max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md font-bold tracking-tight text-primary">Aura Beauty</div>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('home') }}">Home</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm"
+               href="{{ url_for('products') }}">Products</a>
+            <a class="text-primary border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#">Checkout</a>
+        </nav>
+        <div class="flex items-center gap-6">
+            <button class="text-on-surface-variant hover:bg-surface-container-high/50 p-2 rounded-full transition-all">
+                <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+            </button>
+            <button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-sm text-label-sm font-semibold hover:translate-y-[-2px] transition-all">
+                Sign In
+            </button>
+        </div>
+    </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-[1000px] mx-auto">
+    <!-- Step Indicator -->
+    <div class="flex items-center justify-center mb-12 gap-4">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+                1
+            </div>
+            <span class="text-on-surface-variant text-sm font-medium">Shipping</span>
+        </div>
+        <div class="h-[1px] w-12 bg-outline-variant"></div>
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm">
+                2
+            </div>
+            <span class="text-on-surface text-sm font-bold">Payment</span>
+        </div>
+        <div class="h-[1px] w-12 bg-outline-variant/30"></div>
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold text-sm">
+                3
+            </div>
+            <span class="text-on-surface-variant text-sm font-medium opacity-50">Confirmation</span>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+        <!-- Left Side: Payment Methods -->
+        <section class="lg:col-span-7 space-y-8">
+            <div class="space-y-2">
+                <h1 class="font-headline-lg text-headline-lg text-on-surface">Choose Payment Method</h1>
+                <p class="text-on-surface-variant font-body-md">Transactions are encrypted and secure. Your radiance,
+                    our responsibility.</p>
+            </div>
+            <form class="space-y-4" id="paymentForm">
+                <!-- ABA KHQR -->
+                <label class="relative block group cursor-pointer">
+                    <input checked="" class="method-radio peer sr-only" name="payment_method" type="radio"
+                           value="khqr"/>
+                    <div class="method-card flex items-center justify-between p-6 rounded-xl border border-outline-variant/40 bg-surface-container-lowest transition-all duration-300 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary/20">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-surface flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary" data-icon="qr_code_2"
+                                      style="font-size: 32px;">qr_code_2</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-on-surface">ABA KHQR</p>
+                                <p class="text-xs text-on-surface-variant">Instant scan and pay</p>
+                            </div>
+                        </div>
+                        <span class="check-icon material-symbols-outlined text-primary opacity-0 transition-opacity"
+                              data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    </div>
+                </label>
+                <!-- Visa/Mastercard -->
+                <label class="relative block group cursor-pointer">
+                    <input class="method-radio peer sr-only" name="payment_method" type="radio" value="card"/>
+                    <div class="method-card flex items-center justify-between p-6 rounded-xl border border-outline-variant/40 bg-surface-container-lowest transition-all duration-300 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary/20">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-surface flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary" data-icon="credit_card"
+                                      style="font-size: 32px;">credit_card</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-on-surface">Visa / MasterCard</p>
+                                <p class="text-xs text-on-surface-variant">Debit or Credit Card</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="w-8 h-5 rounded-sm bg-surface-variant/30 flex items-center justify-center text-[10px] font-bold text-on-surface-variant">
+                                VISA
+                            </div>
+                            <div class="w-8 h-5 rounded-sm bg-surface-variant/30 flex items-center justify-center text-[10px] font-bold text-on-surface-variant">
+                                MC
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <!-- COD -->
+                <label class="relative block group cursor-pointer">
+                    <input class="method-radio peer sr-only" name="payment_method" type="radio" value="cod"/>
+                    <div class="method-card flex items-center justify-between p-6 rounded-xl border border-outline-variant/40 bg-surface-container-lowest transition-all duration-300 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary/20">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-surface flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary" data-icon="payments"
+                                      style="font-size: 32px;">payments</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-on-surface">Cash on Delivery</p>
+                                <p class="text-xs text-on-surface-variant">Pay when you receive your order</p>
+                            </div>
+                        </div>
+                        <span class="check-icon material-symbols-outlined text-primary opacity-0 transition-opacity"
+                              data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    </div>
+                </label>
+            </form>
+            <!-- Security Info -->
+            <div class="p-6 rounded-xl bg-surface-container-low flex items-start gap-4">
+                <span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+                <div>
+                    <p class="text-sm font-semibold text-on-surface">Premium Security Assurance</p>
+                    <p class="text-xs text-on-surface-variant mt-1">Your payment details are protected by 256-bit SSL
+                        encryption. We never store your full card details or banking credentials.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Right Side: Order Summary -->
+        <aside class="lg:col-span-5">
+            <div class="glass-panel border border-outline-variant/20 rounded-2xl p-8 sticky top-32 shadow-xl shadow-primary/5">
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-6">Order Summary</h2>
+                <!-- Items -->
+                <div class="space-y-4 mb-8">
+                    <div class="flex gap-4">
+                        <div class="w-16 h-16 rounded-lg bg-surface overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover"
+                                 data-alt="A premium close-up of a frosted glass skincare bottle containing a shimmering lavender-colored serum, reflecting soft studio lighting. The aesthetic is clean, luxurious, and minimalist, with a serene light-mode background and subtle purple accents that evoke a sense of professional high-end beauty rituals."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ0PrmXWJUZBHnDpmvxM9ZijSK6MZLjbZPLrbDDhYVOiW3qRlBzq-B9msw0zNEGAs6wk5mDhtfnv14TqSz9YLfrCKlYTYSHvQHt6A9dQTretvb8NTLnriZfO6x4BjctNd94KH5k2TyWohX1wOTdu1DMcuC_V5xq-JZIgW-Ulj5EiG4QadX0DoSOgzasDRDPr951a5Xg9VoN54eDh2Ip7j0hOs4VVYh57MY8HjYhqyyPtHS55vug8pyzA"/>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-on-surface line-clamp-1">Radiance Elixir Serum</p>
+                            <p class="text-xs text-on-surface-variant">30ml • Qty: 1</p>
+                        </div>
+                        <p class="text-sm font-bold text-primary">$85.00</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-16 h-16 rounded-lg bg-surface overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover"
+                                 data-alt="A minimalist white ceramic jar of face cream sitting on a smooth marble surface. The lighting is bright and ethereal, casting soft shadows that emphasize the high-end product design. The color palette is composed of pristine whites and very soft greys, perfectly capturing the premium Aura Beauty brand aesthetic."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB015AJDGGauums_gPXLji6h4vrTKHX2vRcNxTFc4rK6sZ-eEtOS6bDWhG9Ca-qEurNswRpGMOScpgN1I35dJ4vKVlJ5c_olRswKj1wrk0Eq48ROzbaKhww61qF4GgAaNwp-CxeAvPh2RJHlySGY3Jt2DFOnjRMgb2GkefGHNzDnX-F2O7b_92KoLQ90gEkfoljx2rd9T4EORYmoRd56apCqwu2AcEZaMuZ_sxTQshHNW6tla7nj6J_Q"/>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-on-surface line-clamp-1">Cloud Dew Moisturizer</p>
+                            <p class="text-xs text-on-surface-variant">50g • Qty: 1</p>
+                        </div>
+                        <p class="text-sm font-bold text-primary">$64.00</p>
+                    </div>
+                </div>
+                <div class="h-[1px] bg-outline-variant/30 mb-6"></div>
+                <!-- Costs -->
+                <div class="space-y-3 mb-8">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-on-surface-variant">Subtotal</span>
+                        <span class="text-on-surface font-medium">$149.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-on-surface-variant">Shipping</span>
+                        <span class="text-on-surface font-medium">Free</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-on-surface-variant">Tax (EST)</span>
+                        <span class="text-on-surface font-medium">$12.45</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end mb-8">
+                    <span class="text-on-surface font-bold">Total Amount</span>
+                    <div class="text-right">
+                        <span class="block text-primary text-2xl font-bold">$161.45</span>
+                        <span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Includes GST</span>
+                    </div>
+                </div>
+                <button class="w-full bg-primary text-on-primary py-4 rounded-full font-bold text-body-md hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20"
+                        id="payNowBtn">
+                    Pay Now
+                </button>
+                <p class="text-center text-[11px] text-on-surface-variant mt-6 flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-xs" data-icon="lock"
+                          style="font-size: 14px;">lock</span>
+                    Encrypted Checkout Experience
+                </p>
+            </div>
+        </aside>
+    </div>
+</main>
+<!-- Footer (Shared Component Reference) -->
+<footer class="w-full py-section-gap bg-surface-container-low mt-section-gap border-t border-outline-variant/20">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="space-y-4">
+            <div class="font-headline-md text-headline-md font-bold text-primary mb-4">Aura Beauty</div>
+            <p class="text-on-surface-variant font-body-md text-sm">Elevating your daily ritual into a moment of pure
+                radiance.</p>
+        </div>
+        <div class="flex flex-col gap-3">
+            <p class="font-label-sm text-label-sm font-bold text-primary uppercase tracking-widest">Brand</p>
+            <a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform text-sm"
+               href="#">About Us</a>
+            <a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform text-sm"
+               href="#">Sustainability</a>
+        </div>
+        <div class="flex flex-col gap-3">
+            <p class="font-label-sm text-label-sm font-bold text-primary uppercase tracking-widest">Support</p>
+            <a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform text-sm"
+               href="{{ url_for('shipping_info') }}">Shipping Policy</a>
+            <a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform text-sm"
+               href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
+            <a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform text-sm"
+               href="#">Terms of Service</a>
+        </div>
+        <div class="flex flex-col gap-3">
+            <p class="font-label-sm text-label-sm font-bold text-primary uppercase tracking-widest">Connect</p>
+            <a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform text-sm"
+               href="#">Instagram</a>
+            <a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform text-sm"
+               href="#">Pinterest</a>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-desktop mt-12 pt-8 border-t border-outline-variant/10 text-center">
+        <p class="text-on-surface-variant font-label-sm text-label-sm">© 2024 Aura Beauty. Radiant self-care
+            rituals.</p>
+    </div>
+</footer>
+<!-- Micro-interaction Scripts -->
+<script>
+    document.getElementById('payNowBtn').addEventListener('click', function () {
+        const selected = document.querySelector('input[name="payment_method"]:checked').value;
+        this.innerHTML = `<span class="inline-block animate-spin mr-2"><span class="material-symbols-outlined" style="font-size: 20px;">sync</span></span> Processing...`;
+        this.disabled = true;
+        this.classList.add('opacity-80');
+
+        setTimeout(() => {
+            alert(`Order confirmed via ${selected.toUpperCase()}! Thank you for choosing Aura.`);
+            this.innerHTML = `Order Confirmed`;
+            this.classList.replace('bg-primary', 'bg-green-600');
+        }, 2000);
+    });
+
+    // Add visual feedback on method cards
+    document.querySelectorAll('.method-radio').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            console.log('Selected Payment:', e.target.value);
+        });
+    });
+</script>
+</body>
+</html>

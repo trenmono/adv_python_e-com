@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sign Up | Aura Beauty</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#121c2a",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "primary-container": "#8455ef",
+                        "surface-container-high": "#dee9fc",
+                        "tertiary-container": "#767288",
+                        "surface-tint": "#6d3bd7",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#64646b",
+                        "tertiary-fixed": "#e6dff9",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#d0bcff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#e3e1ea",
+                        "outline-variant": "#cbc3d7",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed": "#1a1b21",
+                        "surface-variant": "#d9e3f6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#1c192b",
+                        "primary-fixed-dim": "#d0bcff",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "secondary": "#5e5e65",
+                        "primary-fixed": "#e9ddff",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-surface": "#27313f",
+                        "secondary-fixed": "#e3e1ea",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#d9e3f6",
+                        "surface": "#f8f9ff",
+                        "primary": "#6b38d4",
+                        "on-surface-variant": "#494454",
+                        "on-primary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "surface-container": "#e6eeff",
+                        "outline": "#7b7486",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-background": "#121c2a",
+                        "tertiary": "#5d596f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(107, 56, 212, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex items-center justify-center overflow-x-hidden relative">
+<!-- Ambient Background Elements -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-float"></div>
+    <div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-tertiary/10 rounded-full blur-[100px] animate-float"
+         style="animation-delay: -3s;"></div>
+</div>
+<!-- Main Registration Container -->
+<main class="relative z-10 w-full max-w-[1100px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-surface-container-lowest/40 rounded-[2rem] border border-outline-variant/30 overflow-hidden shadow-xl">
+        <!-- Visual/Marketing Column -->
+        <div class="hidden lg:flex flex-col justify-center p-12 h-full relative overflow-hidden bg-primary/5">
+            <div class="relative z-10">
+                <h1 class="font-headline-lg text-headline-lg text-primary mb-6 leading-tight">Start Your Radiance
+                    Ritual</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-md">
+                    Join Aura Beauty and unlock a personalized world of scientifically advanced skincare and ethereal
+                    self-care experiences.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                        </div>
+                        <div>
+                            <h4 class="font-headline-md text-[18px] text-on-surface">Curated Collections</h4>
+                            <p class="text-sm text-on-surface-variant">Products selected for your unique skin
+                                chemistry.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary">eco</span>
+                        </div>
+                        <div>
+                            <h4 class="font-headline-md text-[18px] text-on-surface">Sustainable Luxury</h4>
+                            <p class="text-sm text-on-surface-variant">Ethically sourced, high-performance
+                                ingredients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Abstract Decorative Component -->
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+            <div class="absolute top-20 right-10 opacity-20">
+                <img class="w-48 h-48 object-cover rounded-full shadow-2xl animate-float"
+                     data-alt="A high-end, minimalist close-up of a glass skincare serum bottle reflecting soft lavender and white light. The image captures the premium, ethereal essence of Aura Beauty with clean lines, soft focus, and a sophisticated atmosphere that emphasizes purity and science-backed luxury."
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwcNKJbtPxrubrjWsL4V5cOHIeuNfaQaCeCXAYrKLoK-cXb0PVluDw2NYW1wtX-INPkruQitybH1D5RlpHx3AwmMIfy6n_KtY_M3lAWKJqbPVAFe-6c5KdfxWuI_WszU5QLj_K14qqXx8fvx9rFBqLHmAGGh0iP5h4r_FtxRxUFnWf6GRknYhGCOQWizWI6AzWOyj0rmvll3ZKKW_jCIvazv9ZBrJrsjL6fItGKuvhpcu1SoHJtnur7A"/>
+            </div>
+        </div>
+        <!-- Form Column -->
+        <div class="p-8 md:p-12 glass-panel">
+            <div class="mb-8">
+                <div class="flex items-center gap-2 mb-2">
+<span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[20px]">spa</span>
+</span>
+                    <span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">Aura Beauty</span>
+                </div>
+                <h2 class="font-headline-md text-headline-md text-on-surface">Create your account</h2>
+                <p class="text-on-surface-variant text-sm mt-1">Begin your journey to glowing health.</p>
+            </div>
+            <form class="space-y-5" onsubmit="return false;">
+                <!-- Full Name -->
+                <div class="space-y-1.5">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1 uppercase tracking-wider"
+                           for="full_name">Full Name</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">person</span>
+                        <input class="w-full pl-12 pr-4 py-3.5 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-outline-variant"
+                               id="full_name" placeholder="Evelyn Thorne" type="text"/>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Email -->
+                    <div class="space-y-1.5">
+                        <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1 uppercase tracking-wider"
+                               for="email">Email Address</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+                            <input class="w-full pl-12 pr-4 py-3.5 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-outline-variant"
+                                   id="email" placeholder="evelyn@aura.com" type="email"/>
+                        </div>
+                    </div>
+                    <!-- Phone -->
+                    <div class="space-y-1.5">
+                        <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1 uppercase tracking-wider"
+                               for="phone">Phone Number</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">call</span>
+                            <input class="w-full pl-12 pr-4 py-3.5 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-outline-variant"
+                                   id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- Password -->
+                <div class="space-y-1.5">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1 uppercase tracking-wider"
+                           for="password">Password</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+                        <input class="w-full pl-12 pr-12 py-3.5 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-outline-variant"
+                               id="password" placeholder="••••••••••••" type="password"/>
+                        <button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors"
+                                type="button">
+                            <span class="material-symbols-outlined text-[20px]">visibility</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Confirm Password -->
+                <div class="space-y-1.5">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1 uppercase tracking-wider"
+                           for="confirm_password">Confirm Password</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock_reset</span>
+                        <input class="w-full pl-12 pr-4 py-3.5 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-outline-variant"
+                               id="confirm_password" placeholder="••••••••••••" type="password"/>
+                    </div>
+                </div>
+                <!-- Terms Agreement -->
+                <div class="flex items-start gap-3 py-2">
+                    <div class="flex items-center h-5">
+                        <input class="w-4 h-4 text-primary border-outline-variant rounded focus:ring-primary/20"
+                               id="terms" type="checkbox"/>
+                    </div>
+                    <label class="text-xs text-on-surface-variant leading-relaxed" for="terms">
+                        I agree to the <a class="text-primary hover:underline font-semibold" href="#">Terms of
+                        Service</a> and <a class="text-primary hover:underline font-semibold" href="#">Privacy
+                        Policy</a>, including the use of cookies to enhance my ritual experience.
+                    </label>
+                </div>
+                <!-- CTA Button -->
+                <button class="w-full bg-primary text-white font-headline-md text-[16px] py-4 rounded-full shadow-lg shadow-primary/25 hover:bg-primary-container hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group"
+                        type="submit">
+                    Create Account
+                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </button>
+                <!-- Sign In Link -->
+                <div class="pt-6 text-center">
+                    <p class="text-on-surface-variant text-sm">
+                        Already part of the Aura community?
+                        <a class="text-primary font-bold hover:underline ml-1" href="{{ url_for('signin') }}">Sign In</a>
+                    </p>
+                </div>
+            </form>
+            <!-- Social Sign Up Divider -->
+            <div class="relative my-8">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-outline-variant/20"></div>
+                </div>
+                <div class="relative flex justify-center text-xs uppercase">
+                    <span class="bg-surface px-4 text-outline font-label-sm tracking-widest">Or join with</span>
+                </div>
+            </div>
+            <!-- Social Buttons -->
+            <div class="grid grid-cols-2 gap-4">
+                <button class="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors group">
+                    <svg class="w-5 h-5" viewbox="0 0 24 24">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                              fill="#4285F4"></path>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                              fill="#34A853"></path>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                              fill="#FBBC05"></path>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                              fill="#EA4335"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-on-surface-variant group-hover:text-primary">Google</span>
+                </button>
+                <button class="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors group">
+                    <svg class="w-5 h-5 text-on-surface" fill="currentColor" viewbox="0 0 24 24">
+                        <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.11.78.9-.04 2.02-.82 3.39-.74 1.56.09 2.68.68 3.38 1.76-3.18 1.94-2.67 6.12.55 7.42-.64 1.61-1.52 3.14-2.43 3.75zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-on-surface-variant group-hover:text-primary">Apple</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Policy Links -->
+    <footer class="mt-8 text-center text-xs text-outline tracking-wider uppercase">
+        © 2024 Aura Beauty. Crafted with scientific precision and human soul.
+    </footer>
+</main>
+<!-- Custom Micro-interaction Script -->
+<script>
+    // Subtle input focus animation
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.querySelector('.material-symbols-outlined').style.color = '#6b38d4';
+        });
+        input.addEventListener('blur', () => {
+            input.parentElement.querySelector('.material-symbols-outlined').style.color = '';
+        });
+    });
+
+    // Simple form validation visual feedback placeholder
+    document.querySelector('button[type="submit"]').addEventListener('click', (e) => {
+        const btn = e.currentTarget;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Creating Ritual...';
+        setTimeout(() => {
+            btn.innerHTML = 'Create Account <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>';
+        }, 2000);
+    });
+</script>
+</body>
+</html>

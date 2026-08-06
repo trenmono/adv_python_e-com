@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+
+{% block page_css %}{% endblock %}
+
+</head>
+
+<body>
+
+{% block content %}{% endblock %}
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+{% block page_js %}{% endblock %}
+
+</body>
+
+</html>

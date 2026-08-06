@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sign In | Aura Beauty</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#121c2a",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "primary-container": "#8455ef",
+                        "surface-container-high": "#dee9fc",
+                        "tertiary-container": "#767288",
+                        "surface-tint": "#6d3bd7",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#64646b",
+                        "tertiary-fixed": "#e6dff9",
+                        "on-primary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#d0bcff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#e3e1ea",
+                        "outline-variant": "#cbc3d7",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed": "#1a1b21",
+                        "surface-variant": "#d9e3f6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#1c192b",
+                        "primary-fixed-dim": "#d0bcff",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "secondary": "#5e5e65",
+                        "primary-fixed": "#e9ddff",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-surface": "#27313f",
+                        "secondary-fixed": "#e3e1ea",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#d9e3f6",
+                        "surface": "#f8f9ff",
+                        "primary": "#6b38d4",
+                        "on-surface-variant": "#494454",
+                        "on-primary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "surface-container": "#e6eeff",
+                        "outline": "#7b7486",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-background": "#121c2a",
+                        "tertiary": "#5d596f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.08);
+        }
+
+        .custom-checkbox {
+            accent-color: #6b38d4;
+        }
+
+        .hover-lift {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="text-on-surface bg-surface-bright flex min-h-screen items-center justify-center relative">
+<!-- Background Atmospheric Effect -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-primary-fixed opacity-30 blur-[120px]"></div>
+    <div class="absolute -bottom-[10%] -right-[5%] w-[50%] h-[50%] rounded-full bg-surface-container-high opacity-40 blur-[100px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-[1200px] grid md:grid-cols-2 gap-0 overflow-hidden md:rounded-xl shadow-2xl bg-white m-0 md:m-margin-mobile">
+    <!-- Left: Image/Brand Section (Hidden on Mobile) -->
+    <section class="hidden md:flex relative flex-col justify-end p-margin-desktop bg-surface-container overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover grayscale-[20%] brightness-95"
+                 data-alt="A professional, editorial-style macro photograph of high-end skincare serum droplets on a frosted glass surface. The lighting is ethereal and soft, using a palette of soft lavender, pearl white, and deep violet accents. The composition is minimalist and premium, evoking a sense of calm, scientific precision, and luxury radiance. The background is a soft, dreamlike gradient of Aura Beauty brand colors."
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHP-4yXTYl6nr_1_yV58fkLuXK3YKbsOchobdBUeezkSTDeW1ST1KtFqY0EfwdRd3Cup-3udtJjyjY_70FZhXNBUB4l_bZuGyo0XgNA5GweHjfndvXo4aS-AfM-jUmpOHKYwpjlxsJFlFkYrZrPmc41-oM33MWAbT8Ygb2V7S2BrFgk90ngySvwyjBoHn9wO1HkVSPLPJ2n24tDJgjl5gSoRwYJjugLGoLF3V1bDp9WtsFt4LWfqNEaA"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+        </div>
+        <div class="relative z-10 text-white">
+            <h1 class="font-headline-lg text-headline-lg mb-4 tracking-tighter">Radiance from within.</h1>
+            <p class="font-body-lg text-body-lg opacity-90 max-w-[400px]">Experience the fusion of scientific precision
+                and ethereal self-care rituals with Aura Beauty.</p>
+        </div>
+    </section>
+    <!-- Right: Sign In Form Section -->
+    <section class="flex flex-col justify-center px-margin-mobile py-16 md:px-margin-desktop bg-white">
+        <div class="max-w-[420px] mx-auto w-full">
+            <!-- Brand Header -->
+            <header class="mb-12">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-2xl">flare</span>
+                    </div>
+                    <span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">Aura Beauty</span>
+                </div>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Welcome Back</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Enter your details to access your ritual
+                    dashboard.</p>
+            </header>
+            <!-- Form -->
+            <form class="space-y-6" onsubmit="event.preventDefault();">
+                <!-- Email Field -->
+                <div class="space-y-2">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block" for="email">EMAIL
+                        ADDRESS</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl">mail</span>
+                        <input class="w-full pl-12 pr-4 py-3.5 bg-surface-container-lowest border border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md"
+                               id="email" placeholder="name@example.com" type="email"/>
+                    </div>
+                </div>
+                <!-- Password Field -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <label class="font-label-sm text-label-sm text-on-surface-variant"
+                               for="password">PASSWORD</label>
+                        <a class="font-label-sm text-label-sm text-primary hover:underline decoration-2 underline-offset-4"
+                           href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+                    </div>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl">lock</span>
+                        <input class="w-full pl-12 pr-12 py-3.5 bg-surface-container-lowest border border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md"
+                               id="password" placeholder="••••••••" type="password"/>
+                        <button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors"
+                                type="button">
+                            <span class="material-symbols-outlined text-xl">visibility</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Remember Me -->
+                <div class="flex items-center gap-3">
+                    <input class="w-5 h-5 rounded border-outline-variant/50 text-primary focus:ring-primary custom-checkbox"
+                           id="remember" type="checkbox"/>
+                    <label class="font-body-md text-body-md text-on-surface-variant cursor-pointer select-none"
+                           for="remember">Remember me for 30 days</label>
+                </div>
+                <!-- Primary Action -->
+                <button class="w-full py-4 bg-primary text-white rounded-full font-label-sm text-label-sm tracking-widest hover:bg-on-primary-fixed-variant transition-all shadow-lg shadow-primary/20 active:scale-95 hover-lift"
+                        type="submit">
+                    SIGN IN
+                </button>
+                <!-- Secondary Option -->
+                <button class="w-full py-4 bg-transparent border border-outline-variant/50 text-on-surface rounded-full font-label-sm text-label-sm tracking-widest hover:bg-surface-container transition-all active:scale-95"
+                        type="button">
+                    CONTINUE AS GUEST
+                </button>
+            </form>
+            <!-- Divider -->
+            <div class="relative my-10">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-outline-variant/30"></div>
+                </div>
+                <div class="relative flex justify-center text-label-sm">
+                    <span class="px-4 bg-white text-on-surface-variant">OR SIGN IN WITH</span>
+                </div>
+            </div>
+            <!-- Social Logins -->
+            <div class="grid grid-cols-2 gap-4">
+                <button class="flex items-center justify-center gap-3 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container transition-colors active:scale-95">
+                    <img alt="Google" class="w-5 h-5"
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4TMegpaIiaswRSo3N3SawevGqLRC9ZlaBPMUYD7GFKIMs1C3An0Z_W_ZE51oNNuLTg8Q8lYpBcex31E1SSA732qjAZnkj9eOnovfSEDQhIFNrlC5Jsjr3ZlraWXN0_JvzCwqBANZcKUCAcCXpJngHkteV5BGbawc-OaE9g7sdY-fT6TkrVxA2hk_iu3xS_Knsf32cSpVK9d82NAae8C315w1AAqvlNwN3f_RYnbPKrfjMd-8tBSi6uA"/>
+                    <span class="font-label-sm text-label-sm">GOOGLE</span>
+                </button>
+                <button class="flex items-center justify-center gap-3 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container transition-colors active:scale-95">
+                    <svg class="w-5 h-5 text-[#1877F2] fill-current" viewbox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                    </svg>
+                    <span class="font-label-sm text-label-sm">FACEBOOK</span>
+                </button>
+            </div>
+            <!-- Footer Link -->
+            <footer class="mt-12 text-center">
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                    Don't have an account?
+                    <a class="text-primary font-semibold hover:underline underline-offset-4" href="{{ url_for('signup') }}">Join the
+                        Ritual</a>
+                </p>
+            </footer>
+        </div>
+    </section>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+    // Form field focus effects
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.parentElement.querySelector('label').classList.add('text-primary');
+        });
+        input.addEventListener('blur', () => {
+            input.parentElement.parentElement.querySelector('label').classList.remove('text-primary');
+        });
+    });
+
+    // Simple visibility toggle logic
+    const toggleBtn = document.querySelector('button .material-symbols-outlined[content="visibility"]');
+    if (toggleBtn) {
+        toggleBtn.parentElement.addEventListener('click', () => {
+            const passInput = document.getElementById('password');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                toggleBtn.innerText = 'visibility_off';
+            } else {
+                passInput.type = 'password';
+                toggleBtn.innerText = 'visibility';
+            }
+        });
+    }
+</script>
+</body>
+</html>

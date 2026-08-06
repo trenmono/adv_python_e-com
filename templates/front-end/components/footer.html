@@ -1,0 +1,45 @@
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface w-full py-section-gap mt-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="md:col-span-1">
+            <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim mb-4">Aura Beauty</div>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-6">Elevating self-care into a sacred radiance ritual through science and soul.</p>
+            <div class="flex gap-4">
+                <a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">camera_enhance</span></a>
+                <a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">play_circle</span></a>
+                <a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+            </div>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Rituals</h4>
+            <ul class="space-y-4">
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="{{ url_for('best_seller') }}">Best Sellers</a></li>
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="{{ url_for('new_arrival') }}">New Arrival</a></li>
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="{{ url_for('products') }}">Sets &amp; Kits</a></li>
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="#">Sustainability</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Guided Care</h4>
+            <ul class="space-y-4">
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="#">About Us</a></li>
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="{{ url_for('shipping_info') }}">Shipping Policy</a></li>
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+                <li><a class="font-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Connect</h4>
+            <p class="font-body-md text-on-surface-variant mb-6">Join our circle for exclusive early access and skincare wisdom.</p>
+            <div class="flex gap-2">
+                <input class="bg-surface border-none rounded-l-lg p-3 flex-1 text-body-md outline-none focus:ring-1 focus:ring-primary/20" placeholder="Your email" type="email"/>
+                <button class="bg-primary text-on-primary px-4 rounded-r-lg hover:bg-primary/90 transition-colors">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-desktop mt-20 pt-8 border-t border-outline-variant/10 text-center">
+        <p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">© 2024 Aura Beauty. Radiant self-care rituals.</p>
+    </div>
+</footer>

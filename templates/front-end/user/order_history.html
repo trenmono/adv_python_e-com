@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Order History | Aura Beauty</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind Config Verbatim -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#e3e1ea",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#d0bcff",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-primary-fixed": "#23005c",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c9c3dc",
+                        "primary": "#6b38d4",
+                        "on-primary-container": "#fffbff",
+                        "surface-tint": "#6d3bd7",
+                        "secondary-fixed": "#e3e1ea",
+                        "surface-dim": "#d0dbed",
+                        "on-tertiary-fixed": "#1c192b",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#cbc3d7",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "inverse-surface": "#27313f",
+                        "on-tertiary-fixed-variant": "#484459",
+                        "secondary": "#5e5e65",
+                        "outline": "#7b7486",
+                        "tertiary-container": "#767288",
+                        "surface-container-high": "#dee9fc",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary": "#5d596f",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#494454",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#8455ef",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1a1b21",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#d9e3f6",
+                        "on-background": "#121c2a",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#e9ddff",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e6eeff",
+                        "tertiary-fixed": "#e6dff9",
+                        "on-secondary-container": "#64646b",
+                        "surface-container-highest": "#d9e3f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f8f9ff;
+            color: #121c2a;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .order-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.04);
+        }
+
+        .order-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.08);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm">
+    <div class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed-dim">
+            Aura Beauty
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('home') }}">Home</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('products') }}">Products</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('best_seller') }}">Best Seller</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('new_arrival') }}">New Arrival</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+               href="{{ url_for('contact') }}">Contact</a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="hidden md:block">
+                <span class="material-symbols-outlined text-primary cursor-pointer">shopping_cart</span>
+            </div>
+            <button class="font-label-sm text-label-sm bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full hover:bg-primary transition-all active:scale-95 duration-200">
+                Sign In
+            </button>
+        </div>
+    </div>
+</nav>
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <!-- Header Section -->
+    <header class="mb-12">
+        <h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Order History</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+            Relive your self-care rituals. Track your latest radiance-enhancing essentials and review your beauty
+            journey.
+        </p>
+    </header>
+    <!-- Stats Overview (Asymmetric Bento Style) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-16">
+        <div class="col-span-1 md:col-span-2 bg-primary-fixed text-on-primary-fixed p-8 rounded-xl flex items-center justify-between overflow-hidden relative">
+            <div class="z-10">
+                <p class="font-label-sm text-label-sm mb-1 uppercase tracking-widest opacity-80">Total Rituals
+                    Conducted</p>
+                <p class="font-display-lg text-display-lg mb-2">12</p>
+                <p class="font-body-md text-body-md opacity-70">Aura Tier: <span
+                        class="font-bold">Luminous Member</span></p>
+            </div>
+            <div class="hidden md:block w-32 h-32 opacity-20">
+                <span class="material-symbols-outlined !text-[128px]">stars</span>
+            </div>
+
+        </div>
+        <div class="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10 flex flex-col justify-center">
+            <p class="font-label-sm text-label-sm mb-2 text-on-surface-variant uppercase tracking-widest">Active
+                Shipments</p>
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary font-variation-settings-'FILL'-1">local_shipping</span>
+                <p class="font-headline-md text-headline-md">02 Orders</p>
+            </div>
+        </div>
+    </div>
+    <!-- Orders List -->
+    <section class="space-y-6">
+        <!-- Order Entry 1: Processing -->
+        <div class="order-card bg-surface-container-lowest border border-outline-variant/10 p-6 md:p-8 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center">
+            <div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover"
+                     data-alt="Close up of high-end skincare packaging for a radiant face serum. The bottle is minimalist glass with a soft lavender label, sitting on a marble surface with morning sunlight casting soft shadows. The lighting is ethereal and premium, maintaining a calm, sophisticated beauty aesthetic."
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjV3i65ahmBgJ9r4N0-c31LrqDnJ_2H9q0iG4QjV1MhhWvGfNs1T_icNz-sBgrvxFT84_hoHmOMp_Ec0JHl_kQP4WaNEko8z8jAkOYIms0TsTt9-308bCGf3U_eJB4xeRrGebwud5T7t3K3-1etKlylknh_0EMBLiJuOyWdroZerF_qALG_kxgZujhb1Qgtdjh1WoxSOtjaaW3PExqz8YEOOV4kmku9ne034vub-Vej-FExgdL70dylQ"/>
+            </div>
+            <div class="flex-1 space-y-2">
+                <div class="flex flex-wrap items-center gap-3">
+                    <h3 class="font-headline-md text-headline-md">#AB-92834</h3>
+                    <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Processing</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant">Placed on Oct 24, 2024</p>
+                <p class="font-label-sm text-label-sm font-semibold text-primary">Est. Delivery: Oct 28</p>
+            </div>
+            <div class="text-left md:text-right">
+                <p class="font-headline-md text-headline-md mb-4">$142.00</p>
+                <div class="flex gap-3">
+                    <button class="px-6 py-2.5 border border-outline text-on-surface-variant rounded-full font-label-sm text-label-sm hover:bg-surface-container transition-all">
+                        View Details
+                    </button>
+                    <button class="px-6 py-2.5 bg-primary text-on-primary rounded-full font-label-sm text-label-sm hover:shadow-lg transition-all active:scale-95">
+                        Track Order
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Order Entry 2: Delivered -->
+        <div class="order-card bg-surface-container-lowest border border-outline-variant/10 p-6 md:p-8 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center">
+            <div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 flex items-center justify-center relative">
+                <div class="grid grid-cols-2 gap-1 w-full h-full">
+                    <img class="w-full h-full object-cover"
+                         data-alt="Soft focused detail of an organic cotton face towel and a small jar of botanical moisturizer. Soft purple and white palette, serene spa-like lighting with airy atmosphere."
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuABCjzLUYWEJ4F6TvocrSOGk1Tnx8y6YI_3z_3R_L8ZVzzCndGbxhTjmOB7uBbrfeygOgX8KqtEm5GKZbbwIy3onTwWa0K-SIg78hNvhpsCfmta1BvrD4MyN6BpDQyv-usR6huicW-dicgRSnxh2XYizPgk8s3lfA82l3FaxpOERD8OyPT4MfGTv2A8aCgP8KnzroYToBviZej5QkK2JfIdojH6lIgSRAbbLFzEaGE3ImpQaziUqwG23A"/>
+                    <div class="bg-primary-container/20 flex items-center justify-center font-label-sm text-label-sm text-primary">
+                        +2
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 space-y-2">
+                <div class="flex flex-wrap items-center gap-3">
+                    <h3 class="font-headline-md text-headline-md">#AB-91052</h3>
+                    <span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Delivered
+                        </span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant">Placed on Oct 02, 2024</p>
+                <p class="font-label-sm text-label-sm text-on-surface-variant/60">Arrived on Oct 05, 2024</p>
+            </div>
+            <div class="text-left md:text-right">
+                <p class="font-headline-md text-headline-md mb-4">$89.50</p>
+                <div class="flex gap-3">
+                    <button class="px-6 py-2.5 border border-outline text-on-surface-variant rounded-full font-label-sm text-label-sm hover:bg-surface-container transition-all">
+                        View Details
+                    </button>
+                    <button class="px-6 py-2.5 bg-primary-container text-on-primary-container rounded-full font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+                        Reorder All
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Order Entry 3: Delivered -->
+        <div class="order-card bg-surface-container-lowest border border-outline-variant/10 p-6 md:p-8 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center opacity-70 grayscale-[0.3]">
+            <div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover"
+                     data-alt="A collection of luxury skincare serums in glass bottles against a neutral backdrop. Soft depth of field, lavender and violet ambient lighting, extremely crisp and clean commercial photography style."
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgl9OzKT1CWuOsYUXHK15Y8SGqcWF2bhQf_0tsp_0qwSBOHS8kziRtjcKvGIo2MjmYhAlBmTPDZC08_ukrI7l9blo7x-_qZ8TuxBoiZwUaxKNYmNFMQ-OWjFkkCKNVdU9LZLNPPJj9RgdA6DZkEqwmOiMvqnR92XxdhmMx_b-hy4Q-ZZgTNqaYIN99BXtkHQhpUwpWT38m3tdGX160k2Tz2JFYx4aiTzdm4hQS4m66cmH7ZWId_In19Q"/>
+            </div>
+            <div class="flex-1 space-y-2">
+                <div class="flex flex-wrap items-center gap-3">
+                    <h3 class="font-headline-md text-headline-md">#AB-88211</h3>
+                    <span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Delivered
+                        </span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant">Placed on Aug 15, 2024</p>
+            </div>
+            <div class="text-left md:text-right">
+                <p class="font-headline-md text-headline-md mb-4">$210.00</p>
+                <div class="flex gap-3">
+                    <button class="px-6 py-2.5 border border-outline text-on-surface-variant rounded-full font-label-sm text-label-sm hover:bg-surface-container transition-all">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Empty State Suggestion (Subtle) -->
+    <div class="mt-section-gap text-center max-w-md mx-auto">
+        <div class="bg-surface-container p-12 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary-container !text-4xl">inventory_2</span>
+        </div>
+        <h2 class="font-headline-md text-headline-md mb-2 text-on-surface">Discover More Rituals</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-8">Continue your journey with our newest arrivals
+            designed for your unique skin profile.</p>
+        <button class="px-8 py-3 bg-primary text-on-primary rounded-full font-label-sm text-label-sm hover:shadow-xl transition-all scale-105">
+            Shop New Arrivals
+        </button>
+    </div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-section-gap bg-surface-container-low dark:bg-inverse-surface mt-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="col-span-1 md:col-span-1">
+            <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim mb-4">Aura
+                Beauty
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim">© 2024 Aura
+                Beauty. Radiant self-care rituals.</p>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-wider">Company</h4>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                       href="#">About Us</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                       href="#">Sustainability</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-wider">Help</h4>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                       href="{{ url_for('shipping_info') }}">Shipping Policy</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                       href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                       href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-wider">Social</h4>
+            <ul class="space-y-4">
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                       href="#">Instagram</a></li>
+                <li>
+                    <a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                       href="#">Pinterest</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script>
+    // Micro-interactions for order cards
+    document.querySelectorAll('.order-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const img = card.querySelector('img');
+            if (img) img.style.transform = 'scale(1.05)';
+        });
+        card.addEventListener('mouseleave', () => {
+            const img = card.querySelector('img');
+            if (img) img.style.transform = 'scale(1)';
+        });
+    });
+
+    // Sticky Navbar effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 20) {
+            nav.classList.add('shadow-md');
+        } else {
+            nav.classList.remove('shadow-md');
+        }
+    });
+</script>
+</body>
+</html>
